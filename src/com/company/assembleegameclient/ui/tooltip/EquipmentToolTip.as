@@ -35,7 +35,7 @@ import kabam.rotmg.constants.ActivationType;
       private var line2_:LineBreakDesign;
       private var restrictionsText_:SimpleText;
       private var player_:Player;
-      private var itemData_:int;
+      private var itemData_;
       private var isEquippable_:Boolean = false;
       private var objectType_:int;
       private var objectXML_:XML = null;
@@ -49,7 +49,7 @@ import kabam.rotmg.constants.ActivationType;
       private var isInventoryFull:Boolean;
       private var yOffset:int;
       
-      public function EquipmentToolTip(objectType:int, itemData:int, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0)
+      public function EquipmentToolTip(objectType:int, itemData, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0)
       {
          this.player_ = player;
          this.itemData_ = itemData;
@@ -156,7 +156,7 @@ import kabam.rotmg.constants.ActivationType;
       private function addTitle() : void
       {
          //var prefix:String = ItemData.getPrefix(this.itemData_);
-         var color:int = ItemData.getColor(this.itemData_);
+         var color:int = ItemData.getColor(this.itemData_.Meta);
          if (color == -1)
          {
             color = this.playerCanUse || this.player_ == null?int(16777215):int(16549442);
@@ -223,7 +223,7 @@ import kabam.rotmg.constants.ActivationType;
       
       private function addFameBonusTagToEffectsList() : void
       {
-         var fameBonusMod:Number = ItemData.getStat(this.itemData_, ItemData.FAME_BONUS_BIT, 1);
+         var fameBonusMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.FAME_BONUS_BIT, 1);
          if(this.objectXML_.hasOwnProperty("FameBonus") || fameBonusMod != 0)
          {
             var fameBonus:int = this.objectXML_.hasOwnProperty("FameBonus") ? int(this.objectXML_.FameBonus) : 0;
@@ -231,7 +231,7 @@ import kabam.rotmg.constants.ActivationType;
             if (fameBonusMod != 0)
             {
                fameBonusString += " (+" + fameBonusMod + "%)";
-               fameBonusString = TooltipHelper.wrapInFontTag(fameBonusString, ItemData.getColorString(this.itemData_));
+               fameBonusString = TooltipHelper.wrapInFontTag(fameBonusString, ItemData.getColorString(this.itemData_.Meta));
             }
             this.effects.push(new Effect("Fame Bonus",fameBonusString));
          }
@@ -247,7 +247,7 @@ import kabam.rotmg.constants.ActivationType;
 
       private function addCooldownTagToEffectsList() : void
       {
-         var cooldownMod:Number = ItemData.getStat(this.itemData_, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var cooldownMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
          if(this.objectXML_.hasOwnProperty("Cooldown") || cooldownMod != 0)
          {
             var cooldown:Number = this.objectXML_.hasOwnProperty("Cooldown") ? Number(this.objectXML_.Cooldown) : 0.2;
@@ -255,7 +255,7 @@ import kabam.rotmg.constants.ActivationType;
             if (cooldownMod != 0)
             {
                cooldownString += " (-" + int(cooldownMod * 100) + "%)";
-               cooldownString = TooltipHelper.wrapInFontTag(cooldownString, ItemData.getColorString(this.itemData_));
+               cooldownString = TooltipHelper.wrapInFontTag(cooldownString, ItemData.getColorString(this.itemData_.Meta));
             }
             this.effects.push(new Effect("Cooldown",cooldownString));
          }
@@ -274,13 +274,13 @@ import kabam.rotmg.constants.ActivationType;
          var projXML:XML = null;
          var range:Number = NaN;
          var condEffectXML:XML = null;
-         var color:String = ItemData.getColorString(this.itemData_);
+         var color:String = ItemData.getColorString(this.itemData_.Meta);
          if(this.objectXML_.hasOwnProperty("Projectile"))
          {
             projXML = XML(this.objectXML_.Projectile);
             var minDmg:int = int(projXML.MinDamage);
             var maxDmg:int = int(projXML.MaxDamage);
-            var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
+            var dmgMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
             minDmg += int(minDmg * dmgMod);
             maxDmg += int(maxDmg * dmgMod);
             var dmgString:String = (minDmg == maxDmg ? minDmg : minDmg + " - " + maxDmg).toString();
@@ -304,7 +304,7 @@ import kabam.rotmg.constants.ActivationType;
 
             var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
             var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;
-            var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
+            var rateOfFireData:Number = ItemData.getStat(this.itemData_.Meta, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
             var rateOfFireString:String = (int(rateOfFire * 100) + int(rateOfFireData * 100)) + "%";
             if (rateOfFireData != 0)
             {
@@ -437,38 +437,38 @@ import kabam.rotmg.constants.ActivationType;
             stats[stat] = stats[stat] + amount;
          }
 
-         if (this.itemData_ != -1)
+         if (this.itemData_.Meta != -1)
          {
             var k:int = -1;
-            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_HP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.MAX_HP_BIT, 5)) != 0) {
                stats[0] = (stats[0] || 0) + k;
                datas[0] = (datas[0] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_MP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.MAX_MP_BIT, 5)) != 0) {
                stats[1] = (stats[1] || 0) + k;
                datas[1] = (datas[1] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.ATTACK_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.ATTACK_BIT, 1)) != 0) {
                stats[2] = (stats[2] || 0) + k;
                datas[2] = (datas[2] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEFENSE_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.DEFENSE_BIT, 1)) != 0) {
                stats[3] = (stats[3] || 0) + k;
                datas[3] = (datas[3] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.SPEED_BIT, 1)) != 0) {
                stats[4] = (stats[4] || 0) + k;
                datas[4] = (datas[4] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.DEXTERITY_BIT, 1)) != 0) {
                stats[5] = (stats[5] || 0) + k;
                datas[5] = (datas[5] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.VITALITY_BIT, 1)) != 0) {
                stats[6] = (stats[6] || 0) + k;
                datas[6] = (datas[6] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.WISDOM_BIT, 1)) != 0) {
                stats[7] = (stats[7] || 0) + k;
                datas[7] = (datas[7] || 0) + k;
             }
@@ -517,7 +517,7 @@ import kabam.rotmg.constants.ActivationType;
          if (data > 0)
          {
             dataString = " (+" + data + ")";
-            textColor = ItemData.getColorString(this.itemData_);
+            textColor = ItemData.getColorString(this.itemData_.Meta);
          }
          else {
             dataString = "";

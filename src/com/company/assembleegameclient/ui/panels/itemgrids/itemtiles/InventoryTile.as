@@ -44,7 +44,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          newItemSprite.setDim(false);
       }
       
-      override public function setItem(itemId:int, itemData:int) : Boolean
+      override public function setItem(itemId:int, itemData:Object) : Boolean
       {
          var changed:Boolean = super.setItem(itemId, itemData);
          if(changed)

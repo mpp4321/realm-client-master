@@ -79,7 +79,7 @@ public class GameObject extends BasicObject
       public var defense_:int = 0;
       public var slotTypes_:Vector.<int> = null;
       public var equipment_:Vector.<int> = null;
-      public var itemDatas_:Vector.<int> = null;
+      public var itemDatas_:Vector.<Object> = null;
       public var condition_:uint = 0;
       protected var tex1Id_:int = 0;
       protected var tex2Id_:int = 0;
@@ -171,11 +171,11 @@ public class GameObject extends BasicObject
          {
             this.slotTypes_ = ConversionUtil.toIntVector(objectXML.SlotTypes);
             this.equipment_ = new Vector.<int>(this.slotTypes_.length);
-            this.itemDatas_ = new Vector.<int>(this.slotTypes_.length);
+            this.itemDatas_ = new Vector.<Object>(this.slotTypes_.length);
             for(i = 0; i < this.equipment_.length; i++)
             {
                this.equipment_[i] = -1;
-               this.itemDatas_[i] = -1;
+               this.itemDatas_[i] = { Meta: -1 };
             }
          }
          if(objectXML.hasOwnProperty("Tex1"))

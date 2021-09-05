@@ -131,7 +131,7 @@ public class ItemGrid extends Panel
          addChild(tile);
       }
       
-      public function setItems(items:Vector.<int>, datas:Vector.<int>, itemIndexOffset:int = 0) : void
+      public function setItems(items:Vector.<int>, datas:Vector.<Object>, itemIndexOffset:int = 0) : void
       {
 
       }

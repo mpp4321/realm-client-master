@@ -68,7 +68,7 @@ public class TradeInventory extends Sprite
         for(var i:int = 0; i < GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS; i++)
         {
             item = items[i];
-            slot = new TradeSlot(item.itemType_,item.itemData_,item.tradeable_,item.included_,item.slotType_,i - 3,cuts[i],i);
+            slot = new TradeSlot(item.itemType_,  JSON.parse(item.itemData_),item.tradeable_,item.included_,item.slotType_,i - 3,cuts[i],i);
             slot.x = int(i % 4) * (Slot.WIDTH + 4);
             slot.y = int(i / 4) * (Slot.HEIGHT + 4) + 46;
             if(item.itemType_ != -1)

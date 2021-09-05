@@ -139,6 +139,9 @@ package kabam.rotmg.messaging.impl.data
       
       public function isStringStat() : Boolean
       {
+
+         if(this.statType_ >= ITEMDATA_0_STAT && this.statType_ <= ITEMDATA_19_STAT) return true;
+
          switch(this.statType_)
          {
             case NAME_STAT:

@@ -64,7 +64,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          this.restrictedUseIndicator.visible = false;
       }
       
-      public function setItem(itemId:int, itemData:int) : Boolean
+      public function setItem(itemId:int, itemData:Object) : Boolean
       {
          if(itemId == this.itemSprite.itemId && itemData == this.itemSprite.itemData)
          {
@@ -110,7 +110,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          return this.itemSprite.itemId;
       }
 
-      public function getItemData() : int
+      public function getItemData() : Object
       {
          return this.itemSprite.itemData;
       }

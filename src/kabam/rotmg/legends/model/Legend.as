@@ -23,7 +23,7 @@ package kabam.rotmg.legends.model
       
       public var equipment:Vector.<int>;
 
-      public var itemDatas:Vector.<int>;
+      public var itemDatas:Vector.<Object>;
       
       public var character:BitmapData;
       

@@ -23,7 +23,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
        
       
       public var itemId:int;
-      public var itemData:int;
+      public var itemData:Object;
       
       public var itemBitmap:Bitmap;
       
@@ -40,7 +40,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          filters = dim?DIM_FILTER:null;
       }
       
-      public function setType(displayedItemType:int, displayedItemData:int) : void
+      public function setType(displayedItemType:int, displayedItemData : Object) : void
       {
          var texture:BitmapData = null;
          var eqXML:XML = null;

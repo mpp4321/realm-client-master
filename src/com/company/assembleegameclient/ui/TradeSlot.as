@@ -33,7 +33,7 @@ public class TradeSlot extends Slot
 
     public var itemType_:int;
 
-    public var itemData_:int;
+    public var itemData_: Object;
 
     public var tradeable_:Boolean;
 
@@ -51,7 +51,7 @@ public class TradeSlot extends Slot
 
     private var graphicsData_:Vector.<IGraphicsData>;
 
-    public function TradeSlot(itemType:int, itemData:int, tradeable:Boolean, included:Boolean, type:int, hotkey:int, cuts:Array, id:uint)
+    public function TradeSlot(itemType:int, itemData: Object, tradeable:Boolean, included:Boolean, type:int, hotkey:int, cuts:Array, id:uint)
     {
         var texture:BitmapData = null;
         var eqXML:XML = null;

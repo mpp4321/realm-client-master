@@ -197,7 +197,7 @@ public class ItemGridMediator extends Mediator
       }
       GameServerConnection.instance.invSwap(this.view.curPlayer,this.view.owner,sourceTile.tileId,destTile.ownerGrid.owner,destTile.tileId);
       var tempItemId:int = sourceTile.getItemId();
-      var tempItemData:int = sourceTile.getItemData();
+      var tempItemData:Object = sourceTile.getItemData();
       sourceTile.setItem(destTile.getItemId(), destTile.getItemData());
       destTile.setItem(tempItemId, tempItemData);
       sourceTile.updateUseability(this.view.curPlayer);

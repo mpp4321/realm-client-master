@@ -29,7 +29,7 @@ public class InventoryGrid extends ItemGrid
       }
    }
 
-   override public function setItems(items:Vector.<int>, datas:Vector.<int>, itemIndexOffset:int = 0) : void
+   override public function setItems(items:Vector.<int>, datas:Vector.<Object>, itemIndexOffset:int = 0) : void
    {
       var numItems:int = 0;
       var i:int = 0;

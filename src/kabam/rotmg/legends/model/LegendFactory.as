@@ -83,7 +83,7 @@ package kabam.rotmg.legends.model
          legend.character = this.factory.makeIcon(skin.template,100,texture1,texture2);
          legend.equipmentSlots = character.slotTypes;
          legend.equipment = ConversionUtil.toIntVector(xml.Equipment);
-         legend.itemDatas = ConversionUtil.toIntVector(xml.ItemDatas);
+         legend.itemDatas = ConversionUtil.parseXMLItemDataJson(xml.ItemDatas);
          return legend;
       }
    }

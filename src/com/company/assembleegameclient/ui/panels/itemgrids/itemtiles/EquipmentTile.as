@@ -126,7 +126,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          this.itemType = type;
       }
       
-      override public function setItem(itemId:int, itemData:int) : Boolean
+      override public function setItem(itemId:int, itemData:Object) : Boolean
       {
          var itemChanged:Boolean = super.setItem(itemId, itemData);
          if(itemChanged)

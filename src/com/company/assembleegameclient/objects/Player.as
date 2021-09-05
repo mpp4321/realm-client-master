@@ -159,7 +159,7 @@ import org.swiftsuspenders.Injector;
          player.level_ = int(playerXML.Level);
          player.exp_ = int(playerXML.Exp);
          player.equipment_ = ConversionUtil.toIntVector(playerXML.Equipment);
-         player.itemDatas_ = ConversionUtil.toIntVector(playerXML.ItemDatas);
+         player.itemDatas_ = ConversionUtil.parseXMLItemDataJson((playerXML.ItemDatas));
          player.maxHP_ = int(playerXML.MaxHitPoints);
          player.hp_ = int(playerXML.HitPoints);
          player.maxMP_ = int(playerXML.MaxMagicPoints);
@@ -875,7 +875,7 @@ import org.swiftsuspenders.Injector;
          var cooldown:int = 0;
          var angle:Number = Parameters.data_.cameraAngle + Math.atan2(y,x);
          var itemType:int = equipment_[1];
-         var itemData:int = itemDatas_[1];
+         var itemData:Object = itemDatas_[1];
          if(itemType == -1)
          {
             return false;
@@ -929,7 +929,7 @@ import org.swiftsuspenders.Injector;
             return false;
          }
 
-         var cooldownMod:Number = 1 - ItemData.getStat(itemData, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var cooldownMod:Number = 1 - ItemData.getStat(itemData.Meta, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
          cooldown = 200;
          if(objectXML.hasOwnProperty("Cooldown"))
          {
@@ -940,7 +940,7 @@ import org.swiftsuspenders.Injector;
          map_.gs_.gsc_.useItem(now,objectId_,1,point.x,point.y);
          if(objectXML.Activate == ActivationType.SHOOT)
          {
-            this.doShoot(now,itemType,itemData,objectXML, angle,true);
+            this.doShoot(now,itemType,itemData.Meta,objectXML, angle,true);
          }
          return true;
       }
@@ -969,7 +969,7 @@ import org.swiftsuspenders.Injector;
             return;
          }
          var weaponType:int = equipment_[0];
-         var itemData:int = itemDatas_[0];
+         var itemData:int = itemDatas_[0].Meta;
          if(weaponType == -1)
          {
             //this.addTextLine.dispatch(new AddTextLineVO(Parameters.ERROR_CHAT_NAME,"You do not have a weapon equipped!"));

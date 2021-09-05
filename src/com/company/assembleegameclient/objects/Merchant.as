@@ -213,7 +213,7 @@ package com.company.assembleegameclient.objects
       
       override public function getTooltip() : ToolTip
       {
-         var toolTip:ToolTip = new EquipmentToolTip(this.merchandiseType_, -1, map_.player_,-1,InventoryOwnerTypes.NPC);
+         var toolTip:ToolTip = new EquipmentToolTip(this.merchandiseType_, {Meta: -1}, map_.player_,-1,InventoryOwnerTypes.NPC);
          return toolTip;
       }
       

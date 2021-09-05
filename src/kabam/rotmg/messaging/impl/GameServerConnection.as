@@ -581,7 +581,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          this.serverConnection.sendMessage(invSwap);
 
          var tempItem:int = sourceObj.equipment_[slotId1];
-         var tempData:int = sourceObj.itemDatas_[slotId1];
+         var tempData:Object = sourceObj.itemDatas_[slotId1];
          sourceObj.equipment_[slotId1] = targetObj.equipment_[slotId2];
          sourceObj.itemDatas_[slotId1] = targetObj.itemDatas_[slotId2];
          targetObj.equipment_[slotId2] = tempItem;
@@ -627,7 +627,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          invDrop.slotId_ = slotId;
          this.serverConnection.sendMessage(invDrop);
          object.equipment_[slotId] = -1;
-         object.itemDatas_[slotId] = -1;
+         object.itemDatas_[slotId] = {Meta:-1};
       }
 
       public function useItem(time:int, objectId:int, slotId:int, posX:Number, posY:Number) : void
@@ -667,7 +667,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          if(itemData.hasOwnProperty("Consumable"))
          {
             owner.equipment_[slotId] = -1;
-            owner.itemDatas_[slotId] = -1;
+            owner.itemDatas_[slotId] = {Meta:-1};
          }
       }
       
@@ -1081,7 +1081,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                break;
             case ShowEffect.THROW_PROJECTILE_EFFECT_TYPE:
                start = showEffect.pos1_.toPoint();
-               e = new ThrowProjectileEffect(showEffect.color_,showEffect.pos2_.toPoint(),showEffect.pos1_.toPoint());
+               e = new ThrowProjectileEffect(showEffect.color_,showEffect.pos2_.toPoint(),showEffect.pos1_.toPoint(), 1500);
                map.addObj(e,start.x,start.y);
                break;
             default:
@@ -1317,7 +1317,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                case StatData.ITEMDATA_17_STAT:
                case StatData.ITEMDATA_18_STAT:
                case StatData.ITEMDATA_19_STAT:
-                    go.itemDatas_[stat.statType_ - StatData.ITEMDATA_0_STAT] = value;
+                    go.itemDatas_[stat.statType_ - StatData.ITEMDATA_0_STAT] = JSON.parse(stat.strStatValue_);
                     continue;
                default:
                   trace("unhandled stat: " + stat.statType_);
