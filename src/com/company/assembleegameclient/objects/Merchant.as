@@ -220,7 +220,7 @@ package com.company.assembleegameclient.objects
       override public function getIcon() : BitmapData
       {
          var tempText:SimpleText = null;
-         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,80,true);
+         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,80,true, 0);
          var eqXML:XML = ObjectLibrary.xmlLibrary_[this.merchandiseType_];
          if(eqXML.hasOwnProperty("Doses"))
          {
@@ -267,7 +267,7 @@ package com.company.assembleegameclient.objects
          {
             return this.merchandiseTexture_;
          }
-         var tempTexture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,size_,false,false);
+         var tempTexture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,size_,false,0, false);
          if(this.alpha_ != 1)
          {
             this.ct_.alphaMultiplier = this.alpha_;
@@ -279,7 +279,7 @@ package com.company.assembleegameclient.objects
       public function setMerchandiseType(merchandiseType:int) : void
       {
          this.merchandiseType_ = merchandiseType;
-         this.merchandiseTexture_ = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,100,false);
+         this.merchandiseTexture_ = ObjectLibrary.getRedrawnTextureFromType(this.merchandiseType_,100,false, 0);
       }
    }
 }

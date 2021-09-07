@@ -79,7 +79,7 @@ public class GameObject extends BasicObject
       public var defense_:int = 0;
       public var slotTypes_:Vector.<int> = null;
       public var equipment_:Vector.<int> = null;
-      public var itemDatas_:Vector.<Object> = null;
+      public var itemDatas_:Vector.<Object> = getDefaultItemDataVector();
       public var condition_:uint = 0;
       protected var tex1Id_:int = 0;
       protected var tex2Id_:int = 0;
@@ -177,6 +177,8 @@ public class GameObject extends BasicObject
                this.equipment_[i] = -1;
                this.itemDatas_[i] = { Meta: -1 };
             }
+         } else {
+            this.itemDatas_ = getDefaultItemDataVector();
          }
          if(objectXML.hasOwnProperty("Tex1"))
          {
@@ -1114,5 +1116,14 @@ public class GameObject extends BasicObject
       {
          return "[" + getQualifiedClassName(this) + " id: " + objectId_ + " type: " + ObjectLibrary.typeToDisplayId_[this.objectType_] + " pos: " + x_ + ", " + y_ + "]";
       }
+
+      public static function getDefaultItemDataVector(): Vector.<Object> {
+         var vo = new Vector.<Object>();
+         for(var i = 0; i < 20; i++) {
+            vo.push({Meta: -1});
+         }
+         return vo;
+      }
+
    }
 }

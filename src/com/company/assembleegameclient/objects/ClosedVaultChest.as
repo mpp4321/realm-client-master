@@ -31,7 +31,7 @@ package com.company.assembleegameclient.objects
       
       override public function getIcon() : BitmapData
       {
-         return ObjectLibrary.getRedrawnTextureFromType(ObjectLibrary.idToType_["Vault Chest"],80,true);
+         return ObjectLibrary.getRedrawnTextureFromType(ObjectLibrary.idToType_["Vault Chest"],80,true, 0);
       }
    }
 }

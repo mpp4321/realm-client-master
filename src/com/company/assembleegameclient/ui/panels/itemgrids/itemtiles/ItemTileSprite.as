@@ -49,7 +49,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          this.itemData = displayedItemData;
          if(this.itemId != ItemConstants.NO_ITEM)
          {
-            texture = ObjectLibrary.getRedrawnTextureFromType(this.itemId,80,true);
+            texture = ObjectLibrary.getRedrawnTextureFromType(this.itemId,80,true, itemData == null ? -1 : itemData.Meta);
             eqXML = ObjectLibrary.xmlLibrary_[this.itemId];
             if(eqXML && eqXML.hasOwnProperty("Doses"))
             {

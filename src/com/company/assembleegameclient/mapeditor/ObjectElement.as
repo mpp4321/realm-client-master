@@ -15,7 +15,7 @@ package com.company.assembleegameclient.mapeditor
       {
          super(int(objXML.@type), objXML.@id);
          this.objXML_ = objXML;
-         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(type_,100,true,false);
+         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(type_,100,true, -1,false);
          var bitmap:Bitmap = new Bitmap(texture);
          var scale:Number = (WIDTH - 4) / Math.max(bitmap.width,bitmap.height);
          bitmap.scaleX = bitmap.scaleY = scale;

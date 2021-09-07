@@ -1,7 +1,8 @@
 package com.company.assembleegameclient.objects
 {
    import com.company.assembleegameclient.objects.animation.AnimationsData;
-   import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.assembleegameclient.util.ItemData;
+import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.util.AssetLibrary;
    import com.company.util.ConversionUtil;
@@ -161,7 +162,7 @@ import com.company.util.AssetLibrary;
          return textureData.getTexture();
       }
       
-      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, useCaching:Boolean = true, scaleValue:int = 5) : BitmapData
+      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, itemMetaData: int, useCaching:Boolean = true, scaleValue:int = 5) : BitmapData
       {
          var textureData:TextureData = typeToTextureData_[objectType];
          var texture:BitmapData = Boolean(textureData)?textureData.getTexture():null;
@@ -170,10 +171,12 @@ import com.company.util.AssetLibrary;
             texture = AssetLibrary.getImageFromSet("lofiObj3",255);
          }
          var mask:BitmapData = Boolean(textureData)?textureData.mask_:null;
+
          if(mask == null)
          {
-            return TextureRedrawer.redraw(texture,size,includeBottom,0,useCaching,scaleValue);
+            return TextureRedrawer.redraw(texture, size, includeBottom, ItemData.getColor(itemMetaData), useCaching, scaleValue);
          }
+
          var objectXML:XML = xmlLibrary_[objectType];
          var tex1:int = Boolean(objectXML.hasOwnProperty("Tex1"))?int(int(objectXML.Tex1)):int(0);
          var tex2:int = Boolean(objectXML.hasOwnProperty("Tex2"))?int(int(objectXML.Tex2)):int(0);

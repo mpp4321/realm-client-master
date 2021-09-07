@@ -118,7 +118,7 @@ import kabam.rotmg.constants.ActivationType;
          {
             scaleValue = eqXML.ScaleValue;
          }
-         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.objectType_,60,true,true,scaleValue);
+         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.objectType_,60,true,itemData_ == null ? -1 : itemData_.Meta, true, scaleValue);
          texture = BitmapUtil.cropToBitmapData(texture,4,4,texture.width - 8,texture.height - 8);
          this.icon_ = new Bitmap(texture);
          addChild(this.icon_);

@@ -41,9 +41,12 @@ package kabam.rotmg.assets
       private static const CaveOfAThousandTreasuresCXML:Class = EmbeddedData_CaveOfAThousandTreasuresCXML;
       private static const CandyLandCXML:Class = EmbeddedData_CandyLandCXML;
       private static const HauntedCemeteryCXML:Class = EmbeddedData_HauntedCemeteryCXML;
+      private static const EpicSpiderDenCXML:Class = EmbeddedData_EpicSpiderDenCXML;
+      private static const EpicPirateCaveCXML:Class = EmbeddedData_EpicPirateCaveCXML;
+      private static const EpicForestMazeCXML:Class = EmbeddedData_EpicForestMazeCXML;
 
       public static const skinsXML:XML = XML(new SkinsCXML());
-      public static const objectFiles:Array = [new ProjectilesCXML(),new EquipCXML(),new DyesCXML(),new TextilesCXML(),new PermapetsCXML(),new PlayersCXML(),new ObjectsCXML(),new TestingObjectsCXML(),new StaticObjectsCXML(),new TutorialObjectsCXML(),new MonstersCXML(),new PetsCXML(),new TempObjectsCXML(),new ShoreCXML(),new LowCXML(),new MidCXML(),new HighCXML(),new MountainsCXML(),new EncountersCXML(),new OryxCastleCXML(),new TombOfTheAncientsCXML(),new SpriteWorldCXML(),new UndeadLairCXML(),new OceanTrenchCXML(),new ForbiddenJungleCXML(),new OryxChamberCXML(),new OryxWineCellarCXML(),new ManorOfTheImmortalsCXML(),new PirateCaveCXML(),new SnakePitCXML(),new AbyssOfDemonsCXML(),new GhostShipCXML(),new MadLabCXML(),new CaveOfAThousandTreasuresCXML(),new CandyLandCXML(),new HauntedCemeteryCXML()];
+      public static const objectFiles:Array = [new EpicSpiderDenCXML(), new EpicPirateCaveCXML(), new EpicForestMazeCXML(), new ProjectilesCXML(),new EquipCXML(),new DyesCXML(),new TextilesCXML(),new PermapetsCXML(),new PlayersCXML(),new ObjectsCXML(),new TestingObjectsCXML(),new StaticObjectsCXML(),new TutorialObjectsCXML(),new MonstersCXML(),new PetsCXML(),new TempObjectsCXML(),new ShoreCXML(),new LowCXML(),new MidCXML(),new HighCXML(),new MountainsCXML(),new EncountersCXML(),new OryxCastleCXML(),new TombOfTheAncientsCXML(),new SpriteWorldCXML(),new UndeadLairCXML(),new OceanTrenchCXML(),new ForbiddenJungleCXML(),new OryxChamberCXML(),new OryxWineCellarCXML(),new ManorOfTheImmortalsCXML(),new PirateCaveCXML(),new SnakePitCXML(),new AbyssOfDemonsCXML(),new GhostShipCXML(),new MadLabCXML(),new CaveOfAThousandTreasuresCXML(),new CandyLandCXML(),new HauntedCemeteryCXML()];
       private static const RegionsCXML:Class = EmbeddedData_RegionsCXML;
       public static const regionFiles:Array = [new RegionsCXML()];
       private static const TutorialScriptCXML:Class = EmbeddedData_TutorialScriptCXML;

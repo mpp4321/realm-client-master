@@ -131,7 +131,7 @@ import org.swiftsuspenders.Injector;
       private var breathFill_:GraphicsSolidFill = null;
       private var breathPath_:GraphicsPath = null;
       private var hallucinatingMaskedImage_:MaskedImage = null;
-      
+
       public function Player(objectXML:XML)
       {
          this.ip_ = new IntPoint();
@@ -160,6 +160,7 @@ import org.swiftsuspenders.Injector;
          player.exp_ = int(playerXML.Exp);
          player.equipment_ = ConversionUtil.toIntVector(playerXML.Equipment);
          player.itemDatas_ = ConversionUtil.parseXMLItemDataJson((playerXML.ItemDatas));
+         if(player.itemDatas_ == null) player.itemDatas_ = GameObject.getDefaultItemDataVector();
          player.maxHP_ = int(playerXML.MaxHitPoints);
          player.hp_ = int(playerXML.HitPoints);
          player.maxMP_ = int(playerXML.MaxMagicPoints);

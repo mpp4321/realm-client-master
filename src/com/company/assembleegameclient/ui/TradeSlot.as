@@ -70,7 +70,7 @@ public class TradeSlot extends Slot
         if(this.itemType_ != -1)
         {
             SpriteUtil.safeRemoveChild(this,backgroundImage_);
-            texture = ObjectLibrary.getRedrawnTextureFromType(this.itemType_,80,true);
+            texture = ObjectLibrary.getRedrawnTextureFromType(this.itemType_,80,true, itemData_ == null ? -1 : itemData_.Meta);
             eqXML = ObjectLibrary.xmlLibrary_[this.itemType_];
             if(eqXML.hasOwnProperty("Doses"))
             {

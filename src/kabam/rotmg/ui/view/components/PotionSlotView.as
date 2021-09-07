@@ -107,11 +107,11 @@ package kabam.rotmg.ui.view.components
             {
                removeChild(this.potionIcon);
             }
-            iconBD = ObjectLibrary.getRedrawnTextureFromType(objectType,55,false);
+            iconBD = ObjectLibrary.getRedrawnTextureFromType(objectType,55,false, -1);
             this.potionIcon = new Bitmap(iconBD);
             this.potionIcon.y = -11;
             addChild(this.potionIcon);
-            iconBD = ObjectLibrary.getRedrawnTextureFromType(objectType,80,true);
+            iconBD = ObjectLibrary.getRedrawnTextureFromType(objectType,80,true, -1);
             potionIconBig = new Bitmap(iconBD);
             potionIconBig.x = potionIconBig.x - 30;
             potionIconBig.y = potionIconBig.y - 30;

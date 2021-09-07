@@ -1,7 +1,8 @@
 package com.company.assembleegameclient.ui.tooltip
 {
    import com.company.assembleegameclient.appengine.CharacterStats;
-   import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.GameObjectListItem;
    import com.company.assembleegameclient.ui.LineBreakDesign;

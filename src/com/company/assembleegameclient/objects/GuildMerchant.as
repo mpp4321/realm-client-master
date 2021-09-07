@@ -40,7 +40,7 @@ package com.company.assembleegameclient.objects
       
       override public function getIcon() : BitmapData
       {
-         return ObjectLibrary.getRedrawnTextureFromType(objectType_,80,true);
+         return ObjectLibrary.getRedrawnTextureFromType(objectType_,80,true, 0);
       }
    }
 }
