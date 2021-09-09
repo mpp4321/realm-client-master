@@ -261,7 +261,7 @@ package com.company.assembleegameclient.objects
          return defaultTexId;
       }
       
-      override protected function getTexture(camera:Camera, time:int) : BitmapData
+      override protected function getTexture(camera:Camera, time:int, forceGlow:int = 0) : BitmapData
       {
          if(this.alpha_ == 1 && size_ == 100)
          {

@@ -781,8 +781,8 @@ public class GameObject extends BasicObject
          }
          return this.hallucinatingTexture_;
       }
-      
-      protected function getTexture(camera:Camera, time:int) : BitmapData
+
+      protected function getTexture(camera:Camera, time:int, forceGlow:int=0) : BitmapData
       {
          var p:Number = NaN;
          var action:int = 0;
@@ -851,7 +851,7 @@ public class GameObject extends BasicObject
          }
          if(this.tex1Id_ == 0 && this.tex2Id_ == 0)
          {
-            texture = TextureRedrawer.redraw(texture,size,false,0);
+            texture = TextureRedrawer.redraw(texture,size,false,forceGlow);
          }
          else
          {

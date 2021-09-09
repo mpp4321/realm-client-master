@@ -223,7 +223,7 @@ import kabam.rotmg.constants.ActivationType;
       
       private function addFameBonusTagToEffectsList() : void
       {
-         var fameBonusMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.FAME_BONUS_BIT, 1);
+         var fameBonusMod:Number = ItemData.getStat(this.itemData_, ItemData.FAME_BONUS_BIT, 1);
          if(this.objectXML_.hasOwnProperty("FameBonus") || fameBonusMod != 0)
          {
             var fameBonus:int = this.objectXML_.hasOwnProperty("FameBonus") ? int(this.objectXML_.FameBonus) : 0;
@@ -247,7 +247,7 @@ import kabam.rotmg.constants.ActivationType;
 
       private function addCooldownTagToEffectsList() : void
       {
-         var cooldownMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var cooldownMod:Number = ItemData.getStat(this.itemData_, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
          if(this.objectXML_.hasOwnProperty("Cooldown") || cooldownMod != 0)
          {
             var cooldown:Number = this.objectXML_.hasOwnProperty("Cooldown") ? Number(this.objectXML_.Cooldown) : 0.2;
@@ -280,7 +280,7 @@ import kabam.rotmg.constants.ActivationType;
             projXML = XML(this.objectXML_.Projectile);
             var minDmg:int = int(projXML.MinDamage);
             var maxDmg:int = int(projXML.MaxDamage);
-            var dmgMod:Number = ItemData.getStat(this.itemData_.Meta, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
+            var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
             minDmg += int(minDmg * dmgMod);
             maxDmg += int(maxDmg * dmgMod);
             var dmgString:String = (minDmg == maxDmg ? minDmg : minDmg + " - " + maxDmg).toString();
@@ -304,7 +304,7 @@ import kabam.rotmg.constants.ActivationType;
 
             var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
             var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;
-            var rateOfFireData:Number = ItemData.getStat(this.itemData_.Meta, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
+            var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
             var rateOfFireString:String = (int(rateOfFire * 100) + int(rateOfFireData * 100)) + "%";
             if (rateOfFireData != 0)
             {
@@ -336,48 +336,55 @@ import kabam.rotmg.constants.ActivationType;
                   this.effects.push("", "Changes texture of your character");
                   continue;
                case ActivationType.COND_EFFECT_AURA:
-                  this.effects.push(new Effect("Party Effect","Within " + activateXML.@range + " sqrs"));
-                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
+//                  this.effects.push(new Effect("Party Effect","Within " + activateXML.@range + " sqrs"));
+//                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("Party Effect","Within {range} sqrs", activateXML, player_));
+                  this.effects.push(new StatScaleEffect("",activateXML.@effect + " for {duration} secs", activateXML, player_));
                   continue;
                case ActivationType.COND_EFFECT_SELF:
+//                  this.effects.push(new Effect("Effect on Self",""));
+//                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
                   this.effects.push(new Effect("Effect on Self",""));
-                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("",activateXML.@effect + " for {duration} secs", activateXML, player_));
                   continue;
                case ActivationType.HEAL:
-                  this.effects.push(new Effect("","+" + activateXML.@amount + " HP"));
+                  //this.effects.push(new Effect("","+" + activateXML.@amount + " HP"));
+                  this.effects.push(new StatScaleEffect("","+{amount} HP", activateXML, player_));
                   continue;
                case ActivationType.HEAL_NOVA:
-                  this.effects.push(new Effect("Party Heal",activateXML.@amount + " HP at " + activateXML.@range + " sqrs"));
+//                  this.effects.push(new Effect("Party Heal",activateXML.@amount + " HP at " + activateXML.@range + " sqrs"));
+                  this.effects.push(new StatScaleEffect("Party Heal","{amount} HP at {range} sqrs", activateXML, player_));
                   continue;
                case ActivationType.MAGIC:
-                  this.effects.push(new Effect("","+" + activateXML.@amount + " MP"));
+                  //this.effects.push(new Effect("","+" + activateXML.@amount + " MP"));
+                  this.effects.push(new StatScaleEffect("","+{amount} MP", activateXML, player_));
                   continue;
                case ActivationType.MAGIC_NOVA:
-                  this.effects.push(new Effect("Fill Party Magic",activateXML.@amount + " MP at " + activateXML.@range + " sqrs"));
+                  this.effects.push(new StatScaleEffect("Fill Party Magic","{amount} MP at {range} sqrs", activateXML, player_));
                   continue;
                case ActivationType.TELEPORT:
                   this.effects.push(new Effect("","Teleport to Target"));
                   continue;
                case ActivationType.VAMPIRE_BLAST:
-                  this.effects.push(new Effect("Steal",activateXML.@totalDamage + " HP within " + activateXML.@radius + " sqrs"));
+                  this.effects.push(new StatScaleEffect("Steal","{totalDamage} HP within {range} sqrs", activateXML, player_));
                   continue;
                case ActivationType.TRAP:
-                  this.effects.push(new Effect("Trap",activateXML.@totalDamage + " HP within " + activateXML.@radius + " sqrs"));
-                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("Trap","{totalDamage} HP within {range} sqrs", activateXML, player_));
+                  this.effects.push(new StatScaleEffect("",activateXML.@effect + " for {duration} secs", activateXML, player_));
                   continue;
                case ActivationType.STASIS_BLAST:
-                  this.effects.push(new Effect("Stasis on Group",activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("Stasis on Group","{duration} secs", activateXML, player_));
                   continue;
                case ActivationType.DECOY:
-                  this.effects.push(new Effect("Decoy",activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("Decoy","{duration} secs", activateXML, player_));
                   continue;
                case ActivationType.LIGHTNING:
                   this.effects.push(new Effect("Lightning",""));
-                  this.effects.push(new Effect("",activateXML.@totalDamage + " to " + activateXML.@maxTargets + " targets"));
+                  this.effects.push(new StatScaleEffect("","{totalDamage} to " + activateXML.@maxTargets + " targets", activateXML, player_));
                   continue;
                case ActivationType.POISON_GRENADE:
                   this.effects.push(new Effect("Poison Grenade",""));
-                  this.effects.push(new Effect("",activateXML.@totalDamage + " HP over " + activateXML.@duration + " secs within " + activateXML.@radius + " sqrs"));
+                  this.effects.push(new StatScaleEffect("","{totalDamage} HP over {duration} secs within {range} sqrs", activateXML, player_));
                   continue;
                case ActivationType.REMOVE_NEG_COND:
                   this.effects.push(new Effect("","Removes negative conditions"));
@@ -389,7 +396,7 @@ import kabam.rotmg.constants.ActivationType;
                   this.effects.push(new Effect("Shots", "20"));
                   continue;
                case ActivationType.SHURIKEN:
-                  this.effects.push(new Effect("Shots", activateXML.@amount));
+                  this.effects.push(new StatScaleEffect("Shots", "{amount}", activateXML, player_));
                   this.effects.push(new Effect("", "Stars seek nearby enemies"));
                   this.effects.push(new Effect("", "Dazes nearby enemies"));
                   continue;
@@ -440,35 +447,35 @@ import kabam.rotmg.constants.ActivationType;
          if (this.itemData_.Meta != -1)
          {
             var k:int = -1;
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.MAX_HP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_HP_BIT, 5)) != 0) {
                stats[0] = (stats[0] || 0) + k;
                datas[0] = (datas[0] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.MAX_MP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_MP_BIT, 5)) != 0) {
                stats[1] = (stats[1] || 0) + k;
                datas[1] = (datas[1] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.ATTACK_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.ATTACK_BIT, 1)) != 0) {
                stats[2] = (stats[2] || 0) + k;
                datas[2] = (datas[2] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.DEFENSE_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.DEFENSE_BIT, 1)) != 0) {
                stats[3] = (stats[3] || 0) + k;
                datas[3] = (datas[3] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.SPEED_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1)) != 0) {
                stats[4] = (stats[4] || 0) + k;
                datas[4] = (datas[4] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.DEXTERITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1)) != 0) {
                stats[5] = (stats[5] || 0) + k;
                datas[5] = (datas[5] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.VITALITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1)) != 0) {
                stats[6] = (stats[6] || 0) + k;
                datas[6] = (datas[6] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_.Meta, ItemData.WISDOM_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1)) != 0) {
                stats[7] = (stats[7] || 0) + k;
                datas[7] = (datas[7] || 0) + k;
             }
@@ -680,8 +687,7 @@ import kabam.rotmg.constants.ActivationType;
 
 class Effect
 {
-    
-   
+
    public var name_:String;
    
    public var value_:String;
@@ -694,10 +700,66 @@ class Effect
    }
 }
 
+import com.company.assembleegameclient.objects.Player;
+
+class StatScaleEffect extends Effect {
+   public var statScale: Number;
+   public var statDurationScale: Number;
+   public var statRangeScale: Number;
+
+   public var statMin: Number;
+
+   static function scaleFunction(stat, amount, min, scale) {
+      return amount + (Math.max(0, (stat - min)) * scale);
+   }
+
+   static function getStatByString(p: Player, s): int {
+      switch(s) {
+         case "Attack": return p.attack_;
+         case "Defense": return p.defense_;
+         case "Speed": return p.speed_;
+         case "Dexterity": return p.dexterity_;
+         case "Vitality": return p.vitality_;
+         default: return p.wisdom_;
+      }
+   }
+
+   function StatScaleEffect(name: String, value: String, oXML, player_: Player) {
+      var useWisMod = oXML.hasOwnProperty('@useWisMod');
+      var totalDamage = oXML.hasOwnProperty("@totalDamage") ? oXML.@totalDamage : -1;
+      var amount = oXML.hasOwnProperty("@amount") ? oXML.@amount : -1;
+      var duration = oXML.hasOwnProperty("@duration") ? oXML.@duration : -1;
+      var range = oXML.hasOwnProperty("@range") ? oXML.@range : oXML.hasOwnProperty("@radius") ? oXML.@radius : -1;
+
+      totalDamage = Number(totalDamage);
+      amount = Number(amount);
+      duration = Number(duration);
+      range = Number(range);
+
+      statScale = Number(oXML.hasOwnProperty("@statScale") ? oXML.@statScale : 0);
+      statDurationScale = Number(oXML.hasOwnProperty("@statDurationScale") ? oXML.@statDurationScale : 0);
+      statRangeScale = Number(oXML.hasOwnProperty("@statRangeScale") ? oXML.@statDurationScale : 0);
+      statMin = Number(oXML.hasOwnProperty("@statMin") ? oXML.@statMin : 0);
+
+      var stat = getStatByString(player_, oXML.hasOwnProperty('@statForScale') ? oXML.@statForScale : "Wisdom");
+
+      if(totalDamage != -1)
+         value = value.replace("{totalDamage}", useWisMod ? scaleFunction(stat, totalDamage, statMin, statScale) : totalDamage);
+      if(amount != -1)
+         value = value.replace("{amount}", useWisMod ? scaleFunction(stat, amount, statMin, statScale) : amount);
+      if(duration != -1)
+         value = value.replace("{duration}", useWisMod ? scaleFunction(stat, duration, statMin, statDurationScale) : duration);
+      if(range != -1)
+         value = value.replace("{range}", useWisMod ? scaleFunction(stat, range, statMin, statRangeScale) : range);
+
+      super(name, value);
+   }
+}
+
 class Restriction
 {
-    
-   
+
+
    public var text_:String;
    
    public var color_:uint;

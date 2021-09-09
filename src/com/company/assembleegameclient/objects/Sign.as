@@ -18,7 +18,7 @@ package com.company.assembleegameclient.objects
          texture_ = null;
       }
       
-      override protected function getTexture(camera:Camera, time:int) : BitmapData
+      override protected function getTexture(camera:Camera, time:int, forceGlow:int=0) : BitmapData
       {
          if(texture_ != null)
          {

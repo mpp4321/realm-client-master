@@ -251,13 +251,13 @@
         <FameBonus>4</FameBonus>
         <OldSound>bladeSwing</OldSound>
     </Object>
-    
+
     <Object type="0x9c8" id="Sword of Splendor">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x3d</Index></Texture>
         <SlotType>1</SlotType>
-        
+
         <Description>An exalted weapon of the august kings of old, hallowed with the spirit of nations and yearning to grant power anew.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/mithril_sword</Sound>
@@ -272,13 +272,13 @@
         <FameBonus>4</FameBonus>
         <OldSound>bladeSwing</OldSound>
     </Object>
-    
+
     <Object type="0x9c9" id="Sword of Majesty">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x3e</Index></Texture>
         <SlotType>1</SlotType>
-        
+
         <Description>A gleaming obsidian sword of imperial power, fashioned by enslaved demons for the personal use of a world-conquering leader of mortals.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/mithril_sword</Sound>
@@ -367,6 +367,7 @@
             <MinDamage>20</MinDamage>
             <MaxDamage>40</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>0</BagType>
         <OldSound>magicShoot</OldSound>
@@ -381,6 +382,7 @@
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/missile_wand</Sound>
         <Projectile>
+            <MultiHit/>
             <ObjectId>Blue Magic</ObjectId>
             <Speed>130</Speed>
             <MinDamage>30</MinDamage>
@@ -405,6 +407,7 @@
             <MinDamage>35</MinDamage>
             <MaxDamage>55</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>0</BagType>
         <OldSound>magicShoot</OldSound>
@@ -424,6 +427,7 @@
             <MinDamage>40</MinDamage>
             <MaxDamage>60</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>0</BagType>
         <OldSound>magicShoot</OldSound>
@@ -443,6 +447,7 @@
             <MinDamage>50</MinDamage>
             <MaxDamage>70</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>0</BagType>
         <OldSound>magicShoot</OldSound>
@@ -462,6 +467,7 @@
             <MinDamage>60</MinDamage>
             <MaxDamage>80</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>0</BagType>
         <OldSound>magicShoot</OldSound>
@@ -481,6 +487,7 @@
             <MinDamage>70</MinDamage>
             <MaxDamage>90</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>1</BagType>
         <OldSound>magicShoot</OldSound>
@@ -500,6 +507,7 @@
             <MinDamage>80</MinDamage>
             <MaxDamage>100</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>1</BagType>
         <OldSound>magicShoot</OldSound>
@@ -518,6 +526,7 @@
             <MinDamage>50</MinDamage>
             <MaxDamage>150</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>1</BagType>
         <OldSound>magicShoot</OldSound>
@@ -537,6 +546,7 @@
             <MinDamage>80</MinDamage>
             <MaxDamage>120</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
@@ -557,6 +567,7 @@
             <MinDamage>85</MinDamage>
             <MaxDamage>125</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
@@ -577,6 +588,7 @@
             <MinDamage>85</MinDamage>
             <MaxDamage>130</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
         <FameBonus>2</FameBonus>
@@ -597,6 +609,7 @@
             <MinDamage>90</MinDamage>
             <MaxDamage>130</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
         <FameBonus>3</FameBonus>
@@ -617,18 +630,19 @@
             <MinDamage>90</MinDamage>
             <MaxDamage>135</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <OldSound>magicShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9ca" id="Wand of Evocation">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x4d</Index></Texture>
         <SlotType>8</SlotType>
-        
+
         <Description>A shining gold wand of force, built by a diabolic archmagus to channel vast corrupting energies into the material plane.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/wand_of_death</Sound>
@@ -638,18 +652,19 @@
             <MinDamage>95</MinDamage>
             <MaxDamage>135</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <OldSound>magicShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9c0" id="Wand of Retribution">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x4e</Index></Texture>
         <SlotType>8</SlotType>
-        
+
         <Description>A golden wand of breathtaking power, created by elemental forces from the realms of ice and flame to unleash revenge on their enemies.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/wand_of_death</Sound>
@@ -659,6 +674,7 @@
             <MinDamage>95</MinDamage>
             <MaxDamage>140</MaxDamage>
             <LifetimeMS>770</LifetimeMS>
+            <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
         <FameBonus>5</FameBonus>
@@ -1112,26 +1128,26 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
     </Object>
-    
+
     <Object type="0x9c1" id="Wyrmhide Armor">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x0d</Index></Texture>
         <SlotType>6</SlotType>
-        
+
         <Description>Outstanding leather armor made from the virtually impregnable hide of a great desert wyrm.</Description>
         <ActivateOnEquip stat="3" amount="18">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="5" amount="5">IncrementStat</ActivateOnEquip>
         <BagType>2</BagType>
         <FameBonus>5</FameBonus>
     </Object>
-    
+
     <Object type="0x9c3" id="Leviathan Armor">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x0e</Index></Texture>
         <SlotType>6</SlotType>
-        
+
         <Description>Magnificent leather armor made from the hide of the great leviathan, slain hundreds of years ago in a savage battle in the vasting deeps.</Description>
         <ActivateOnEquip stat="3" amount="19">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="5" amount="5">IncrementStat</ActivateOnEquip>
@@ -1274,25 +1290,25 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
     </Object>
-    
+
     <Object type="0x9c4" id="Dominion Armor">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x2d</Index></Texture>
         <SlotType>7</SlotType>
-        
+
         <Description>Exquisitely decorated adamantine armor smithed by underdeep dwarves for the wardens of the demonclefts.</Description>
         <ActivateOnEquip stat="3" amount="25">IncrementStat</ActivateOnEquip>
         <BagType>2</BagType>
         <FameBonus>5</FameBonus>
     </Object>
-    
+
     <Object type="0x9c5" id="Annihilation Armor">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x2e</Index></Texture>
         <SlotType>7</SlotType>
-        
+
         <Description>Impenetrable forceplate armor worn by the blackguard conquerers of the necromantic uprising.</Description>
         <ActivateOnEquip stat="3" amount="26">IncrementStat</ActivateOnEquip>
         <BagType>2</BagType>
@@ -1568,13 +1584,13 @@
         <FameBonus>4</FameBonus>
         <OldSound>daggerSwing</OldSound>
     </Object>
-    
+
     <Object type="0x9c6" id="Dagger of Sinister Deeds">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x6d</Index></Texture>
         <SlotType>2</SlotType>
-        
+
         <Description>A moonsteel dagger of the underworld, corrupted by loathsome enchantments and profane spells.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/fire_dagger</Sound>
@@ -1589,13 +1605,13 @@
         <FameBonus>4</FameBonus>
         <OldSound>daggerSwing</OldSound>
     </Object>
-    
+
     <Object type="0x9c7" id="Dagger of Dire Hatred">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x6e</Index></Texture>
         <SlotType>2</SlotType>
-        
+
         <Description>A jagged, wickedly barbed blade of evil, charged with the unreasoning rage of ancestral vendettas.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/fire_dagger</Sound>
@@ -1901,13 +1917,13 @@
         <NumProjectiles>3</NumProjectiles>
         <OldSound>arrowShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9cc" id="Bow of Mystical Energy">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x5d</Index></Texture>
         <SlotType>3</SlotType>
-        
+
         <Description>A superlative bow of sunsteel and diamondwire, created by a secretive race of star-dwelling entities.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/golden_bow</Sound>
@@ -1924,13 +1940,13 @@
         <NumProjectiles>3</NumProjectiles>
         <OldSound>arrowShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9cd" id="Bow of Deep Enchantment">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x5e</Index></Texture>
         <SlotType>3</SlotType>
-        
+
         <Description>A peerless triple bow crafted of nightmatter and diamondwire by the exalted bowyers of the primeval overgods.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/golden_bow</Sound>
@@ -2285,7 +2301,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 6</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2301,7 +2317,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 5</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2317,7 +2333,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 4</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2333,7 +2349,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 3</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2349,7 +2365,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 2</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2365,7 +2381,7 @@
         <Activate amount="125">Heal</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Health 1</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2379,7 +2395,7 @@
         <Sound>use_potion</Sound>
         <Activate amount="125">Heal</Activate>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2395,7 +2411,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 6</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2411,7 +2427,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 5</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2427,7 +2443,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 4</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2443,7 +2459,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 3</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2459,7 +2475,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 2</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2475,7 +2491,7 @@
         <Activate amount="125">Magic</Activate>
         <Consumable/>
         <SuccessorId>Elixir of Magic 1</SuccessorId>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2489,7 +2505,7 @@
         <Sound>use_potion</Sound>
         <Activate amount="125">Magic</Activate>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
     </Object>
@@ -2503,7 +2519,7 @@
         <Consumable/>
         <Potion/>
         <BagType>0</BagType>
-        <Activate range="10" amount="100">HealNova</Activate>
+        <Activate range="10" amount="100" useWisMod="true" statMin="30" statScale="10.0">HealNova</Activate>
     </Object>
     <Object type="0x707" id="Healing Ichor">
         <Class>Equipment</Class>
@@ -2526,7 +2542,7 @@
         <Sound>use_potion</Sound>
         <Activate amount="200">Heal</Activate>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>0</BagType>
     </Object>
@@ -2539,7 +2555,7 @@
         <Sound>use_potion</Sound>
         <Activate amount="200">Magic</Activate>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>0</BagType>
     </Object>
@@ -2551,7 +2567,7 @@
         <Description>Adds speed and reduces attack.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="22" amount="15" duration="45">StatBoostSelf</Activate>
@@ -2566,7 +2582,7 @@
         <Description>Adds attack to everyone reduces speed for self.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="22" amount="-10" duration="30">StatBoostSelf</Activate>
@@ -2580,7 +2596,7 @@
         <Description>A potion that temporarily boosts dexterity.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="28" amount="15" duration="30">StatBoostSelf</Activate>
@@ -2593,7 +2609,7 @@
         <Description>A potion that temporarily boosts maximum health points.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="0" amount="75" duration="30">StatBoostSelf</Activate>
@@ -2606,7 +2622,7 @@
         <Description>A potion that temporarily boosts maximum magic points.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="3" amount="75" duration="30">StatBoostSelf</Activate>
@@ -2619,7 +2635,7 @@
         <Description>A potion that temporarily boosts defense.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="21" amount="15" duration="30">StatBoostSelf</Activate>
@@ -2632,7 +2648,7 @@
         <Description>A potion that temporarily boosts the dexterity of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="28" amount="30" duration="30" range="6">StatBoostAura</Activate>
@@ -2645,7 +2661,7 @@
         <Description>A potion that temporarily boosts the maximum health points of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="0" amount="150" duration="30" range="6">StatBoostAura</Activate>
@@ -2658,7 +2674,7 @@
         <Description>A potion that temporarily boosts the maximum magic points of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="3" amount="150" duration="30" range="6">StatBoostAura</Activate>
@@ -2671,7 +2687,7 @@
         <Description>A potion that temporarily boosts the defense of all nearby allies.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="21" amount="30" duration="30" range="6">StatBoostAura</Activate>
@@ -3321,7 +3337,7 @@
         <MpCost>80</MpCost>
         <Activate>BulletNova</Activate>
     </Object>
-    
+
     <Object type="0x9ce" id="Penetrating Blast Spell">
         <Class>Equipment</Class>
         <Item/>
@@ -3356,7 +3372,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>60</MpCost>
-        <Activate range="5" amount="100">HealNova</Activate>
+        <Activate range="5" amount="100" useWisMod="true" statMin="30" statScale="1.0">HealNova</Activate>
     </Object>
     <Object type="0xad7" id="Remedy Tome">
         <Class>Equipment</Class>
@@ -3369,7 +3385,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>65</MpCost>
-        <Activate range="5.5" amount="130">HealNova</Activate>
+        <Activate range="5.5" amount="130" useWisMod="true" statMin="30" statScale="2.0">HealNova</Activate>
     </Object>
     <Object type="0xa32" id="Spirit Salve Tome">
         <Class>Equipment</Class>
@@ -3382,7 +3398,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>70</MpCost>
-        <Activate range="6" amount="165">HealNova</Activate>
+        <Activate range="6" amount="165" useWisMod="true" statMin="30" statScale="2.0">HealNova</Activate>
     </Object>
     <Object type="0xad8" id="Tome of Rejuvenation">
         <Class>Equipment</Class>
@@ -3396,7 +3412,7 @@
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
         <MpCost>75</MpCost>
-        <Activate range="6.5" amount="205">HealNova</Activate>
+        <Activate range="6.5" amount="205" useWisMod="true" statMin="30" statScale="3.0">HealNova</Activate>
     </Object>
     <Object type="0xa33" id="Tome of Renewing">
         <Class>Equipment</Class>
@@ -3410,7 +3426,7 @@
         <BagType>1</BagType>
         <FameBonus>2</FameBonus>
         <MpCost>80</MpCost>
-        <Activate range="7" amount="250">HealNova</Activate>
+        <Activate range="7" amount="250" useWisMod="true" statMin="30" statScale="4.0">HealNova</Activate>
     </Object>
     <Object type="0xa5b" id="Tome of Divine Favor">
         <Class>Equipment</Class>
@@ -3424,7 +3440,7 @@
         <BagType>2</BagType>
         <FameBonus>3</FameBonus>
         <MpCost>85</MpCost>
-        <Activate range="8" amount="300">HealNova</Activate>
+        <Activate range="8" amount="300" useWisMod="true" statMin="30" statScale="5.0">HealNova</Activate>
     </Object>
     <Object type="0xb25" id="Tome of Holy Guidance">
         <Class>Equipment</Class>
@@ -3440,7 +3456,7 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <MpCost>85</MpCost>
-        <Activate range="8" amount="300">HealNova</Activate>
+        <Activate range="8" amount="300" useWisMod="true" statMin="30" statScale="6.0">HealNova</Activate>
     </Object>
     <Object type="0xa50" id="Pirate Rum">
         <Class>Equipment</Class>
@@ -3879,13 +3895,13 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
     </Object>
-    
+
     <Object type="0x9cf" id="Robe of the Star Mother">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x1d</Index></Texture>
         <SlotType>14</SlotType>
-        
+
         <Description>A robe of gossamer glowthread, used by the sorceress matriarchs of the western kingdoms.</Description>
         <ActivateOnEquip stat="2" amount="4">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="3" amount="14">IncrementStat</ActivateOnEquip>
@@ -3894,13 +3910,13 @@
         <BagType>2</BagType>
         <FameBonus>5</FameBonus>
     </Object>
-    
+
     <Object type="0x9d0" id="Robe of the Ancient Intellect">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x1e</Index></Texture>
         <SlotType>14</SlotType>
-        
+
         <Description>A phenomenal robe magically woven from fibers of sapphire, topaz and lapis lazuli, created for the archwizard of the seraphic realms.</Description>
         <ActivateOnEquip stat="2" amount="4">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="3" amount="15">IncrementStat</ActivateOnEquip>
@@ -4552,13 +4568,13 @@
         <ArcGap>0</ArcGap>
         <OldSound>magicShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9d1" id="Staff of the Vital Unity">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x7d</Index></Texture>
         <SlotType>17</SlotType>
-        
+
         <Description>A golden staff of elysian consciousness, shining with the base power of empyrean truths.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/wand_of_death</Sound>
@@ -4577,13 +4593,13 @@
         <ArcGap>0</ArcGap>
         <OldSound>magicShoot</OldSound>
     </Object>
-    
+
     <Object type="0x910" id="Staff of the Fundamental Core">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj5</File><Index>0x7e</Index></Texture>
         <SlotType>17</SlotType>
-        
+
         <Description>An otherworldly staff of omnipresent elation, embodied of cardinal essence and the power of deathless peace.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/wand_of_death</Sound>
@@ -4635,7 +4651,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>30</MpCost>
-        <Activate radius="2.5" totalDamage="150" duration="5">PoisonGrenade</Activate>
+        <Activate radius="2.5" totalDamage="150" duration="5" useWisMod="true" statMin="30" statScale="10.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaa4" id="Spider Venom">
         <Class>Equipment</Class>
@@ -4647,7 +4663,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>45</MpCost>
-        <Activate radius="3" totalDamage="250" duration="5.5">PoisonGrenade</Activate>
+        <Activate radius="3" totalDamage="250" duration="5.5" useWisMod="true" statMin="30" statScale="20.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaa5" id="Pit Viper Poison">
         <Class>Equipment</Class>
@@ -4659,7 +4675,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>65</MpCost>
-        <Activate radius="3.5" totalDamage="400" duration="6">PoisonGrenade</Activate>
+        <Activate radius="3.5" totalDamage="400" duration="6" useWisMod="true" statMin="30" statScale="30.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaa6" id="Stingray Poison">
         <Class>Equipment</Class>
@@ -4672,7 +4688,7 @@
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
         <MpCost>80</MpCost>
-        <Activate radius="4" totalDamage="550" duration="6.5">PoisonGrenade</Activate>
+        <Activate radius="4" totalDamage="550" duration="6.5" useWisMod="true" statMin="30" statScale="40.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaa7" id="Felwasp Toxin">
         <Class>Equipment</Class>
@@ -4685,7 +4701,7 @@
         <BagType>1</BagType>
         <FameBonus>2</FameBonus>
         <MpCost>95</MpCost>
-        <Activate radius="4.5" totalDamage="700" duration="7">PoisonGrenade</Activate>
+        <Activate radius="4.5" totalDamage="700" duration="7" useWisMod="true" statMin="30" statScale="50.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaa8" id="Nightwing Venom">
         <Class>Equipment</Class>
@@ -4698,7 +4714,7 @@
         <BagType>2</BagType>
         <FameBonus>3</FameBonus>
         <MpCost>110</MpCost>
-        <Activate radius="5" totalDamage="900" duration="7.5">PoisonGrenade</Activate>
+        <Activate radius="5" totalDamage="900" duration="7.5" useWisMod="true" statMin="30" statScale="60.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xb2a" id="Baneserpent Poison">
         <Class>Equipment</Class>
@@ -4713,7 +4729,7 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <MpCost>110</MpCost>
-        <Activate radius="5" totalDamage="900" duration="7.5">PoisonGrenade</Activate>
+        <Activate radius="5" totalDamage="900" duration="7.5" useWisMod="true" statMin="30" statScale="70.0">PoisonGrenade</Activate>
     </Object>
     <Object type="0xaaa" id="Necrotic Skull">
         <Class>Equipment</Class>
@@ -4725,7 +4741,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>40</MpCost>
-        <Activate radius="2.5" totalDamage="25">VampireBlast</Activate>
+        <Activate radius="2.5" totalDamage="25" useWisMod="true" statMin="30" statScale="5.0">VampireBlast</Activate>
     </Object>
     <Object type="0xaab" id="Breathtaker Skull">
         <Class>Equipment</Class>
@@ -4737,7 +4753,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>60</MpCost>
-        <Activate radius="2.75" totalDamage="45">VampireBlast</Activate>
+        <Activate radius="2.75" totalDamage="45" useWisMod="true" statMin="30" statScale="10.0">VampireBlast</Activate>
     </Object>
     <Object type="0xaac" id="Heartstealer Skull">
         <Class>Equipment</Class>
@@ -4749,7 +4765,7 @@
         <Usable/>
         <BagType>0</BagType>
         <MpCost>80</MpCost>
-        <Activate radius="3" totalDamage="70">VampireBlast</Activate>
+        <Activate radius="3" totalDamage="70" useWisMod="true" statMin="30" statScale="15.0">VampireBlast</Activate>
     </Object>
     <Object type="0xaad" id="Soul Siphon Skull">
         <Class>Equipment</Class>
@@ -4762,7 +4778,7 @@
         <BagType>1</BagType>
         <FameBonus>1</FameBonus>
         <MpCost>100</MpCost>
-        <Activate radius="3.25" totalDamage="100">VampireBlast</Activate>
+        <Activate radius="3.25" totalDamage="100" useWisMod="true" statMin="30" statScale="20.0">VampireBlast</Activate>
     </Object>
     <Object type="0xaae" id="Essence Tap Skull">
         <Class>Equipment</Class>
@@ -4775,7 +4791,7 @@
         <BagType>1</BagType>
         <FameBonus>2</FameBonus>
         <MpCost>120</MpCost>
-        <Activate radius="3.5" totalDamage="125">VampireBlast</Activate>
+        <Activate radius="3.5" totalDamage="125" useWisMod="true" statMin="30" statScale="25.0">VampireBlast</Activate>
     </Object>
     <Object type="0xaaf" id="Lifedrinker Skull">
         <Class>Equipment</Class>
@@ -4788,7 +4804,7 @@
         <BagType>2</BagType>
         <FameBonus>3</FameBonus>
         <MpCost>140</MpCost>
-        <Activate radius="3.75" totalDamage="150">VampireBlast</Activate>
+        <Activate radius="3.75" totalDamage="150" useWisMod="true" statMin="30" statScale="30.0">VampireBlast</Activate>
     </Object>
     <Object type="0xb2b" id="Bloodsucker Skull">
         <Class>Equipment</Class>
@@ -4803,9 +4819,9 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <MpCost>140</MpCost>
-        <Activate radius="3.75" totalDamage="150">VampireBlast</Activate>
+        <Activate radius="3.75" totalDamage="150" useWisMod="true" statMin="30" statScale="35.0">VampireBlast</Activate>
     </Object>
-    
+
     <Object type="0x911" id="Skull of Endless Torment">
         <Class>Equipment</Class>
         <Item/>
@@ -5186,7 +5202,7 @@
         <Activate duration="5.5">Decoy</Activate>
         <Activate>Teleport</Activate>
     </Object>
-    
+
     <Object type="0x912" id="Prism of Dancing Swords">
         <Class>Equipment</Class>
         <Item/>
@@ -5325,7 +5341,7 @@
         <Item/>
         <Texture><File>lofiObj2</File><Index>0x50</Index></Texture>
         <SlotType>9</SlotType>
-        
+
         <Description>An amulet that protects the wearer from even death itself.</Description>
         <Resurrects/>
         <ActivateOnEquip stat="2" amount="2">IncrementStat</ActivateOnEquip>
@@ -5338,7 +5354,7 @@
         <ActivateOnEquip stat="1" amount="20">IncrementStat</ActivateOnEquip>
         <BagType>4</BagType>
     </Object>
-    
+
     <Object type="0x9d4" id="Admin Sword">
         <Class>Equipment</Class>
         <Item/>
@@ -5347,7 +5363,7 @@
         <Description>The sacred blade of the Cult of Admin.  Not to be trifled with.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/fire_dagger</Sound>
-        
+
         <Projectile>
             <ObjectId>Blade</ObjectId>
             <Speed>120</Speed>
@@ -5366,7 +5382,7 @@
         <Description>A key which opens an entrance to an Undead Lair.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Undead Lair Portal">Create</Activate>
     </Object>
     <Object type="0x705" id="Pirate Cave Key">
@@ -5377,7 +5393,7 @@
         <Description>A key which opens an entrance to a Pirate Cave.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Pirate Cave Portal">Create</Activate>
     </Object>
     <Object type="0x706" id="Spider Den Key">
@@ -5388,7 +5404,7 @@
         <Description>A key which opens an entrance to a Spider Den.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Spider Den Portal">Create</Activate>
     </Object>
     <Object type="0x70a" id="Abyss of Demons Key">
@@ -5399,7 +5415,7 @@
         <Description>A key which opens an entrance to an Abyss of Demons.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Abyss of Demons Portal">Create</Activate>
     </Object>
     <Object type="0x70b" id="Snake Pit Key">
@@ -5410,7 +5426,7 @@
         <Description>A key which opens an entrance to a Snake Pit.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Snake Pit Portal">Create</Activate>
     </Object>
     <Object type="0x710" id="Tomb of the Ancients Key">
@@ -5421,7 +5437,7 @@
         <Description>A key which opens an entrance to a Tomb of Ancients.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Tomb of the Ancients Portal">Create</Activate>
     </Object>
     <Object type="0x71f" id="Sprite World Key">
@@ -5432,7 +5448,7 @@
         <Description>A key which opens an entrance to a Sprite World.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Glowing Portal">Create</Activate>
     </Object>
     <Object type="0x722" id="Wine Cellar Incantation">
@@ -5454,7 +5470,7 @@
         <Description>A key which opens an entrance to an Ocean Trench.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Ocean Trench Portal">Create</Activate>
     </Object>
     <Object type="0xc12" id="Coral Juice">
@@ -5503,7 +5519,7 @@
         <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
         <RateOfFire>1.1</RateOfFire>
         <Sound>monster/djinn_hit</Sound>
-        
+
         <Projectile>
             <ObjectId>Crystal Serpent Missile</ObjectId>
             <Speed>180</Speed>
@@ -5520,7 +5536,6 @@
         <OldSound>magicShoot</OldSound>
     </Object>
 
-
     <Object type="0xc16" id="Cracked Crystal Skull">
         <Class>Equipment</Class>
         <Item/>
@@ -5531,7 +5546,7 @@
         <BagType>2</BagType>
         <FameBonus>2</FameBonus>
         <MpCost>120</MpCost>
-        <Activate radius="4.25" totalDamage="80">VampireBlast</Activate>
+        <Activate radius="4.25" totalDamage="80" useWisMod="true" statMin="30" statScale="30.0" statRangeScale="-0.05">VampireBlast</Activate>
     </Object>
 
     <Object type="0xc17" id="Crystal Bone Ring">
@@ -5566,7 +5581,7 @@
         <Description>A key which opens a passage to the Forbidden Jungle.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Forbidden Jungle Portal">Create</Activate>
     </Object>
 
@@ -5585,7 +5600,7 @@
     </Object>
 
 
-    
+
     <Object type="0x9d5" id="Thousand Shot">
         <Class>Equipment</Class>
         <Item/>
@@ -5593,7 +5608,7 @@
         <SlotType>3</SlotType>
         <Description>A deadly mechanical bow and a marvel of technology.</Description>
         <RateOfFire>2.5</RateOfFire>
-        
+
         <Sound>weapon/heavy_crossbow</Sound>
         <Projectile>
             <ObjectId>Thousand Shot Arrow</ObjectId>
@@ -5659,7 +5674,7 @@
         <BagType>4</BagType>
         <FameBonus>6</FameBonus>
         <MpCost>100</MpCost>
-        <Activate amount="250" range="6">HealNova</Activate>
+        <Activate amount="250" range="6" useWisMod="true" statMin="30" statScale="3.0">HealNova</Activate>
         <Activate effect="Armored" duration="4">ConditionEffectSelf</Activate>
     </Object>
 
@@ -5676,7 +5691,7 @@
         <BagType>4</BagType>
         <FameBonus>6</FameBonus>
         <MpCost>100</MpCost>
-        <Activate amount="250" range="6">HealNova</Activate>
+        <Activate amount="250" range="6" useWisMod="true" statMin="30" statScale="3.0">HealNova</Activate>
         <Activate range="6" effect="Speedy" checkExistingEffect="Hexed">ClearConditionEffectAura</Activate>
         <Activate range="6">RemoveNegativeConditions</Activate>
     </Object>
@@ -5751,7 +5766,7 @@
         <Description>A key which opens a passage to the Manor of the Immortals.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Manor of the Immortals Portal">Create</Activate>
     </Object>
 
@@ -5794,7 +5809,7 @@
         <Activate effect="Invisible" duration="4">ConditionEffectSelf</Activate>
     </Object>
 
-    
+
     <Object type="0x913" id="Crown">
         <Class>Equipment</Class>
         <Item/>
@@ -5806,13 +5821,13 @@
         <ActivateOnEquip stat="2" amount="20">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="4" amount="20">IncrementStat</ActivateOnEquip>
         <BagType>1</BagType>
-        
+
     </Object>
 
     <Object type="0xc27" id="Captain's Ring">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0xc7</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0xc7</Index></Texture>
         <SlotType>9</SlotType>
         <Description>Captain Davy Jones's ring.</Description>
         <ActivateOnEquip stat="2" amount="3">IncrementStat</ActivateOnEquip>
@@ -5882,7 +5897,7 @@
         <BagType>2</BagType>
         <Activate objectId="Lil Firecracker">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
 
     <Object type="0xc2c" id="Large Firecracker">
@@ -5896,13 +5911,13 @@
         <BagType>2</BagType>
         <Activate objectId="Big Firecracker">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
 
     <Object type="0xc2d" id="America Ring">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0xcd</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0xcd</Index></Texture>
         <SlotType>9</SlotType>
         <Description>An American hero's ring.</Description>
         <ActivateOnEquip stat="3" amount="1">IncrementStat</ActivateOnEquip>
@@ -5924,7 +5939,7 @@
         <Description>A key that opens the way to Davy Jones's Locker.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Davy Jones's Locker Portal">Create</Activate>
     </Object>
 
@@ -5941,7 +5956,7 @@
         <BagType>2</BagType>
         <FameBonus>4</FameBonus>
         <MpCost>65</MpCost>
-        
+
         <Activate totalDamage="180" maxTargets="7" effect="Slowed" duration="3" color="0xff9933">Lightning</Activate>
     </Object>
 
@@ -6012,7 +6027,7 @@
         <BagType>2</BagType>
         <Activate objectId="Sand Castle">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
     <Object type="0xc35" id="Sand Pail 4">
         <DisplayId>Sand Pail</DisplayId>
@@ -6028,7 +6043,7 @@
         <BagType>2</BagType>
         <Activate objectId="Sand Castle">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
     <Object type="0xc36" id="Sand Pail 3">
         <DisplayId>Sand Pail</DisplayId>
@@ -6044,7 +6059,7 @@
         <BagType>2</BagType>
         <Activate objectId="Sand Castle">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
     <Object type="0xc37" id="Sand Pail 2">
         <DisplayId>Sand Pail</DisplayId>
@@ -6060,7 +6075,7 @@
         <BagType>2</BagType>
         <Activate objectId="Sand Castle">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
     <Object type="0xc38" id="Sand Pail 1">
         <DisplayId>Sand Pail</DisplayId>
@@ -6074,10 +6089,10 @@
         <BagType>2</BagType>
         <Activate objectId="Sand Castle">Pet</Activate>
         <OldSound>use_potion</OldSound>
-        
+
     </Object>
 
-    <Object type="0xc39" id="Bahama Sunrise">  
+    <Object type="0xc39" id="Bahama Sunrise">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x173</Index></Texture>
@@ -6085,14 +6100,14 @@
         <Description>A tangy fruit drink that boosts dexterity and life.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="28" amount="10" duration="20">StatBoostSelf</Activate>
         <Activate stat="0" amount="50" duration="20">StatBoostSelf</Activate>
         <Activate effect="Drunk" duration="15">ConditionEffectSelf</Activate>
     </Object>
-    <Object type="0xc3a" id="Blue Paradise">  
+    <Object type="0xc3a" id="Blue Paradise">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x174</Index></Texture>
@@ -6100,14 +6115,14 @@
         <Description>A refreshing tropical drink that boosts life and mana.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="3" amount="50" duration="20">StatBoostSelf</Activate>
         <Activate stat="0" amount="50" duration="20">StatBoostSelf</Activate>
         <Activate effect="Drunk" duration="15">ConditionEffectSelf</Activate>
     </Object>
-    <Object type="0xc3b" id="Pink Passion Breeze"> 
+    <Object type="0xc3b" id="Pink Passion Breeze">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x175</Index></Texture>
@@ -6115,14 +6130,14 @@
         <Description>A sweet tropical drink that boosts attack and dexterity.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="20" amount="10" duration="20">StatBoostSelf</Activate>
         <Activate stat="28" amount="10" duration="20">StatBoostSelf</Activate>
         <Activate effect="Drunk" duration="15">ConditionEffectSelf</Activate>
     </Object>
-    <Object type="0xc3c" id="Lime Jungle Bay"> 
+    <Object type="0xc3c" id="Lime Jungle Bay">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x176</Index></Texture>
@@ -6130,7 +6145,7 @@
         <Description>A bold island drink that boosts defense and vitality.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <Potion/>
         <BagType>3</BagType>
         <Activate stat="21" amount="10" duration="30">StatBoostSelf</Activate>
@@ -6145,7 +6160,7 @@
         <Description>A key which opens a portal to the Beachzone.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Beachzone Portal">Create</Activate>
     </Object>
     <Object type="0xc3e" id="Gold Medal">
@@ -6195,7 +6210,7 @@
         <Description>A key that reveals the way to the Mad Lab.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Mad Lab Portal">Create</Activate>
     </Object>
 
@@ -6220,7 +6235,7 @@
         <Description>Get 2x all XP gained! Lasts until level 20 or death.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <BagType>1</BagType>
         <Timer>-1.0</Timer>
         <XpBoost/>
@@ -6235,7 +6250,7 @@
         <Description>Get 2x all XP gained! Lasts until level 20 or death.</Description>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <BagType>1</BagType>
         <Timer>300</Timer>
         <XpBoost/>
@@ -6244,13 +6259,13 @@
     <Object type="0xc44" id="Rusty Katana">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x21c</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x21c</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>0</Tier>
         <Description>A rusty old katana.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/blunt_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Katana Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>20</MinDamage>
@@ -6264,13 +6279,13 @@
     <Object type="0xc45" id="Kendo Stick">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x21d</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x21d</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>1</Tier>
         <Description>Suitable for practice.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/blunt_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Kendo Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>30</MinDamage>
@@ -6281,16 +6296,16 @@
         <BagType>0</BagType>
         <OldSound>bladeSwing</OldSound>
     </Object>
-    <Object type="0xc46" id="Plain Katana"> 
+    <Object type="0xc46" id="Plain Katana">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x21e</Index></Texture>  
+        <Texture><File>lofiObj3</File><Index>0x21e</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>2</Tier>
         <Description>A basic katana.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Katana Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>30</MinDamage>
@@ -6310,7 +6325,7 @@
         <Description>A striking fine-edged weapon.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Katana Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>45</MinDamage>
@@ -6330,7 +6345,7 @@
         <Description>A katana capable of cutting a razor-thin line.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Line Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>53</MinDamage>
@@ -6344,13 +6359,13 @@
     <Object type="0xc49" id="Night Edge">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x221</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x221</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>5</Tier>
         <Description>An ancient katana with a blade of jet black steel.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Night Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>55</MinDamage>
@@ -6364,13 +6379,13 @@
     <Object type="0xc4a" id="Sky Edge">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x222</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x222</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>6</Tier>
         <Description>A beautiful katana, forged and cooled by the mists atop a great mountain.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Sky Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>70</MinDamage>
@@ -6390,7 +6405,7 @@
         <Description>A mighty weapon wielded by a hero from long ago.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Buster Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>90</MinDamage>
@@ -6410,7 +6425,7 @@
         <Description>A cruel blade forged in hell flame and blood.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Demon Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>100</MinDamage>
@@ -6426,13 +6441,13 @@
     <Object type="0xc4d" id="Jewel Eye Katana">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x225</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x225</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>9</Tier>
         <Description>A mighty katana with a crystal eye embeded in the hilt.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Jewel Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>115</MinDamage>
@@ -6448,13 +6463,13 @@
     <Object type="0xc4e" id="Ichimonji">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x226</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x226</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>10</Tier>
         <Description>One of the legendary great blades of the master Ichimonji.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Ichimonji Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>112</MinDamage>
@@ -6469,13 +6484,13 @@
     <Object type="0xc4f" id="Muramasa">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x227</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x227</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>11</Tier>
-        <Description>An evil blade that hungers for blood.</Description> 
+        <Description>An evil blade that hungers for blood.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Muramasa Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>110</MinDamage>
@@ -6490,13 +6505,13 @@
     <Object type="0xc50" id="Masamune">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x228</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x228</Index></Texture>
         <SlotType>24</SlotType>
         <Tier>12</Tier>
         <Description>A magnificent legendary blade which only cuts those who deserve death.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Masamune Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>140</MinDamage>
@@ -6508,7 +6523,7 @@
         <FameBonus>4</FameBonus>
         <OldSound>bladeSwing</OldSound>
     </Object>
-    
+
     <Object type="0x914" id="Celestial Blade">
         <Class>Equipment</Class>
         <Item/>
@@ -6517,7 +6532,7 @@
         <Description>An ancient weapon imbued with the power of the cosmos.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Celestial Slash</ObjectId>
             <Speed>130</Speed>
             <MinDamage>200</MinDamage>
@@ -6530,7 +6545,7 @@
         <FameBonus>6</FameBonus>
         <OldSound>bladeSwing</OldSound>
     </Object>
-    
+
     <Object type="0x915" id="Ray Katana">
         <Class>Equipment</Class>
         <Item/>
@@ -6539,12 +6554,12 @@
         <Description>A great katana charged with the power of the sun itself.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/long_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Beam Slash</ObjectId>
             <Speed>180</Speed>
             <MinDamage>60</MinDamage>
             <MaxDamage>95</MaxDamage>
-            <LifetimeMS>340</LifetimeMS> 
+            <LifetimeMS>340</LifetimeMS>
             <MultiHit/>
         </Projectile>
         <BagType>2</BagType>
@@ -6560,7 +6575,7 @@
         <Tier>0</Tier>
         <Description>A basic ninja-star.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Basic</ObjectId>
             <Speed>150</Speed>
             <MinDamage>80</MinDamage>
@@ -6568,7 +6583,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>0</BagType>
@@ -6580,12 +6595,12 @@
     <Object type="0xc54" id="Four-Point Star">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x22c</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x22c</Index></Texture>
         <SlotType>25</SlotType>
         <Tier>1</Tier>
         <Description>A ninja-star with four razor-sharp points.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Four-Point</ObjectId>
             <Speed>150</Speed>
             <MinDamage>160</MinDamage>
@@ -6593,7 +6608,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>0</BagType>
@@ -6609,7 +6624,7 @@
         <Tier>2</Tier>
         <Description>A ninja-star with curved spiraling blades.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Spiral</ObjectId>
             <Speed>150</Speed>
             <MinDamage>220</MinDamage>
@@ -6617,7 +6632,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>0</BagType>
@@ -6628,12 +6643,12 @@
     <Object type="0xc56" id="Silver Star">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x22e</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x22e</Index></Texture>
         <SlotType>25</SlotType>
         <Tier>3</Tier>
         <Description>A beautifully crafted shuriken.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Silver</ObjectId>
             <Speed>150</Speed>
             <MinDamage>330</MinDamage>
@@ -6641,7 +6656,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>1</BagType>
@@ -6658,7 +6673,7 @@
         <Tier>4</Tier>
         <Description>A sacred shuriken that embodies the power and speed of the wind.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Wind</ObjectId>
             <Speed>150</Speed>
             <MinDamage>420</MinDamage>
@@ -6666,7 +6681,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>1</BagType>
@@ -6679,12 +6694,12 @@
     <Object type="0xc58" id="Ice Star">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj3</File><Index>0x230</Index></Texture> 
+        <Texture><File>lofiObj3</File><Index>0x230</Index></Texture>
         <SlotType>25</SlotType>
         <Tier>5</Tier>
         <Description>A mystical shuriken formed from ever-frozen ice.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Ice</ObjectId>
             <Speed>150</Speed>
             <MinDamage>470</MinDamage>
@@ -6692,7 +6707,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>2</BagType>
@@ -6710,7 +6725,7 @@
         <Tier>6</Tier>
         <Description>A sacred shuriken that embodies the power and speed of the wind.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Doom</ObjectId>
             <Speed>150</Speed>
             <MinDamage>550</MinDamage>
@@ -6718,7 +6733,7 @@
             <LifetimeMS>400</LifetimeMS>
             <Size>120</Size>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>2</BagType>
@@ -6727,15 +6742,15 @@
         <Activate amount="5">Shuriken</Activate>
     </Object>
 
-    
+
     <Object type="0x916" id="Midnight Star">
         <Class>Equipment</Class>
         <Item/>
         <Texture><File>lofiObj3</File><Index>0x232</Index></Texture>
         <SlotType>25</SlotType>
-        <Description>A legendary shuriken that sucks the light in around it.</Description> 
+        <Description>A legendary shuriken that sucks the light in around it.</Description>
         <Sound>spell/fire_spray</Sound>
-        <Projectile>  
+        <Projectile>
             <ObjectId>Ninja Star Midnight</ObjectId>
             <Speed>150</Speed>
             <MinDamage>300</MinDamage>
@@ -6744,7 +6759,7 @@
             <Size>120</Size>
             <ConditionEffect duration="4">Paralyzed</ConditionEffect>
             <PassesCover/>
-			<Decelerate/>
+            <Decelerate/>
         </Projectile>
         <Usable/>
         <BagType>0</BagType>
@@ -6793,7 +6808,7 @@
         <Activate amount="200">Magic</Activate>
         <Activate effect="Drunk" duration="8">ConditionEffectSelf</Activate>
     </Object>
-    
+
     <Object type="0x9cb" id="Def Test Sword">
         <Class>Equipment</Class>
         <Item/>
@@ -6818,11 +6833,11 @@
         <Texture><File>lofiObj3</File><Index>0x28a</Index></Texture>
         <SlotType>9</SlotType>
         <Description>A high-fructose ring that'll give you pep, but hurt your concentration.</Description>
-        <ActivateOnEquip stat="4" amount="10">IncrementStat</ActivateOnEquip> 
-        <ActivateOnEquip stat="6" amount="10">IncrementStat</ActivateOnEquip> 
+        <ActivateOnEquip stat="4" amount="10">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="6" amount="10">IncrementStat</ActivateOnEquip>
 
-        <ActivateOnEquip stat="1" amount="-100">IncrementStat</ActivateOnEquip> 
-        <ActivateOnEquip stat="7" amount="-10">IncrementStat</ActivateOnEquip> 
+        <ActivateOnEquip stat="1" amount="-100">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="7" amount="-10">IncrementStat</ActivateOnEquip>
 
         <BagType>2</BagType>
     </Object>
@@ -6857,7 +6872,7 @@
         <Description>A key that opens the way to the Candyland Hunting Grounds.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Candyland Portal">Create</Activate>
     </Object>
     <Object type="0xc63" id="Red Gumball">
@@ -6870,7 +6885,7 @@
         <Consumable/>
         <Potion/>
         <BagType>1</BagType>
-        <Activate stat="26" amount="10" duration="20">StatBoostSelf</Activate> 
+        <Activate stat="26" amount="10" duration="20">StatBoostSelf</Activate>
     </Object>
     <Object type="0xc64" id="Purple Gumball">
         <Class>Equipment</Class>
@@ -6882,7 +6897,7 @@
         <Consumable/>
         <Potion/>
         <BagType>1</BagType>
-        <Activate stat="20" amount="6" duration="20">StatBoostSelf</Activate> 
+        <Activate stat="20" amount="6" duration="20">StatBoostSelf</Activate>
     </Object>
     <Object type="0xc65" id="Blue Gumball">
         <Class>Equipment</Class>
@@ -6894,7 +6909,7 @@
         <Consumable/>
         <Potion/>
         <BagType>1</BagType>
-        <Activate stat="21" amount="6" duration="20">StatBoostSelf</Activate> 
+        <Activate stat="21" amount="6" duration="20">StatBoostSelf</Activate>
     </Object>
     <Object type="0xc66" id="Green Gumball">
         <Class>Equipment</Class>
@@ -6906,7 +6921,7 @@
         <Consumable/>
         <Potion/>
         <BagType>1</BagType>
-        <Activate stat="22" amount="8" duration="20">StatBoostSelf</Activate> 
+        <Activate stat="22" amount="8" duration="20">StatBoostSelf</Activate>
     </Object>
     <Object type="0xc67" id="Yellow Gumball">
         <Class>Equipment</Class>
@@ -6918,7 +6933,7 @@
         <Consumable/>
         <Potion/>
         <BagType>1</BagType>
-        <Activate stat="28" amount="8" duration="20">StatBoostSelf</Activate> 
+        <Activate stat="28" amount="8" duration="20">StatBoostSelf</Activate>
     </Object>
     <Object type="0xc68" id="Loot Tier Potion">
         <Class>Equipment</Class>
@@ -6931,7 +6946,7 @@
             <EffectInfo name="Duration" description="30 min"/>
         </ExtraTooltipData>
         <Consumable/>
-        
+
         <LTBoosted/>
         <Timer>1800</Timer>
         <BagType>0</BagType>
@@ -6947,7 +6962,7 @@
         </ExtraTooltipData>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <LDBoosted/>
         <Timer>1800</Timer>
         <BagType>0</BagType>
@@ -6963,7 +6978,7 @@
         </ExtraTooltipData>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <BagType>1</BagType>
         <Timer>3600</Timer>
         <XpBoost/>
@@ -6979,13 +6994,13 @@
         </ExtraTooltipData>
         <Sound>use_potion</Sound>
         <Consumable/>
-        
+
         <BagType>1</BagType>
         <Timer>1200</Timer>
         <XpBoost/>
     </Object>
 
-    
+
     <Object type="0x9d3" id="Admin Staff">
         <Class>Equipment</Class>
         <Item/>
@@ -7004,14 +7019,14 @@
             <Frequency>2</Frequency>
             <PassesCover/>
         </Projectile>
-        
+
         <BagType>2</BagType>
         <FameBonus>2</FameBonus>
         <NumProjectiles>3</NumProjectiles>
         <ArcGap>0</ArcGap>
         <OldSound>magicShoot</OldSound>
     </Object>
-    
+
     <Object type="0x9d2" id="Strike Amulet">
         <Class>Equipment</Class>
         <Item/>
@@ -7020,7 +7035,7 @@
         <Description>A magical amulet that enables lightning assaults.</Description>
         <Sound>spell/fire_nova</Sound>
         <Usable/>
-        
+
         <MpCost>5</MpCost>
         <ActivateOnEquip stat="6" amount="5">IncrementStat</ActivateOnEquip>
         <Activate radius="2.0" totalDamage="25">DazeBlast</Activate>
@@ -7041,31 +7056,31 @@
         <Activate radius="9" totalDamage="500" duration="15" color="8fa547">PoisonGrenade</Activate>
     </Object>
     <Object type="0xc6c" id="Backpack">
-		<Class>Equipment</Class>
-		<Item/>
+        <Class>Equipment</Class>
+        <Item/>
         <Texture><File>lofiObj3</File><Index>0x315</Index></Texture>
-		<SlotType>10</SlotType>
-		<Description>A backpack that'll double your inventory space!</Description>
-		<Sound>spell/light_heal</Sound>
-		<Consumable/>
+        <SlotType>10</SlotType>
+        <Description>A backpack that'll double your inventory space!</Description>
+        <Sound>spell/light_heal</Sound>
+        <Consumable/>
         <Backpack/>
-        
-		<BagType>1</BagType>
-		<OldSound>use_potion</OldSound>
-    <Activate>Backpack</Activate>
-	</Object>
+
+        <BagType>1</BagType>
+        <OldSound>use_potion</OldSound>
+        <Activate>Backpack</Activate>
+    </Object>
     <Object type="0xc6e" id="Resurrected Warrior's Armor">
-		<Class>Equipment</Class>
-		<Item/>
+        <Class>Equipment</Class>
+        <Item/>
         <Texture><File>lofiObj3</File><Index>0x316</Index></Texture>
-		<SlotType>7</SlotType>
-		<Description>A worn and battered suit of armor embedded with a mystic gem that flows with magical strength.</Description>
-		<ActivateOnEquip stat="3" amount="17">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="1" amount="150">IncrementStat</ActivateOnEquip> 
-		<ActivateOnEquip stat="7" amount="5">IncrementStat</ActivateOnEquip>  
-		<BagType>2</BagType>
-		<FameBonus>4</FameBonus>
-	</Object>
+        <SlotType>7</SlotType>
+        <Description>A worn and battered suit of armor embedded with a mystic gem that flows with magical strength.</Description>
+        <ActivateOnEquip stat="3" amount="17">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="1" amount="150">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="7" amount="5">IncrementStat</ActivateOnEquip>
+        <BagType>2</BagType>
+        <FameBonus>4</FameBonus>
+    </Object>
     <Object type="0xc6f" id="Cemetery Key">
         <Class>Equipment</Class>
         <Item/>
@@ -7074,18 +7089,18 @@
         <Description>A key that opens a portal to the Haunted Cemetery.</Description>
         <Sound>use_key</Sound>
         <Consumable/>
-        
+
         <Activate id="Haunted Cemetery Portal">Create</Activate>
     </Object>
     <Object type="0xc70" id="Forest Giant Slayer">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj5</File><Index>0xd0</Index></Texture> 
+        <Texture><File>lofiObj5</File><Index>0xd0</Index></Texture>
         <SlotType>24</SlotType>
         <Description>A blade forged to slay giants which roamed the forest.</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/blunt_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Kendo Slash</ObjectId>
             <Speed>120</Speed>
             <MinDamage>50</MinDamage>
@@ -7094,18 +7109,18 @@
             <MultiHit/>
         </Projectile>
         <NumProjectiles>3</NumProjectiles>
-        <BagType>0</BagType>
+        <BagType>4</BagType>
         <OldSound>bladeSwing</OldSound>
     </Object>
     <Object type="0xc71" id="Snake Kendo">
         <Class>Equipment</Class>
         <Item/>
-        <Texture><File>lofiObj5</File><Index>0x0d1</Index></Texture> 
+        <Texture><File>lofiObj5</File><Index>0xd1</Index></Texture>
         <SlotType>24</SlotType>
         <Description>Long kendo!</Description>
         <RateOfFire>1</RateOfFire>
         <Sound>weapon/blunt_sword</Sound>
-        <Projectile> 
+        <Projectile>
             <ObjectId>Kendo Slash</ObjectId>
             <Speed>100</Speed>
             <MinDamage>50</MinDamage>
@@ -7116,5 +7131,332 @@
         <NumProjectiles>2</NumProjectiles>
         <BagType>4</BagType>
         <OldSound>bladeSwing</OldSound>
+    </Object>
+    <Object type="0xc72" id="Great Fang">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0x60</Index></Texture>
+        <SlotType>2</SlotType>
+        <Description>A dagger made of the teeth of the great coil snake.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/blunt_dagger</Sound>
+        <Projectile>
+            <ObjectId>Blade</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>50</MinDamage>
+            <MaxDamage>100</MaxDamage>
+            <LifetimeMS>300</LifetimeMS>
+        </Projectile>
+        <BagType>4</BagType>
+        <UniqueEffect>PoisonDagger</UniqueEffect>
+        <OldSound>daggerSwing</OldSound>
+    </Object>
+    <Object type="0xc73" id="Sturdy Pegleg">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xd2</Index></Texture>
+        <SlotType>1</SlotType>
+        <Description>A heavy wooden pegleg "borrowed" from a willing pirate. Packs quite a kick.</Description>
+        <RateOfFire>0.8</RateOfFire>
+        <Sound>weapon/blunt_sword</Sound>
+        <Projectile>
+            <ObjectId>Blade</ObjectId>
+            <Speed>120</Speed>
+            <MinDamage>190</MinDamage>
+            <MaxDamage>210</MaxDamage>
+            <LifetimeMS>458</LifetimeMS>
+        </Projectile>
+        <BagType>4</BagType>
+        <OldSound>bladeSwing</OldSound>
+    </Object>
+    <Object type="0xc74" id="Strength Medal">
+        <Class>Equipment</Class>
+        <Texture><File>lofiObj3</File><Index>0x178</Index></Texture>
+        <SlotType>10</SlotType>
+        <Description>An idol which manipulates RNG.</Description>
+        <Sound>use_potion</Sound>
+        <Activate statForScale="Strength">ItemDataModifier</Activate>
+        <Consumable/>
+    </Object>
+    <Object type="0xc75" id="Agility Medal">
+        <Class>Equipment</Class>
+        <Texture><File>lofiObj3</File><Index>0x178</Index></Texture>
+        <SlotType>10</SlotType>
+        <Description>An idol which manipulates RNG.</Description>
+        <Sound>use_potion</Sound>
+        <Activate statForScale="Agile">ItemDataModifier</Activate>
+        <Consumable/>
+    </Object>
+    <Object type="0xc76" id="Wisdom Medal">
+        <Class>Equipment</Class>
+        <Texture><File>lofiObj3</File><Index>0x178</Index></Texture>
+        <SlotType>10</SlotType>
+        <Description>An idol which manipulates RNG.</Description>
+        <Sound>use_potion</Sound>
+        <Activate statForScale="Wisdom">ItemDataModifier</Activate>
+        <Consumable/>
+    </Object>
+    <Object type="0xc77" id="Insanity Medal">
+        <Class>Equipment</Class>
+        <Texture><File>lofiObj3</File><Index>0x178</Index></Texture>
+        <SlotType>10</SlotType>
+        <Description>An idol which manipulates RNG.</Description>
+        <Sound>use_potion</Sound>
+        <Activate statForScale="Insanity">ItemDataModifier</Activate>
+        <Consumable/>
+    </Object>
+    <Object type="0xc78" id="Fire Battle Staff">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe0</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>0</Tier>
+        <Description>A battle staff that casts a simple fire spell.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Red Fire</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>40</MinDamage>
+            <MaxDamage>80</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc79" id="Force Battle Staff">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe1</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>1</Tier>
+        <Description>A battle staff that emits bolts of pure force.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/missile_wand</Sound>
+        <Projectile>
+            <ObjectId>Blue Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>60</MinDamage>
+            <MaxDamage>100</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7a" id="Power Battle Staff">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe2</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>2</Tier>
+        <Description>A battle staff that fires power bolts.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/missile_wand</Sound>
+        <Projectile>
+            <ObjectId>Blue Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>70</MinDamage>
+            <MaxDamage>110</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7b" id="Missile Battle Staff">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe3</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>3</Tier>
+        <Description>A battle staff that casts a strong missile.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/missile_wand</Sound>
+        <Projectile>
+            <ObjectId>Blue Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>80</MinDamage>
+            <MaxDamage>120</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7c" id="Eldritch Wand">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe4</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>4</Tier>
+        <Description>A battle staff that shoots dark eldritch energy.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/missile_wand</Sound>
+        <Projectile>
+            <ObjectId>Blue Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>100</MinDamage>
+            <MaxDamage>140</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7d" id="Hell's Fire Battle Staff">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe5</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>5</Tier>
+        <Description>A wand that casts a strong fire spell.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/hells_fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Purple Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>120</MinDamage>
+            <MaxDamage>160</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>0</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7e" id="Battle Staff of Dark Magic">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe6</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>6</Tier>
+        <Description>A wand that casts a bolt of pure magic force.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_dark_magic</Sound>
+        <Projectile>
+            <ObjectId>Pink Bolt</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>140</MinDamage>
+            <MaxDamage>180</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>1</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc7f" id="Wand of Arcane Flame">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe7</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>7</Tier>
+        <Description>A deadly battle staff that channels magefire from the nether planes.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_dark_magic</Sound>
+        <Projectile>
+            <ObjectId>Red Fire</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>80</MinDamage>
+            <MaxDamage>100</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>1</BagType>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc80" id="Battle Staff of Death">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe8</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>8</Tier>
+        <Description>A fearsome battle staff that fires bolts of penetrating death magic.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Green Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>160</MinDamage>
+            <MaxDamage>240</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+            <MultiHit/>
+        </Projectile>
+        <BagType>1</BagType>
+        <FameBonus>1</FameBonus>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc81" id="Battle Staff of Deep Sorcery">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xe9</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>9</Tier>
+        <Description>A mysterious battle staff of otherworldly origin, imbued with the purest of arcane energies.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Purple Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>170</MinDamage>
+            <MaxDamage>250</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+            <MultiHit/>
+        </Projectile>
+        <BagType>1</BagType>
+        <FameBonus>1</FameBonus>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc82" id="Battle Staff of Shadow">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xea</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>10</Tier>
+        <Description>A battle staff of demonic enigmas, cloaked in darkness and crackling with dark enchantments.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Red Fire</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>170</MinDamage>
+            <MaxDamage>260</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>2</BagType>
+        <FameBonus>2</FameBonus>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc83" id="Battle Staff of Ancient Warning">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xeb</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>11</Tier>
+        <Description>A centuries-old battle staff of great power, heralding long-destined destruction.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Green Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>180</MinDamage>
+            <MaxDamage>260</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>2</BagType>
+        <FameBonus>3</FameBonus>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+    <Object type="0xc84" id="Battle Staff of Recompense">
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture><File>lofiObj5</File><Index>0xec</Index></Texture>
+        <SlotType>8</SlotType>
+        <Tier>12</Tier>
+        <Description>A great golden battle staff of the heavens, created by angels to wreak justice on the slayers of the innocent.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Blue Magic</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>180</MinDamage>
+            <MaxDamage>270</MaxDamage>
+            <LifetimeMS>385</LifetimeMS>
+        </Projectile>
+        <BagType>2</BagType>
+        <FameBonus>4</FameBonus>
+        <OldSound>magicShoot</OldSound>
     </Object>
 </Objects>

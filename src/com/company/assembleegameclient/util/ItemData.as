@@ -37,8 +37,19 @@ public class ItemData
         return (uint(data) & bit) != 0
     }
 
-    public static function getStat(data:int, bit:uint, multiplier:Number) : Number
+    public static function getExtraStats(obj: Object, bit: uint): int {
+        if('ExtraStatBonuses' in obj) {
+            if(("" +bit) in obj.ExtraStatBonuses) {
+                return int(obj.ExtraStatBonuses["" + bit]);
+            }
+        }
+        return 0;
+    }
+
+    public static function getStat(obj:Object, bit:uint, multiplier:Number) : Number
     {
+        if(obj == null) return 0;
+        var data = obj.Meta;
         var rank:int = getRank(data);
         if (rank == -1) {
             return 0;
@@ -48,7 +59,7 @@ public class ItemData
         {
             value += rank;
         }
-        return value * multiplier;
+        return value * multiplier + getExtraStats(obj, bit);
     }
 
     public static function getRank(data:int) : int

@@ -746,7 +746,7 @@ import org.swiftsuspenders.Injector;
          return hallucinatingMaskedImage_;
        }
       
-      override protected function getTexture(camera:Camera, time:int) : BitmapData
+      override protected function getTexture(camera:Camera, time:int, forceGlow:int=0) : BitmapData
       {
          var image:MaskedImage = null;
          var walkPer:int = 0;
@@ -930,7 +930,7 @@ import org.swiftsuspenders.Injector;
             return false;
          }
 
-         var cooldownMod:Number = 1 - ItemData.getStat(itemData.Meta, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var cooldownMod:Number = 1 - ItemData.getStat(itemData, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
          cooldown = 200;
          if(objectXML.hasOwnProperty("Cooldown"))
          {
@@ -941,7 +941,7 @@ import org.swiftsuspenders.Injector;
          map_.gs_.gsc_.useItem(now,objectId_,1,point.x,point.y);
          if(objectXML.Activate == ActivationType.SHOOT)
          {
-            this.doShoot(now,itemType,itemData.Meta,objectXML, angle,true);
+            this.doShoot(now,itemType,itemData,objectXML, angle,true);
          }
          return true;
       }
@@ -970,7 +970,7 @@ import org.swiftsuspenders.Injector;
             return;
          }
          var weaponType:int = equipment_[0];
-         var itemData:int = itemDatas_[0].Meta;
+         var itemData:Object = itemDatas_[0];
          if(weaponType == -1)
          {
             //this.addTextLine.dispatch(new AddTextLineVO(Parameters.ERROR_CHAT_NAME,"You do not have a weapon equipped!"));
@@ -991,7 +991,7 @@ import org.swiftsuspenders.Injector;
          this.doShoot(attackStart_,weaponType, itemData, weaponXML,attackAngle_,false);
       }
       
-      private function doShoot(time:int, weaponType:int, itemData:int, weaponXML:XML, attackAngle:Number, isAbility:Boolean) : void
+      private function doShoot(time:int, weaponType:int, itemData:Object, weaponXML:XML, attackAngle:Number, isAbility:Boolean) : void
       {
          var proj:Projectile = null;
          var minDamage:int = 0;

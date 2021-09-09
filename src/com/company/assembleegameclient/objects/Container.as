@@ -1,13 +1,18 @@
 package com.company.assembleegameclient.objects
 {
-   import com.company.assembleegameclient.game.GameSprite;
-   import com.company.assembleegameclient.map.Map;
-   import com.company.assembleegameclient.sound.SoundEffectLibrary;
-   import com.company.assembleegameclient.ui.panels.Panel;
-   import com.company.assembleegameclient.ui.panels.itemgrids.ContainerGrid;
-   import com.company.util.PointUtil;
-   
-   public class Container extends GameObject implements IInteractiveObject
+import com.company.assembleegameclient.game.GameSprite;
+import com.company.assembleegameclient.map.Camera;
+import com.company.assembleegameclient.map.Map;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.sound.SoundEffectLibrary;
+import com.company.assembleegameclient.ui.panels.Panel;
+import com.company.assembleegameclient.ui.panels.itemgrids.ContainerGrid;
+import com.company.assembleegameclient.util.ItemData;
+import com.company.util.PointUtil;
+
+import flash.display.BitmapData;
+
+public class Container extends GameObject implements IInteractiveObject
    {
       public var isLoot_:Boolean;
       public var ownerId_:int;
@@ -18,6 +23,23 @@ package com.company.assembleegameclient.objects
          isInteractive_ = true;
          this.isLoot_ = objectXML.hasOwnProperty("Loot");
          this.ownerId_ = -1;
+      }
+
+      override protected function getTexture(camera:Camera, time:int, forceGlow: int = 0): BitmapData {
+
+          var bestRank = -1;
+          var bestRankData = 0;
+          for each(var idata in this.itemDatas_) {
+              if(!('Meta' in idata)) continue;
+              var rank = ItemData.getRank(idata.Meta);
+              if(rank > bestRank) {bestRank = rank; bestRankData = idata.Meta};
+          }
+
+          if(bestRank > Parameters.data_.rankFilter) {
+              forceGlow = ItemData.getColor(bestRankData);
+          }
+
+          return super.getTexture(camera, time, forceGlow);
       }
 
       public function setOwnerId(ownerId:int) : void
