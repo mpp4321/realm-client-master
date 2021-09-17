@@ -71,7 +71,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             return false;
          }
          this.itemSprite.setType(itemId, itemData);
-         this.updateUseability(this.ownerGrid.curPlayer);
+         if(this.ownerGrid != null) this.updateUseability(this.ownerGrid.curPlayer);
          return true;
       }
       

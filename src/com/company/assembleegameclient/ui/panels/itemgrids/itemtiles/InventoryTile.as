@@ -8,14 +8,16 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
    public class InventoryTile extends InteractiveItemTile
    {
        
-      
       public var hotKey:int;
       
       private var hotKeyBMP:Bitmap;
+
+      private var dragCallbackF : *;
       
-      public function InventoryTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean)
+      public function InventoryTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean, dragCallbackF = null)
       {
          super(id,parentGrid,isInteractive);
+         this.dragCallbackF = dragCallbackF;
       }
       
       public function addTileNumber(tileNumber:int) : void

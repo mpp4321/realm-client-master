@@ -13,8 +13,8 @@ import flash.net.SharedObject;
 
       public static const BUILD_VERSION:String = "0.0.1";
       //public static const SERVER_ADDRESS:String = "127.0.0.1";
-//      public static const SERVER_ADDRESS:String = "100.14.111.163";
-      public static const SERVER_ADDRESS:String = "192.3.180.54";
+      public static const SERVER_ADDRESS:String = "100.14.111.163";
+//      public static const SERVER_ADDRESS:String = "192.3.180.54";
       public static const GAME_PORT:int = 2050;
       public static const APP_PORT:int = 7777;
 

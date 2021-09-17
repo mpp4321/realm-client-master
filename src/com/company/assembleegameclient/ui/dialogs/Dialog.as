@@ -26,8 +26,7 @@ package com.company.assembleegameclient.ui.dialogs
       public static const BUTTON2_EVENT:String = "DIALOG_BUTTON2";
       
       private static const WIDTH:int = 300;
-       
-      
+
       public var box_:Sprite;
       
       public var rect_:Shape;

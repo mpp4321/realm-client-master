@@ -9,6 +9,7 @@ import com.company.assembleegameclient.constants.InventoryOwnerTypes;
 import com.company.assembleegameclient.ui.panels.mediators.ItemGridMediator;
 import com.company.assembleegameclient.ui.tooltip.TooltipHelper;
 import com.company.assembleegameclient.util.ItemData;
+import com.company.assembleegameclient.util.RandomUtil;
 import com.company.ui.SimpleText;
    import com.company.util.BitmapUtil;
    import com.company.util.KeyCodes;
@@ -268,7 +269,9 @@ import kabam.rotmg.constants.ActivationType;
             this.effects.push(new Effect("Doses",this.objectXML_.Doses));
          }
       }
-      
+
+      static var movingTooltipDate = new Date();
+
       private function addProjectileTagsToEffectsList() : void
       {
          var projXML:XML = null;
@@ -277,46 +280,51 @@ import kabam.rotmg.constants.ActivationType;
          var color:String = ItemData.getColorString(this.itemData_.Meta);
          if(this.objectXML_.hasOwnProperty("Projectile"))
          {
-            projXML = XML(this.objectXML_.Projectile);
-            var minDmg:int = int(projXML.MinDamage);
-            var maxDmg:int = int(projXML.MaxDamage);
-            var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
-            minDmg += int(minDmg * dmgMod);
-            maxDmg += int(maxDmg * dmgMod);
-            var dmgString:String = (minDmg == maxDmg ? minDmg : minDmg + " - " + maxDmg).toString();
-            if (dmgMod != 0)
-            {
-               dmgString += " (+" + int(dmgMod * 100) + "%)";
-               dmgString = TooltipHelper.wrapInFontTag(dmgString, color);
-            }
-            this.effects.push(new Effect("Damage", dmgString));
+             var projs = this.objectXML_.elements("Projectile")
+             var len = projs.length();
+             var projXML = projs[movingTooltipDate.seconds % len];
+//            for each(var projXML in this.objectXML_.Projectile) {
+//               projXML = XML(this.objectXML_.Projectile);
+               var minDmg:int = int(projXML.MinDamage);
+               var maxDmg:int = int(projXML.MaxDamage);
+               var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
+               minDmg += int(minDmg * dmgMod);
+               maxDmg += int(maxDmg * dmgMod);
+               var dmgString:String = (minDmg == maxDmg ? minDmg : minDmg + " - " + maxDmg).toString();
+               if (dmgMod != 0)
+               {
+                  dmgString += " (+" + int(dmgMod * 100) + "%)";
+                  dmgString = TooltipHelper.wrapInFontTag(dmgString, color);
+               }
+               this.effects.push(new Effect("Damage", dmgString));
 
-            range = Number(projXML.Speed) * Number(projXML.LifetimeMS) / 10000;
-            this.effects.push(new Effect("Range",TooltipHelper.getFormattedString(range)));
-            if(this.objectXML_.Projectile.hasOwnProperty("MultiHit"))
-            {
-               this.effects.push(new Effect("","Shots hit multiple targets"));
-            }
-            if(this.objectXML_.Projectile.hasOwnProperty("PassesCover"))
-            {
-               this.effects.push(new Effect("","Shots pass through obstacles"));
-            }
+               range = Number(projXML.Speed) * Number(projXML.LifetimeMS) / 10000;
+               this.effects.push(new Effect("Range",TooltipHelper.getFormattedString(range)));
+               if(this.objectXML_.Projectile.hasOwnProperty("MultiHit"))
+               {
+                  this.effects.push(new Effect("","Shots hit multiple targets"));
+               }
+               if(this.objectXML_.Projectile.hasOwnProperty("PassesCover"))
+               {
+                  this.effects.push(new Effect("","Shots pass through obstacles"));
+               }
 
-            var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
-            var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;
-            var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
-            var rateOfFireString:String = (int(rateOfFire * 100) + int(rateOfFireData * 100)) + "%";
-            if (rateOfFireData != 0)
-            {
-               rateOfFireString += " (+" + int(rateOfFireData * 100) + "%)";
-               rateOfFireString = TooltipHelper.wrapInFontTag(rateOfFireString, color);
-            }
-            this.effects.push(new Effect("Rate of Fire", rateOfFireString));
+               var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
+               var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;
+               var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
+               var rateOfFireString:String = (int(rateOfFire * 100) + int(rateOfFireData * 100)) + "%";
+               if (rateOfFireData != 0)
+               {
+                  rateOfFireString += " (+" + int(rateOfFireData * 100) + "%)";
+                  rateOfFireString = TooltipHelper.wrapInFontTag(rateOfFireString, color);
+               }
+               this.effects.push(new Effect("Rate of Fire", rateOfFireString));
 
-            for each(condEffectXML in projXML.ConditionEffect)
-            {
-               this.effects.push(new Effect("Shot Effect",this.objectXML_.Projectile.ConditionEffect + " for " + this.objectXML_.Projectile.ConditionEffect.@duration + " secs"));
-            }
+               for each(condEffectXML in projXML.ConditionEffect)
+               {
+                  this.effects.push(new Effect("Shot Effect",this.objectXML_.Projectile.ConditionEffect + " for " + this.objectXML_.Projectile.ConditionEffect.@duration + " secs"));
+               }
+//            }
          }
       }
       

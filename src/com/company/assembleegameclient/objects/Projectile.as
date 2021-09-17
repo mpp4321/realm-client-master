@@ -1,6 +1,7 @@
 package com.company.assembleegameclient.objects
 {
-   import com.company.assembleegameclient.engine3d.Point3D;
+import com.adobe.utils.DictionaryUtil;
+import com.company.assembleegameclient.engine3d.Point3D;
    import com.company.assembleegameclient.map.Camera;
    import com.company.assembleegameclient.map.Map;
    import com.company.assembleegameclient.map.Square;
@@ -73,7 +74,8 @@ package com.company.assembleegameclient.objects
          objectId_ = getNextFakeObjectId();
          z_ = 0.5;
          this.containerProps_ = ObjectLibrary.propsLibrary_[this.containerType_];
-         this.projProps_ = this.containerProps_.projectiles_[bulletType];
+         var projLength = DictionaryUtil.getKeys(this.containerProps_.projectiles_).length;
+         this.projProps_ = this.containerProps_.projectiles_[bulletType % projLength];
          this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
          hasShadow_ = this.props_.shadowSize_ > 0;
          var textureData:TextureData = ObjectLibrary.typeToTextureData_[this.props_.type_];

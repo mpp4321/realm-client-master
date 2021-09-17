@@ -137,10 +137,15 @@ package com.company.assembleegameclient.objects
             }
          }
          this.oldSound_ = Boolean(objectXML.hasOwnProperty("OldSound"))?String(objectXML.OldSound):null;
+         var c = 0;
          for each(projectileXML in objectXML.Projectile)
          {
-            bulletType = int(projectileXML.@id);
+            if(projectileXML.hasOwnProperty("@id"))
+               bulletType = int(projectileXML.@id);
+            else
+               bulletType = c;
             this.projectiles_[bulletType] = new ProjectileProperties(projectileXML);
+            c++;
          }
          this.angleCorrection_ = Boolean(objectXML.hasOwnProperty("AngleCorrection"))?Number(Number(objectXML.AngleCorrection) * Math.PI / 4):Number(0);
          this.rotation_ = Boolean(objectXML.hasOwnProperty("Rotation"))?Number(objectXML.Rotation):Number(0);

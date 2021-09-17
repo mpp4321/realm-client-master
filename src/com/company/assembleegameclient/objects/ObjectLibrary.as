@@ -37,6 +37,7 @@ import com.company.util.AssetLibrary;
          "Container":Container,
          "GameObject":GameObject,
          "GuildBoard":GuildBoard,
+         "MixingBowl": MixingBowl,
          "GuildChronicle":GuildChronicle,
          "GuildHallPortal":GuildHallPortal,
          "GuildMerchant":GuildMerchant,

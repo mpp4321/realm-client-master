@@ -1007,7 +1007,7 @@ import org.swiftsuspenders.Injector;
          for(var i:int = 0; i < numShots; i++)
          {
             proj = FreeList.newObject(Projectile) as Projectile;
-            proj.reset(weaponType,0,objectId_,startId - i,angle,time);
+            proj.reset(weaponType, Math.abs(startId - i),objectId_,startId - i,angle,time);
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
             damage = map_.gs_.gsc_.getNextDamage(minDamage,maxDamage) * Number(this.attackMultiplier());

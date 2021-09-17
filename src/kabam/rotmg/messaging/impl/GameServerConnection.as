@@ -134,7 +134,8 @@ import kabam.rotmg.messaging.impl.outgoing.GuildInvite;
    import kabam.rotmg.messaging.impl.outgoing.InvSwap;
    import kabam.rotmg.messaging.impl.outgoing.JoinGuild;
    import kabam.rotmg.messaging.impl.outgoing.Load;
-   import kabam.rotmg.messaging.impl.outgoing.Move;
+import kabam.rotmg.messaging.impl.outgoing.MixMessage;
+import kabam.rotmg.messaging.impl.outgoing.Move;
    import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
    import kabam.rotmg.messaging.impl.outgoing.PlayerShoot;
    import kabam.rotmg.messaging.impl.outgoing.PlayerText;
@@ -217,6 +218,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const ACCEPTTRADE:int = 56;
       public static const TRADEACCEPTED:int = 57;
       public static const SWITCHMUSIC:int = 58;
+      public static const MIX:int = 59;
 
       public static var instance:GameServerConnection;
 
@@ -276,7 +278,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          this.charId_ = charId;
          this.mapJSON_ = mapJSON;
       }
-      
+
       public function disconnect() : void
       {
          this.removeServerConnectionListeners();
@@ -337,6 +339,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(CHANGETRADE).toMessage(ChangeTrade);
          messages.map(CANCELTRADE).toMessage(CancelTrade);
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
+         messages.map(MIX).toMessage(MixMessage);
          messages.map(FAILURE).toMessage(Failure).toMethod(this.onFailure);
          messages.map(CREATE_SUCCESS).toMessage(CreateSuccess).toMethod(this.onCreateSuccess);
          messages.map(TEXT).toMessage(Text).toMethod(this.onText);
@@ -1669,6 +1672,13 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       private function onSwitchMusic(switchMusic:SwitchMusic) : void
       {
          Music.load(switchMusic.music_);
+      }
+
+      public function mix(slotId1: int, slotId2: int) : void {
+         var acceptTrade:MixMessage = this.messages.require(MIX) as MixMessage;
+         acceptTrade.slotId1 = slotId1;
+         acceptTrade.slotId2 = slotId2;
+         this.serverConnection.sendMessage(acceptTrade);
       }
    }
 }

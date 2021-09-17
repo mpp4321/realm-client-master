@@ -5,7 +5,6 @@ import flash.utils.IDataOutput;
 public class AcceptTrade extends OutgoingMessage
 {
 
-
     public var myOffer_:Vector.<Boolean>;
 
     public var yourOffer_:Vector.<Boolean>;

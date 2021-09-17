@@ -162,7 +162,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          this.isDragging = false;
          itemSprite.stopDrag();
          itemSprite.removeEventListener(MouseEvent.MOUSE_UP,this.endDrag);
-         dispatchEvent(new ItemTileEvent(ItemTileEvent.ITEM_MOVE,this));
+         dispatchEvent(new ItemTileEvent(ItemTileEvent.ITEM_MOVE, this));
          this.endDragCallback();
       }
       
