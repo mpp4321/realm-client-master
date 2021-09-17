@@ -1,5 +1,5 @@
 <Objects>
-
+    
     <Object type="0x023b" id="Test Chicken">
         <Group>Test Chickens</Group>
         <Enemy/>
@@ -176,11 +176,11 @@
         <XpMult>0.0</XpMult>
     </Object>
 
-
+    
     <Object type="0x0500" id="Loot Bag">
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj</File><Index>0x08</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -201,7 +201,7 @@
     <Object type="0x0503" id="Soulbound Loot Bag">
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj2</File><Index>0x76</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -220,7 +220,7 @@
         <DisplayId>Loot Bag</DisplayId>
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj4</File><Index>0x91</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -229,7 +229,7 @@
         <DisplayId>Loot Bag</DisplayId>
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj4</File><Index>0x92</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -238,7 +238,7 @@
         <DisplayId>Loot Bag</DisplayId>
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj4</File><Index>0x93</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -247,7 +247,16 @@
         <DisplayId>Loot Bag</DisplayId>
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
+        <Texture><File>lofiObj3</File><Index>0x5b8</Index></Texture>
+        <Size>80</Size>
+        <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
+    </Object>
+	<Object type="0x5002" id="Loot Bag 6">
+        <DisplayId>Loot Bag</DisplayId>
+        <Class>Container</Class>
+        <Container/>
+		<Loot/>
         <Texture><File>lofiObj4</File><Index>0x94</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -256,13 +265,13 @@
         <DisplayId>Loot Bag</DisplayId>
         <Class>Container</Class>
         <Container/>
-        <Loot/>
+		<Loot/>
         <Texture><File>lofiObj4</File><Index>0x95</Index></Texture>
         <Size>80</Size>
         <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
     </Object>
 
-
+    
     <Object type="0x0700" id="Dungeon Portal">
         <Class>Portal</Class>
         <IntergamePortal/>
@@ -533,7 +542,7 @@
         <IntergamePortal/>
         <DungeonName>Ocean Trench</DungeonName>
         <Texture><File>lofiEnvironment2</File><Index>0x9f</Index></Texture>
-
+        
     </Object>
 
     <Object type="0x0731" id="Ocean Vent">
@@ -654,7 +663,7 @@
         <DungeonName>Beachzone</DungeonName>
         <Texture><File>lofiObj3</File><Index>0x192</Index></Texture>
     </Object>
-    <Object type="0x5000" id="Crawling Depths Portal">
+	<Object type="0x5000" id="Crawling Depths Portal">
         <Class>Portal</Class>
         <IntergamePortal/>
         <DungeonName>Crawling Depth</DungeonName>
@@ -712,50 +721,39 @@
         <ShadowSize>0</ShadowSize>
     </Object>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <Object type="0x074b" id="Haunted Cemetery Portal">
+    <Object type="0x074b" id="Crypt Portal">
         <Class>Portal</Class>
         <IntergamePortal/>
-        <DungeonName>Haunted Cemetery</DungeonName>
+        <DungeonName>Crypt</DungeonName>
         <Texture><File>lofiObj3</File><Index>0x318</Index></Texture>
-        <Animation prob="0.4" period="1.8">
-            <Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x319</Index></Texture></Frame>
-            <Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x31a</Index></Texture></Frame>
-            <Frame time="0.6"><Texture><File>lofiObj3</File><Index>0x31b</Index></Texture></Frame>
-            <Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x31a</Index></Texture></Frame>
-            <Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x319</Index></Texture></Frame>
-            <Frame time="0.4"><Texture><File>lofiObj3</File><Index>0x318</Index></Texture></Frame>
-        </Animation>
+		<Animation prob="0.4" period="1.8">
+			<Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x319</Index></Texture></Frame>
+			<Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x31a</Index></Texture></Frame>
+			<Frame time="0.6"><Texture><File>lofiObj3</File><Index>0x31b</Index></Texture></Frame>
+			<Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x31a</Index></Texture></Frame>
+			<Frame time="0.2"><Texture><File>lofiObj3</File><Index>0x319</Index></Texture></Frame>
+			<Frame time="0.4"><Texture><File>lofiObj3</File><Index>0x318</Index></Texture></Frame>
+		</Animation>
     </Object>
-
-    <Object type="0x5e29" id="Halloween Bat">
-        <Enemy/>
-        <Class>Character</Class>
-        <AnimatedTexture><File>chars8x8rEncounters</File><Index>26</Index></AnimatedTexture>
-        <HitSound>monster/bats_hit</HitSound>
-        <DeathSound>monster/bats_death</DeathSound>
-
-        <MaxHitPoints>125</MaxHitPoints>
-        <Defense>25</Defense>
-        <XpMult>1</XpMult>
-        <Z>0.24</Z>
-        <Flying/>
-        <Size>80</Size>
-        <ShadowSize>80</ShadowSize>
-
+    
+    <Object type="0x5004" id="Mini Flying Brain">
+      <Enemy/>
+      <Class>Character</Class>
+      <Texture>
+        <File>lofiObj5</File>
+        <Index>0xde</Index>
+      </Texture>
+      <Friendly/>
+      <Size>80</Size>
+      <ShadowSize>80</ShadowSize>
+      <Projectile id="0">
+          <ObjectId>Red Fire</ObjectId>
+          <Speed>120</Speed>
+          <Damage>50</Damage>
+          <LifetimeMS>2000</LifetimeMS>
+      </Projectile>
     </Object>
-
+    
     <Object type="0x074c" id="Nexus Turkey">
         <DisplayId>Turkey</DisplayId>
         <Class>Character</Class>

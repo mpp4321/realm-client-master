@@ -60,6 +60,11 @@ import com.company.assembleegameclient.engine3d.Point3D;
          this.shadowPath_ = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
          super();
       }
+
+      public function mod(x, m) {
+          var r = x % m;
+          return x < 0 ? r + m : r;
+      }
       
       public function reset(containerType:int, bulletType:int, ownerId:int, bulletId:int, angle:Number, startTime:int) : void
       {
@@ -74,8 +79,11 @@ import com.company.assembleegameclient.engine3d.Point3D;
          objectId_ = getNextFakeObjectId();
          z_ = 0.5;
          this.containerProps_ = ObjectLibrary.propsLibrary_[this.containerType_];
-         var projLength = DictionaryUtil.getKeys(this.containerProps_.projectiles_).length;
-         this.projProps_ = this.containerProps_.projectiles_[bulletType % projLength];
+
+         var keys = DictionaryUtil.getKeys(this.containerProps_.projectiles_);
+         var projLength = keys.length;
+         this.projProps_ = this.containerProps_.projectiles_[(mod(bulletType, projLength)) + keys[0]];
+
          this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
          hasShadow_ = this.props_.shadowSize_ > 0;
          var textureData:TextureData = ObjectLibrary.typeToTextureData_[this.props_.type_];
@@ -269,7 +277,8 @@ import com.company.assembleegameclient.engine3d.Point3D;
                player = map_.player_;
                isPlayer = player != null;
                isTargetAnEnemy = target.props_.isEnemy_;
-               sendMessage = isPlayer && (this.damagesPlayers_ || isTargetAnEnemy && this.ownerId_ == player.objectId_);
+               var isAlly = map_.goDict_[this.ownerId_] != null && map_.goDict_[this.ownerId_].props_.ally;
+               sendMessage = isPlayer && (this.damagesPlayers_ || isTargetAnEnemy && (this.ownerId_ == player.objectId_ || isAlly));
                if (sendMessage) {
                   d = GameObject.damageWithDefense(this.damage_, target.defense_, this.projProps_.armorPiercing_, target.condition_);
                   if (target == player) {

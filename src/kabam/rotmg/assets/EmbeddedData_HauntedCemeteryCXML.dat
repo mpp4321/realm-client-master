@@ -1445,16 +1445,6 @@
             <Size>100</Size>
             <ConditionEffect duration="2">Blind</ConditionEffect>
         </Projectile>
-
-
-
-
-
-        
-        
-
-
-
     </Object>
 
     <Object type="0x5f2c" id="Arena Spider">
@@ -1474,10 +1464,11 @@
 
         <Projectile id="0">
             <ObjectId>Spider Bolt</ObjectId>
-            <Damage>100</Damage>
+            <Damage>5</Damage>
             <Speed>50</Speed>
-            <LifetimeMS>800</LifetimeMS>
+            <LifetimeMS>200</LifetimeMS>
             <Size>100</Size>
+			<ConditionEffect duration="1">Paralyzed</ConditionEffect>
         </Projectile>
 
     </Object>
@@ -1487,22 +1478,28 @@
         <Class>Character</Class>
         <Group>Hallowrena</Group>
         <Enemy/>
-
         <AnimatedTexture><File>chars16x16rEncounters</File><Index>88</Index></AnimatedTexture>
-
         <HitSound>monster/skeletons_hit</HitSound>
         <DeathSound>monster/skeletons_death</DeathSound>
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
-        <MaxHitPoints>2500</MaxHitPoints>
+        <MaxHitPoints>6500</MaxHitPoints>
         <Defense>20</Defense>
 
         <Projectile id="0">
             <ObjectId>Orange Pumpkin Wave</ObjectId>
-            <Damage>55</Damage>
+            <Damage>80</Damage>
             <Speed>40</Speed>
             <LifetimeMS>1000</LifetimeMS>
             <Size>150</Size>
+        </Projectile>
+		<Projectile id="1">
+            <ObjectId>Blue Magic</ObjectId>
+            <Damage>20</Damage>
+            <Speed>70</Speed>
+            <LifetimeMS>900</LifetimeMS>
+            <Size>100</Size>
+			<ConditionEffect duration="0.3">Paralyzed</ConditionEffect>
         </Projectile>
 
     </Object>
@@ -1512,16 +1509,13 @@
         <Class>Character</Class>
         <Group>Hallowrena</Group>
         <Enemy/>
-
         <AnimatedTexture><File>chars8x8rEncounters</File><Index>77</Index></AnimatedTexture>
-
         <HitSound>monster/slimes_death</HitSound>
         <DeathSound>monster/flying_brain_death</DeathSound>
         <Size>150</Size>
         <ShadowSize>100</ShadowSize>
         <MaxHitPoints>2500</MaxHitPoints>
         <Defense>20</Defense>
-
         <Projectile id="0">
             <ObjectId>Vampire Attack</ObjectId>
             <Damage>55</Damage>
@@ -1531,7 +1525,6 @@
             <Amplitude>0.8</Amplitude>
             <Frequency>2</Frequency>
         </Projectile>
-
     </Object>
 
     <Object type="0x5f2f" id="Arena Blue Flame">

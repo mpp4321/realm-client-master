@@ -37,6 +37,7 @@ public class Container extends GameObject implements IInteractiveObject
 
           if(bestRank > Parameters.data_.rankFilter) {
               forceGlow = ItemData.getColor(bestRankData);
+              this.size_ = 160;
           }
 
           return super.getTexture(camera, time, forceGlow);

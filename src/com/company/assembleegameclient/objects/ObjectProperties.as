@@ -72,6 +72,8 @@ package com.company.assembleegameclient.objects
       public var angleCorrection_:Number = 0;
       
       public var rotation_:Number = 0;
+
+      public var ally: Boolean = false;
       
       public function ObjectProperties(objectXML:XML)
       {
@@ -93,7 +95,7 @@ package com.company.assembleegameclient.objects
          }
          this.shadowSize_ = Boolean(objectXML.hasOwnProperty("ShadowSize"))?int(objectXML.ShadowSize):int(100);
          this.isPlayer_ = objectXML.hasOwnProperty("Player");
-         this.isEnemy_ = objectXML.hasOwnProperty("Enemy");
+         this.isEnemy_ = objectXML.hasOwnProperty("Enemy") && !objectXML.hasOwnProperty("Friendly");
          this.drawOnGround_ = objectXML.hasOwnProperty("DrawOnGround");
          if(this.drawOnGround_ || objectXML.hasOwnProperty("DrawUnder"))
          {
@@ -107,6 +109,7 @@ package com.company.assembleegameclient.objects
          this.protectFromGroundDamage_ = objectXML.hasOwnProperty("ProtectFromGroundDamage");
          this.protectFromSink_ = objectXML.hasOwnProperty("ProtectFromSink");
          this.flying_ = objectXML.hasOwnProperty("Flying");
+         this.ally = objectXML.hasOwnProperty("Friendly");
          this.showName_ = objectXML.hasOwnProperty("ShowName");
          this.dontFaceAttacks_ = objectXML.hasOwnProperty("DontFaceAttacks");
          if(objectXML.hasOwnProperty("Z"))
