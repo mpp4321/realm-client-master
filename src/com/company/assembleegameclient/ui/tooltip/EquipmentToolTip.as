@@ -308,6 +308,10 @@ import kabam.rotmg.constants.ActivationType;
                {
                   this.effects.push(new Effect("","Shots pass through obstacles"));
                }
+               if(this.objectXML_.Projectile.hasOwnProperty("ArmorPiercing"))
+               {
+                  this.effects.push(new Effect("","Shots ignore defence of target"));
+               }
 
                var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
                var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;

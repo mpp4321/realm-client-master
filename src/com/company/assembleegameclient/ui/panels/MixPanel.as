@@ -17,7 +17,7 @@ public class MixPanel extends ButtonPanel {
         {
             return;
         }
-        gs_.addChild(new MixerDialog(p));
+        gs_.hudView.addChild(new MixerDialog(p));
     }
 
 }
