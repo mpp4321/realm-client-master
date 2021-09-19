@@ -42,10 +42,11 @@ package com.company.assembleegameclient.objects
       
       public var magnitude_:Number;
 
-      public var accelerate_:Boolean;
+      public var accelerate_: Number;
+      public var accelerateDelay_: Number;
+      public var speedClamp_: Number;
 
-      public var decelerate_:Boolean;
-      
+
       public function ProjectileProperties(projectileXML:XML)
       {
          var condEffectXML:XML = null;
@@ -82,8 +83,9 @@ package com.company.assembleegameclient.objects
          this.amplitude_ = Boolean(projectileXML.hasOwnProperty("Amplitude"))?Number(Number(projectileXML.Amplitude)):Number(0);
          this.frequency_ = Boolean(projectileXML.hasOwnProperty("Frequency"))?Number(Number(projectileXML.Frequency)):Number(1);
          this.magnitude_ = Boolean(projectileXML.hasOwnProperty("Magnitude"))?Number(Number(projectileXML.Magnitude)):Number(3);
-         this.accelerate_ = Boolean(projectileXML.hasOwnProperty("Accelerate"));
-         this.decelerate_ = Boolean(projectileXML.hasOwnProperty("Decelerate"));
+         this.accelerate_ = Number(projectileXML.hasOwnProperty("Accelerate") ? Number(projectileXML.Accelerate) : 0.0);
+         this.accelerateDelay_ = Number(projectileXML.hasOwnProperty("AccelerateDelay") ? Number(projectileXML.AccelerateDelay) : 0.0);
+         this.speedClamp_ = Number(projectileXML.hasOwnProperty("SpeedClamp") ? Number(projectileXML.SpeedClamp) : 0.0);
       }
    }
 }

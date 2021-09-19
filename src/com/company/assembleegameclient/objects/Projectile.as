@@ -178,12 +178,10 @@ import com.company.assembleegameclient.engine3d.Point3D;
          var speed:Number = this.projProps_.speed_;
          if (this.projProps_.accelerate_)
          {
-            speed *= (Number(elapsed) / this.projProps_.lifetime_);
-         }
-
-         if (this.projProps_.decelerate_)
-         {
-            speed *= 2 - (Number(elapsed) / this.projProps_.lifetime_);
+            var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
+            var speedIncrease = elapsedWithDelay * (projProps_.accelerate_ / 1000);
+            speed += speedIncrease;
+            //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
          }
 
          var dist:Number = (elapsed * (speed / 10000));
@@ -278,7 +276,7 @@ import com.company.assembleegameclient.engine3d.Point3D;
                isPlayer = player != null;
                isTargetAnEnemy = target.props_.isEnemy_;
                var isAlly = map_.goDict_[this.ownerId_] != null && map_.goDict_[this.ownerId_].props_.ally;
-               sendMessage = isPlayer && (this.damagesPlayers_ || isTargetAnEnemy && (this.ownerId_ == player.objectId_ || isAlly));
+               sendMessage = isPlayer && (this.damagesPlayers_ || (isTargetAnEnemy && (this.ownerId_ == player.objectId_ || isAlly)));
                if (sendMessage) {
                   d = GameObject.damageWithDefense(this.damage_, target.defense_, this.projProps_.armorPiercing_, target.condition_);
                   if (target == player) {

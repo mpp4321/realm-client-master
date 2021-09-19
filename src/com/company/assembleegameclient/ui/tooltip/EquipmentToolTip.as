@@ -343,6 +343,16 @@ import kabam.rotmg.constants.ActivationType;
                case ActivationType.DYE:
                   this.effects.push("", "Changes texture of your character");
                   continue;
+               case ActivationType.STAT_BOOST_AURA:
+                  stat = int(activateXML.@stat);
+                  this.effects.push(new StatScaleEffect("Party Effect","Within {range} sqrs", activateXML, player_));
+                  this.effects.push(new StatScaleEffect("","+{amount} " + StatData.statToName(stat) + " for {duration} secs", activateXML, player_));
+                  continue;
+               case ActivationType.STAT_BOOST_SELF:
+                  stat = int(activateXML.@stat);
+                  this.effects.push(new Effect("Effect on Self",""));
+                  this.effects.push(new StatScaleEffect("","+{amount} " + StatData.statToName(stat) + " for {duration} secs", activateXML, player_));
+                  continue;
                case ActivationType.COND_EFFECT_AURA:
 //                  this.effects.push(new Effect("Party Effect","Within " + activateXML.@range + " sqrs"));
 //                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
