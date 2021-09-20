@@ -1136,18 +1136,21 @@
       <Speed>130</Speed>
       <Damage>80</Damage>
       <LifetimeMS>500</LifetimeMS>
+      <Size>80</Size>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Lightning Spiral</ObjectId>
       <Speed>50</Speed>
       <Damage>160</Damage>
       <LifetimeMS>800</LifetimeMS>
+      <Size>100</Size>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Rainbow Magic</ObjectId>
       <Speed>200</Speed>
       <Damage>50</Damage>
       <LifetimeMS>100</LifetimeMS>
+      <Size>100</Size>
     </Projectile>
   </Object>
   <Object type="0x074c" id="Nexus Turkey">
