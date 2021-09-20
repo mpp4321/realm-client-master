@@ -10,7 +10,6 @@ package com.company.assembleegameclient.mapeditor
    
    public class MapEditor extends Sprite
    {
-       
       
       private var model:PlayerModel;
       

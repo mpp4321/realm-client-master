@@ -38,8 +38,7 @@ import kabam.rotmg.ui.view.components.ScreenBase;
       private static const MAP_Y:int = 600 - MEMap.SIZE - 10;
       
       public static const stats_:Stats = new Stats();
-       
-      
+
       public var commandMenu_:MECommandMenu;
       
       private var commandQueue_:CommandQueue;
