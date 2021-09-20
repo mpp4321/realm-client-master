@@ -31,13 +31,13 @@ public class HUDView extends Sprite
 
    private const STAT_METERS_POSITION:Point = new Point(12,230);
 
-   private const EQUIPMENT_INVENTORY_POSITION:Point = new Point(14,304);
+   public const EQUIPMENT_INVENTORY_POSITION:Point = new Point(14,304);
 
    private const TAB_STRIP_POSITION:Point = new Point(7,346);
 
    private const INTERACT_PANEL_POSITION:Point = new Point(0,500);
 
-   private var background:CharacterWindowBackground;
+   public var background:CharacterWindowBackground;
 
    private var miniMap:MiniMap;
 
@@ -53,7 +53,7 @@ public class HUDView extends Sprite
 
    public var tradePanel:TradePanel;
 
-   private var equippedGridBG:Sprite;
+   public var equippedGridBG:Sprite;
 
    public function HUDView()
    {
