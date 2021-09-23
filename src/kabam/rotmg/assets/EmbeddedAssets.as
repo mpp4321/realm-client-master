@@ -105,6 +105,31 @@ package kabam.rotmg.assets
       private static var largeMonument3Embed_:Class = EmbeddedAssets_largeMonument3Embed_;
       private static var jackoEmbed_:Class = EmbeddedAssets_jackoEmbed_;
 
+      public static var Hanami8x8charsEmbed_:Class = EmbeddedAssets_Hanami8x8charsEmbed_;
+      public static var HanamiParts8x8Embed_:Class = EmbeddedAssets_HanamiParts8x8Embed_;
+      public static var SakuraEnvironment16x16Embed_:Class = EmbeddedAssets_SakuraEnvironment16x16Embed_;
+      public static var SakuraEnvironment8x8Embed_:Class = EmbeddedAssets_SakuraEnvironment8x8Embed_;
+
+      public static var lostHallsObjects8x8:Class = EmbeddedAssets_lostHallsObjects8x8
+      public static var lostHallsObjects16x16:Class = EmbeddedAssets_lostHallsObject16x16;
+      public static var lostHallsChars16x16:Class = EmbeddedAssets_lostHallsChars16x16;
+      public static var lostHallsChars8x8:Class = EmbeddedAssets_lostHallsChars8x8;
+
+      public static var d1Chars8x8rEmbed_:Class = EmbeddedAssets_d1Chars8x8rEmbed_;
+      public static var d1Chars16x16rEmbed_:Class = EmbeddedAssets_d1Chars16x16rEmbed_;
+      public static var d1LofiObjEmbed_:Class = EmbeddedAssets_d1LofiObjEmbed_;
+      public static var d1LofiObj2Embed_:Class = EmbeddedAssets_d1LofiObj2Embed_;
+      public static var d1LofiObjBigEmbed_:Class = EmbeddedAssets_d1LofiObjBigEmbed_;
+      public static var d1LofiObjBig2Embed_:Class = EmbeddedAssets_d1LofiObjBig2Embed_;
+      public static var d2Chars8x8rEmbed_:Class = EmbeddedAssets_d2Chars8x8rEmbed_;
+      public static var d2Chars16x16rEmbed_:Class = EmbeddedAssets_d2Chars16x16rEmbed_;
+      public static var d2LofiObjEmbed_:Class = EmbeddedAssets_d2LofiObjEmbed_;
+      public static var d2LofiObjBigEmbed_:Class = EmbeddedAssets_d2LofiObjBigEmbed_;
+      public static var d3Chars8x8rEmbed_:Class = EmbeddedAssets_d3Chars8x8rEmbed_;
+      public static var d3Chars16x16rEmbed_:Class = EmbeddedAssets_d3Chars16x16rEmbed_;
+      public static var d3LofiObjEmbed_:Class = EmbeddedAssets_d3LofiObjEmbed_;
+      public static var d3LofiObjBigEmbed_:Class = EmbeddedAssets_d3LofiObjBigEmbed_;
+
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),
          "Monster Tank2":new monsterTank2Embed_(),

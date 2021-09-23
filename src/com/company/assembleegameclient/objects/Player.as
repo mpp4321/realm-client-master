@@ -962,7 +962,7 @@ import org.swiftsuspenders.Injector;
          this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
          super.setAttack(containerType,attackAngle);
       }
-      
+
       private function shoot(attackAngle:Number) : void
       {
          if(map_ == null || isStunned())
@@ -982,14 +982,17 @@ import org.swiftsuspenders.Injector;
          var rateOfFire:Number = Number(weaponXML.RateOfFire);
          rateOfFire *= 1 + rateOfFireMod;
          this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
-         if(time < attackStart_ + this.attackPeriod_)
+         if(time < attackStart_ + this.attackPeriod_ + this.burstShotDelay)
          {
             return;
          }
+         burstShotDelay = 0;
          attackAngle_ = attackAngle;
          attackStart_ = time;
          this.doShoot(attackStart_,weaponType, itemData, weaponXML,attackAngle_,false);
       }
+
+
       
       private function doShoot(time:int, weaponType:int, itemData:Object, weaponXML:XML, attackAngle:Number, isAbility:Boolean) : void
       {
@@ -1004,10 +1007,24 @@ import org.swiftsuspenders.Injector;
          var startId:int = map_.nextProjectileId_;
          var dmgMod:Number = ItemData.getStat(itemData, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
          map_.nextProjectileId_ -= numShots;
+         var noMoreBursts = false;
          for(var i:int = 0; i < numShots; i++)
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             proj.reset(weaponType, Math.abs(startId - i),objectId_,startId - i,angle,time);
+
+            if(proj.projProps_.doBurst_) {
+               if(noMoreBursts) continue;
+               var burstCount = proj.projProps_.burstCount_;
+               if(burstShotCount_ >= burstCount) {
+                  burstShotDelay = proj.projProps_.burstCooldown_;
+                  burstShotCount_ = 0;
+                  noMoreBursts = true;
+                  continue;
+               }
+               burstShotCount_++;
+            }
+
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
             damage = map_.gs_.gsc_.getNextDamage(minDamage,maxDamage) * Number(this.attackMultiplier());

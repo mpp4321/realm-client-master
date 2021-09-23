@@ -12,7 +12,7 @@ import flash.net.SharedObject;
       public static var root:DisplayObject;
 
       public static const BUILD_VERSION:String = "0.0.1";
-     // public static const SERVER_ADDRESS:String = "127.0.0.1";
+//      public static const SERVER_ADDRESS:String = "127.0.0.1";
      // public static const SERVER_ADDRESS:String = "100.14.111.163";
       public static const SERVER_ADDRESS:String = "192.3.180.54";
       public static const GAME_PORT:int = 2050;
@@ -27,8 +27,8 @@ import flash.net.SharedObject;
       public static const FELLOW_GUILD_COLOR:uint = 10944349;
       public static const NAME_COLOUR:uint = 16572160;
 
-      public static const GUILD_CREATION_PRICE:int = 1000;
-      public static const CHARACTER_SLOT_PRICE:int = 2000;
+      public static const GUILD_CREATION_PRICE:int = 200;
+      public static const CHARACTER_SLOT_PRICE:int = 50;
       public static const CHARACTER_SKIN_PRICE:int = 1000;
 
       public static const MAX_SINK_LEVEL:Number = 18;

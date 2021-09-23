@@ -65,7 +65,14 @@ import com.company.assembleegameclient.engine3d.Point3D;
           var r = x % m;
           return x < 0 ? r + m : r;
       }
-      
+
+      //Make sure same as server
+      private function findNextBulletId(id: int, m : int) {
+         var r = id % m;
+         var slot = r < 0 ? r + m : r;
+         return slot;
+      }
+
       public function reset(containerType:int, bulletType:int, ownerId:int, bulletId:int, angle:Number, startTime:int) : void
       {
          var size:Number = NaN;
@@ -82,7 +89,7 @@ import com.company.assembleegameclient.engine3d.Point3D;
 
          var keys = DictionaryUtil.getKeys(this.containerProps_.projectiles_);
          var projLength = keys.length;
-         this.projProps_ = this.containerProps_.projectiles_[(mod(bulletType, projLength)) + keys[0]];
+         this.projProps_ = this.containerProps_.projectiles_[findNextBulletId(bulletId, projLength) + keys[0]];
 
          this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
          hasShadow_ = this.props_.shadowSize_ > 0;

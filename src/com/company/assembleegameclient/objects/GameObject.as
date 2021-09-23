@@ -61,6 +61,8 @@ public class GameObject extends BasicObject
       public var flying_:Boolean = false;
       public var attackAngle_:Number = 0;
       public var attackStart_:int = 0;
+      public var burstShotCount_: int = 0;
+      public var burstShotDelay: int = 0;
       public var animatedChar_:AnimatedChar = null;
       public var texture_:BitmapData = null;
       public var mask_:BitmapData = null;

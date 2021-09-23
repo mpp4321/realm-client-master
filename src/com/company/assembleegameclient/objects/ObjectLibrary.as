@@ -150,7 +150,12 @@ import com.company.util.AssetLibrary;
       private static function makeClass(typeReference:String) : Class
       {
          var typeName:String = "com.company.assembleegameclient.objects." + typeReference;
-         return getDefinitionByName(typeName) as Class;
+         try {
+            return getDefinitionByName(typeName) as Class;
+         } catch(e) {
+           trace(e);
+         }
+         return GameObject;
       }
       
       public static function getTextureFromType(objectType:int) : BitmapData

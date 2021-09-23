@@ -15,7 +15,8 @@ import com.company.util.AssetLibrary;
    import flash.display.BitmapData;
    import flash.utils.ByteArray;
    import kabam.rotmg.assets.EmbeddedAssets;
-   import kabam.rotmg.assets.EmbeddedData;
+import kabam.rotmg.assets.EmbeddedAssets_HanamiParts8x8Embed_;
+import kabam.rotmg.assets.EmbeddedData;
    
    public class AssetLoader
    {
@@ -79,6 +80,20 @@ import com.company.util.AssetLibrary;
          AssetLibrary.addImageSet("innerP2_mask",new EmbeddedAssets.innerP2MaskEmbed_().bitmapData,4,4);
          AssetLibrary.addImageSet("invisible",new BitmapData(8,8,true,0),8,8);
          AssetLibrary.addImageSet("cursorsEmbed", new EmbeddedAssets.cursorsEmbed_().bitmapData, 32, 32);
+         AssetLibrary.addImageSet("Hanami8x8chars", new EmbeddedAssets.HanamiParts8x8Embed_().bitmapData, 32, 32);
+         AssetLibrary.addImageSet("HanamiParts", new EmbeddedAssets.HanamiParts8x8Embed_().bitmapData, 8, 8);
+         AssetLibrary.addImageSet("SakuraEnvironment16x16", new EmbeddedAssets.SakuraEnvironment16x16Embed_().bitmapData, 16, 16);
+         AssetLibrary.addImageSet("SakuraEnvironment8x8", new EmbeddedAssets.SakuraEnvironment8x8Embed_().bitmapData, 8, 8);
+         AssetLibrary.addImageSet("lostHallsObjects8x8",new EmbeddedAssets.lostHallsObjects8x8().bitmapData,8,8);
+         AssetLibrary.addImageSet("lostHallsObjects16x16",new EmbeddedAssets.lostHallsObjects16x16().bitmapData,16,16);
+
+         AssetLibrary.addImageSet("d3LofiObjEmbed", new EmbeddedAssets.d3LofiObjEmbed_().bitmapData, 8, 8);
+         AssetLibrary.addImageSet("d3LofiObjEmbed16", new EmbeddedAssets.d3LofiObjEmbed_().bitmapData, 16, 16);
+         AssetLibrary.addImageSet("d3LofiObjBigEmbed", new EmbeddedAssets.d3LofiObjBigEmbed_().bitmapData, 16, 16);
+         AssetLibrary.addImageSet("d2LofiObjEmbed", new EmbeddedAssets.d2LofiObjEmbed_().bitmapData, 8, 8);
+         AssetLibrary.addImageSet("d2LofiObjBigEmbed", new EmbeddedAssets.d2LofiObjBigEmbed_().bitmapData, 16, 16);
+         AssetLibrary.addImageSet("d1lofiObjBig", new EmbeddedAssets.d1LofiObjBigEmbed_().bitmapData, 16, 16);
+
       }
       
       private function addAnimatedCharacters() : void
@@ -105,6 +120,18 @@ import com.company.util.AssetLibrary;
          AnimatedChars.add("players",new EmbeddedAssets.playersEmbed_().bitmapData,new EmbeddedAssets.playersMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("playerskins",new EmbeddedAssets.playersSkinsEmbed_().bitmapData,new EmbeddedAssets.playersSkinsMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("chars8x8rPets1",new EmbeddedAssets.chars8x8rPets1Embed_().bitmapData,new EmbeddedAssets.chars8x8rPets1MaskEmbed_().bitmapData,8,8,56,8,AnimatedChar.RIGHT);
+
+         AnimatedChars.add("Hanami8x8chars", new EmbeddedAssets.Hanami8x8charsEmbed_().bitmapData, null, 8, 8, 64, 8, AnimatedChar.RIGHT);
+
+         AnimatedChars.add("lostHallsChars16x16",new EmbeddedAssets.lostHallsChars16x16().bitmapData,null,16,16,112,16,AnimatedChar.RIGHT);
+         AnimatedChars.add("lostHallsChars8x8",new EmbeddedAssets.lostHallsChars8x8().bitmapData,null,8,8,56,8,AnimatedChar.RIGHT);
+
+         AnimatedChars.add("d1LofiObjBignew", new EmbeddedAssets.d1LofiObjBig2Embed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
+         AnimatedChars.add("d3Chars8x8rEmbed", new EmbeddedAssets.d3Chars8x8rEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
+         AnimatedChars.add("d3Chars16x16rEmbed", new EmbeddedAssets.d3Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
+         AnimatedChars.add("d2Chars8x8rEmbed", new EmbeddedAssets.d2Chars8x8rEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
+         AnimatedChars.add("d2Chars16x16rEmbed", new EmbeddedAssets.d2Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
+
       }
       
       private function addSoundEffects() : void

@@ -42,9 +42,14 @@ package com.company.assembleegameclient.objects
       
       public var magnitude_:Number;
 
+      public var noAmpAccel : Boolean = false;
+      public var doBurst_ : Boolean = false;
       public var accelerate_: Number;
       public var accelerateDelay_: Number;
       public var speedClamp_: Number;
+
+      public var burstCount_: int;
+      public var burstCooldown_: int;
 
 
       public function ProjectileProperties(projectileXML:XML)
@@ -73,6 +78,7 @@ package com.company.assembleegameclient.objects
             }
             this.effects_.push(ConditionEffect.getConditionEffectFromName(String(condEffectXML)));
          }
+         this.noAmpAccel = projectileXML.hasOwnProperty("NoAmpAccel");
          this.multiHit_ = projectileXML.hasOwnProperty("MultiHit");
          this.passesCover_ = projectileXML.hasOwnProperty("PassesCover");
          this.armorPiercing_ = projectileXML.hasOwnProperty("ArmorPiercing");
@@ -86,6 +92,11 @@ package com.company.assembleegameclient.objects
          this.accelerate_ = Number(projectileXML.hasOwnProperty("Accelerate") ? Number(projectileXML.Accelerate) : 0.0);
          this.accelerateDelay_ = Number(projectileXML.hasOwnProperty("AccelerateDelay") ? Number(projectileXML.AccelerateDelay) : 0.0);
          this.speedClamp_ = Number(projectileXML.hasOwnProperty("SpeedClamp") ? Number(projectileXML.SpeedClamp) : 0.0);
+
+         //Burst
+         this.doBurst_ = projectileXML.hasOwnProperty("Burst");
+         this.burstCount_ = Number(projectileXML.hasOwnProperty("Burst") ? int(projectileXML.Burst) : 0);
+         this.burstCooldown_ = Number(projectileXML.hasOwnProperty("BurstCooldown") ? int(projectileXML.BurstCooldown) : 1000);
       }
    }
 }
