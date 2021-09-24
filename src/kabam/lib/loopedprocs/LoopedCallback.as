@@ -24,6 +24,7 @@ package kabam.lib.loopedprocs
       {
          this.callback = null;
          this.parameters = null;
+         this.paused = true;
       }
    }
 }

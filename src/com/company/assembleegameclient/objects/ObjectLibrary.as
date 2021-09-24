@@ -1,6 +1,7 @@
 package com.company.assembleegameclient.objects
 {
-   import com.company.assembleegameclient.objects.animation.AnimationsData;
+import com.company.assembleegameclient.objects.animation.Animations;
+import com.company.assembleegameclient.objects.animation.AnimationsData;
 import com.company.assembleegameclient.util.ItemData;
 import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
@@ -9,9 +10,12 @@ import com.company.util.AssetLibrary;
    import flash.display.BitmapData;
    import flash.utils.Dictionary;
    import flash.utils.getDefinitionByName;
-   import kabam.rotmg.constants.GeneralConstants;
+
+import kabam.rotmg.assets.model.AnimationHelper;
+import kabam.rotmg.constants.GeneralConstants;
    import kabam.rotmg.constants.ItemConstants;
-   import kabam.rotmg.messaging.impl.data.StatData;
+import kabam.rotmg.messaging.impl.GameServerConnection;
+import kabam.rotmg.messaging.impl.data.StatData;
    
    public class ObjectLibrary
    {
@@ -168,10 +172,15 @@ import com.company.util.AssetLibrary;
          return textureData.getTexture();
       }
       
-      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, itemMetaData: int, useCaching:Boolean = true, scaleValue:int = 5) : BitmapData
+      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, itemMetaData: int, useCaching:Boolean = true, scaleValue:int = 5, anim: AnimationHelper=null) : BitmapData
       {
+         var texture : BitmapData;
          var textureData:TextureData = typeToTextureData_[objectType];
-         var texture:BitmapData = Boolean(textureData)?textureData.getTexture():null;
+         if(anim != null) {
+            texture = anim.bitmap;
+         } else {
+            texture = Boolean(textureData) ? textureData.getTexture() : null;
+         }
          if(texture == null)
          {
             texture = AssetLibrary.getImageFromSet("lofiObj3",255);

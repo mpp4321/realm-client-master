@@ -10,7 +10,6 @@ package kabam.lib.loopedprocs
       
       private static var loopProcs:Dictionary = new Dictionary();
        
-      
       public var id:uint;
       
       public var paused:Boolean;

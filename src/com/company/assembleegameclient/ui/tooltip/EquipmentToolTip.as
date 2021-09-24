@@ -4,7 +4,8 @@ import com.adobe.protocols.dict.Dict;
 import com.company.assembleegameclient.constants.InventoryOwnerTypes;
    import com.company.assembleegameclient.objects.ObjectLibrary;
    import com.company.assembleegameclient.objects.Player;
-   import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.objects.animation.AnimationsData;
+import com.company.assembleegameclient.parameters.Parameters;
    import com.company.assembleegameclient.ui.LineBreakDesign;
 import com.company.assembleegameclient.ui.panels.mediators.ItemGridMediator;
 import com.company.assembleegameclient.ui.tooltip.TooltipHelper;
@@ -19,6 +20,8 @@ import com.company.ui.SimpleText;
    import flash.text.StyleSheet;
 import flash.utils.Dictionary;
 
+import kabam.rotmg.assets.model.AnimationHelper;
+
 import kabam.rotmg.constants.ActivationType;
    import kabam.rotmg.messaging.impl.data.StatData;
    
@@ -28,6 +31,8 @@ import kabam.rotmg.constants.ActivationType;
       private static const CSS_TEXT:String = ".in { margin-left:10px; text-indent: -10px; }";
       
       private var icon_:Bitmap;
+      private var anim: AnimationHelper;
+
       private var titleText_:SimpleText;
       private var tierText_:SimpleText;
       private var descText_:SimpleText;
@@ -84,7 +89,15 @@ import kabam.rotmg.constants.ActivationType;
          this.makeRestrictionList();
          this.makeRestrictionText();
       }
-      
+
+      public override function detachFromTarget() : void {
+         if(anim != null) {
+            this.anim.destroy();
+            this.anim = null;
+         }
+         super.detachFromTarget();
+      }
+
       private static function BuildRestrictionsHTML(restrictions:Vector.<Restriction>) : String
       {
          var restriction:Restriction = null;
@@ -110,6 +123,12 @@ import kabam.rotmg.constants.ActivationType;
          }
          return html;
       }
+
+      private function changeTexture() {
+         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.objectType_,60,true,itemData_ == null ? -1 : itemData_.Meta, true, 5, anim);
+         texture = BitmapUtil.cropToBitmapData(texture,4,4,texture.width - 8,texture.height - 8);
+         this.icon_.bitmapData = texture;
+      }
       
       private function addIcon() : void
       {
@@ -119,7 +138,14 @@ import kabam.rotmg.constants.ActivationType;
          {
             scaleValue = eqXML.ScaleValue;
          }
-         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.objectType_,60,true,itemData_ == null ? -1 : itemData_.Meta, true, scaleValue);
+         var animationData: AnimationsData = ObjectLibrary.typeToAnimationsData_[objectType_];
+         if(animationData != null) {
+            anim = new AnimationHelper();
+            anim.setFrames(animationData.animations[0].frames);
+            anim.setSpeed(animationData.animations[0].period_ / animationData.animations[0].frames.length);
+            anim.signal.add(changeTexture);
+         }
+         var texture:BitmapData = ObjectLibrary.getRedrawnTextureFromType(this.objectType_,60,true,itemData_ == null ? -1 : itemData_.Meta, true, scaleValue, anim);
          texture = BitmapUtil.cropToBitmapData(texture,4,4,texture.width - 8,texture.height - 8);
          this.icon_ = new Bitmap(texture);
          addChild(this.icon_);
@@ -139,8 +165,30 @@ import kabam.rotmg.constants.ActivationType;
             }
             else
             {
-               this.tierText_.setColor(9055202);
-               this.tierText_.text = "UT";
+
+               var bagType = objectXML_.hasOwnProperty("BagType") ? int(objectXML_.BagType) : 4;
+
+               switch(bagType) {
+                  case 4:
+                     //this.tierText_.setColor(9055202);
+                     this.tierText_.setColor(0x11ff11);
+                     this.tierText_.text = "UT";
+                     break;
+                  case 5:
+                     this.tierText_.setColor(0x6464f4);
+                     this.tierText_.text = "RT";
+                     break;
+                  case 6:
+                     this.tierText_.setColor(0x6464f4);
+                     this.tierText_.text = "LT";
+                     break;
+                  default:
+                     this.tierText_.setColor(9055202);
+//                     this.tierText_.setColor(0x11ff11);
+                     this.tierText_.text = "UT";
+                     break;
+               }
+
             }
             this.tierText_.updateMetrics();
             addChild(this.tierText_);

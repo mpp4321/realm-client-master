@@ -13,7 +13,6 @@ package com.company.assembleegameclient.screens
       
       public static const HEIGHT:int = 430;
        
-      
       public var charRectList_:CharacterRectList;
       
       public function CharacterList(model:PlayerModel)
