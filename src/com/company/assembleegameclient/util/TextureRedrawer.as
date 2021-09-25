@@ -31,12 +31,12 @@ public class TextureRedrawer {
    private static var colorTexture2:BitmapData = new BitmapDataSpy(1, 1, false);
 
 
-   public static function redraw(tex:BitmapData, size:int, padBottom:Boolean, glowColor:uint, useCache:Boolean = true, sMult:Number = 5):BitmapData {
+   public static function redraw(tex:BitmapData, size:int, padBottom:Boolean, glowColor:uint, useCache:Boolean = true, sMult:Number = 5, ratio:Number = 0):BitmapData {
       var hash:int = getHash(size, padBottom, glowColor, sMult);
       if (useCache && isCached(tex, hash)) {
          return redrawCaches[tex][hash];
       }
-      var modTex:BitmapData = resize(tex, null, size, padBottom, 0, 0, sMult);
+      var modTex:BitmapData = resize(tex, null, size, padBottom, 0, 0, sMult, ratio);
       modTex = GlowRedrawer.outlineGlow(modTex, glowColor, 1.4, useCache);
       if (useCache) {
          cache(tex, hash, modTex);
@@ -68,16 +68,30 @@ public class TextureRedrawer {
       return false;
    }
 
-   public static function resize(tex:BitmapData, mask:BitmapData, size:int, padBottom:Boolean, op1:int, op2:int, sMult:Number = 5):BitmapData {
+   public static function resize(tex:BitmapData, mask:BitmapData, size:int, padBottom:Boolean, op1:int, op2:int, sMult:Number = 5, ratio: Number=0):BitmapData {
       if (mask != null && (op1 != 0 || op2 != 0)) {
          tex = retexture(tex, mask, op1, op2);
          size = size / 5;
       }
-      var w:int = sMult * size / 100 * tex.width;
-      var h:int = sMult * size / 100 * tex.height;
+
+       if(ratio > 0) {
+          sMult = Math.ceil(sMult * (ratio / tex.width));
+       }
+
+      //Pixel size
+      var sMultComponent = sMult * size / 100;
+
+      //Pixel size by w/h
+      var w:int = sMultComponent * tex.width;
+      var h:int = sMultComponent * tex.height;
+
       var m:Matrix = new Matrix();
-      m.scale(w / tex.width, h / tex.height);
+
+      //Scale to pixel size
+      m.scale(sMultComponent, sMultComponent);
+
       m.translate(magic, magic);
+
       var ret:BitmapData = new BitmapDataSpy(w + minSize, h + (padBottom ? magic : 1) + magic, true, 0);
       ret.draw(tex, m);
       return ret;

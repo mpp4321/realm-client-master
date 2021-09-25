@@ -5,7 +5,8 @@ import com.company.assembleegameclient.engine3d.Point3D;
    import com.company.assembleegameclient.map.Camera;
    import com.company.assembleegameclient.map.Map;
    import com.company.assembleegameclient.map.Square;
-   import com.company.assembleegameclient.objects.particles.HitEffect;
+import com.company.assembleegameclient.objects.animation.AnimationsData;
+import com.company.assembleegameclient.objects.particles.HitEffect;
    import com.company.assembleegameclient.objects.particles.SparkParticle;
    import com.company.assembleegameclient.parameters.Parameters;
    import com.company.assembleegameclient.util.BloodComposition;
@@ -23,11 +24,14 @@ import com.company.assembleegameclient.engine3d.Point3D;
    import flash.geom.Point;
    import flash.geom.Vector3D;
    import flash.utils.Dictionary;
-   
-   public class Projectile extends BasicObject
+
+import kabam.rotmg.assets.model.AnimationHelper;
+
+public class Projectile extends BasicObject
    {
       public static var nextFakeBulletId_:int = 0;
 
+      public var animation: AnimationHelper;
       public var props_:ObjectProperties;
       public var containerProps_:ObjectProperties;
       public var projProps_:ProjectileProperties;
@@ -73,6 +77,12 @@ import com.company.assembleegameclient.engine3d.Point3D;
          return slot;
       }
 
+      public function doTextureThings() {
+         if(animation != null) {
+            texture_ = animation.bitmap;
+         }
+      }
+
       public function reset(containerType:int, bulletType:int, ownerId:int, bulletId:int, angle:Number, startTime:int, notItem: Boolean = false) : void
       {
          var size:Number = NaN;
@@ -98,8 +108,19 @@ import com.company.assembleegameclient.engine3d.Point3D;
 
          this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
          hasShadow_ = this.props_.shadowSize_ > 0;
+
          var textureData:TextureData = ObjectLibrary.typeToTextureData_[this.props_.type_];
-         this.texture_ = textureData.getTexture(objectId_);
+         var animationData: AnimationsData = ObjectLibrary.typeToAnimationsData_[this.props_.type_];
+         if(animationData != null) {
+            animation = new AnimationHelper();
+            animation.setFrames(animationData.animations[0].frames);
+            animation.setSpeed(animationData.animations[0].period_ / animationData.animations[0].frames.length);
+            animation.signal.add(doTextureThings);
+            doTextureThings();
+         } else {
+            this.texture_ = textureData.getTexture(objectId_);
+         }
+
          this.damagesPlayers_ = this.containerProps_.isEnemy_;
          this.damagesEnemies_ = !this.damagesPlayers_;
          this.sound_ = this.containerProps_.oldSound_;
@@ -169,6 +190,10 @@ import com.company.assembleegameclient.engine3d.Point3D;
       {
          super.removeFromMap();
          this.multiHitDict_ = null;
+         if(animation != null)  {
+            animation.destroy();
+            animation = null;
+         }
          FreeList.deleteObject(this);
       }
       

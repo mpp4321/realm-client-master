@@ -57,7 +57,8 @@ public class ItemTileSprite extends Sprite
          var texture:BitmapData = null;
          var eqXML:XML = null;
          var tempText:SimpleText = null;
-         texture = ObjectLibrary.getRedrawnTextureFromType(this.itemId,80,true, itemData == null ? -1 : itemData.Meta, true, 5, animation);
+         //Ratio 8 is because we are expecting 8x8 sprites so anything 16x16 needs to be displayed scaled down to 8x8
+         texture = ObjectLibrary.getRedrawnTextureFromType(this.itemId,80,true, itemData == null ? -1 : itemData.Meta, true, 5, animation, 8);
          eqXML = ObjectLibrary.xmlLibrary_[this.itemId];
          if(eqXML && eqXML.hasOwnProperty("Doses"))
          {

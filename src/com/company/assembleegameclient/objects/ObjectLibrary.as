@@ -172,7 +172,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          return textureData.getTexture();
       }
       
-      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, itemMetaData: int, useCaching:Boolean = true, scaleValue:int = 5, anim: AnimationHelper=null) : BitmapData
+      public static function getRedrawnTextureFromType(objectType:int, size:int, includeBottom:Boolean, itemMetaData: int, useCaching:Boolean = true, scaleValue:int = 5, anim: AnimationHelper=null, ratio: Number=0) : BitmapData
       {
          var texture : BitmapData;
          var textureData:TextureData = typeToTextureData_[objectType];
@@ -189,13 +189,13 @@ import kabam.rotmg.messaging.impl.data.StatData;
 
          if(mask == null)
          {
-            return TextureRedrawer.redraw(texture, size, includeBottom, ItemData.getColor(itemMetaData), useCaching, scaleValue);
+            return TextureRedrawer.redraw(texture, size, includeBottom, ItemData.getColor(itemMetaData), useCaching, scaleValue, ratio);
          }
 
          var objectXML:XML = xmlLibrary_[objectType];
          var tex1:int = Boolean(objectXML.hasOwnProperty("Tex1"))?int(int(objectXML.Tex1)):int(0);
          var tex2:int = Boolean(objectXML.hasOwnProperty("Tex2"))?int(int(objectXML.Tex2)):int(0);
-         texture = TextureRedrawer.resize(texture,mask,size,includeBottom,tex1,tex2);
+         texture = TextureRedrawer.resize(texture,mask,size,includeBottom,tex1,tex2, ratio);
          texture = GlowRedrawer.outlineGlow(texture,0);
          return texture;
       }
