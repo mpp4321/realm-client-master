@@ -27,7 +27,9 @@ import com.company.ui.SimpleText;
    import com.company.util.GraphicsUtil;
    import com.company.util.MoreColorUtil;
    import com.company.util.PointUtil;
-   import flash.display.BitmapData;
+
+import flash.concurrent.Condition;
+import flash.display.BitmapData;
    import flash.display.GradientType;
    import flash.display.GraphicsBitmapFill;
    import flash.display.GraphicsGradientFill;
@@ -49,6 +51,8 @@ import kabam.rotmg.stage3D.Object3D.Object3DStage3D;
 public class GameObject extends BasicObject
    {
       protected static const PAUSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.greyscaleFilterMatrix);
+      protected static const CURSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.redFilterMatrix);
+
       public static const ATTACK_PERIOD:int = 500;
       public static const DEFAULT_HP_BAR_Y_OFFSET:int = 5;
       public static const DEFAULT_HP_BAR_HEIGHT:int = 4;
@@ -204,6 +208,11 @@ public class GameObject extends BasicObject
          {
             def = def * 2;
          }
+
+         if((targetCondition & ConditionEffect.CURSED_BIT) != 0) {
+             origDamage *= 2;
+         }
+
          var min:int = origDamage * 3 / 20;
          var d:int = Math.max(min,origDamage - def);
          if((targetCondition & ConditionEffect.INVULNERABLE_BIT) != 0)
@@ -464,7 +473,12 @@ public class GameObject extends BasicObject
       {
          return (this.condition_ & ConditionEffect.STASIS_BIT) != 0;
       }
-      
+
+      public function isCursed():Boolean
+      {
+         return (this.condition_ & ConditionEffect.CURSED_BIT) != 0;
+      }
+
       public function isInvincible() : Boolean
       {
          return (this.condition_ & ConditionEffect.INVINCIBLE_BIT) != 0;
@@ -850,6 +864,9 @@ public class GameObject extends BasicObject
          if(this.isStasis())
          {
             texture = CachingColorTransformer.filterBitmapData(texture,PAUSED_FILTER);
+         }
+         else if(this.isCursed()) {
+            texture = CachingColorTransformer.filterBitmapData(texture,CURSED_FILTER);
          }
          if(this.tex1Id_ == 0 && this.tex2Id_ == 0)
          {

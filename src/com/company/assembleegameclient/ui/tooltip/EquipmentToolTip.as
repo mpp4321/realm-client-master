@@ -417,6 +417,12 @@ import kabam.rotmg.constants.ActivationType;
                   this.effects.push(new Effect("Effect on Self",""));
                   this.effects.push(new StatScaleEffect("",activateXML.@effect + " for {duration} secs", activateXML, player_));
                   continue;
+               case ActivationType.COND_EFFECT_BLAST:
+//                  this.effects.push(new Effect("Effect on Self",""));
+//                  this.effects.push(new Effect("",activateXML.@effect + " for " + activateXML.@duration + " secs"));
+                  this.effects.push(new StatScaleEffect("Effect on Enemies","Within {range} sqrs", activateXML, player_));
+                  this.effects.push(new StatScaleEffect("",activateXML.@effect + " for {duration} secs", activateXML, player_));
+                  continue;
                case ActivationType.HEAL:
                   //this.effects.push(new Effect("","+" + activateXML.@amount + " HP"));
                   this.effects.push(new StatScaleEffect("","+{amount} HP", activateXML, player_));

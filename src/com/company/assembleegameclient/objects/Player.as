@@ -339,7 +339,7 @@ import org.swiftsuspenders.Injector;
       
       public function modifyMove(x:Number, y:Number, newP:Point) : void
       {
-         if(isParalyzed())
+         if(isParalyzed() || isStasis())
          {
             newP.x = x_;
             newP.y = y_;

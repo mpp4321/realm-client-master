@@ -61,7 +61,9 @@ import com.company.util.AssetLibrary;
       public static const ARMORBROKEN:uint = 24;
       
       public static const HEXED:uint = 25;
-      
+
+      public static const CURSED:uint = 26;
+
       public static const QUIET_BIT:uint = 1 << QUIET;
       
       public static const WEAK_BIT:uint = 1 << WEAK;
@@ -111,7 +113,9 @@ import com.company.util.AssetLibrary;
       public static const ARMORBROKEN_BIT:uint = 1 << ARMORBROKEN;
       
       public static const HEXED_BIT:uint = 1 << HEXED;
-      
+
+      public static const CURSED_BIT:uint = 1 << CURSED;
+
       public static const MAP_FILTER_BITMASK:uint = DRUNK_BIT | BLIND_BIT;
       
       public static var effects_:Vector.<ConditionEffect> = new <ConditionEffect>[new ConditionEffect("Nothing",0,null),new ConditionEffect("Quiet",QUIET_BIT,[32]),new ConditionEffect("Weak",WEAK_BIT,[34,35,36,37]),new ConditionEffect("Slowed",SLOWED_BIT,[1]),new ConditionEffect("Sick",SICK_BIT,[39]),new ConditionEffect("Dazed",DAZED_BIT,[44]),new ConditionEffect("Stunned",STUNNED_BIT,[45]),new ConditionEffect("Blind",BLIND_BIT,[41]),new ConditionEffect("Hallucinating",HALLUCINATING_BIT,[42]),new ConditionEffect("Drunk",DRUNK_BIT,[43]),new ConditionEffect("Confused",CONFUSED_BIT,[2]),new ConditionEffect("Stun Immune",STUN_IMMUNE_BIT,null),new ConditionEffect("Invisible",INVISIBLE_BIT,null),new ConditionEffect("Paralyzed",PARALYZED_BIT,[53,54]),new ConditionEffect("Speedy",SPEEDY_BIT,[0]),new ConditionEffect("Bleeding",BLEEDING_BIT,[46]),new ConditionEffect("Healing",HEALING_BIT,[47]),new ConditionEffect("Damaging",DAMAGING_BIT,[49]),new ConditionEffect("Berserk",BERSERK_BIT,[50]),new ConditionEffect("Stasis",STASIS_BIT,null),new ConditionEffect("Stasis Immune",STASIS_IMMUNE_BIT,null),new ConditionEffect("Invincible",INVINCIBLE_BIT,null),new ConditionEffect("Invulnerable",INVULNERABLE_BIT,[17]),new ConditionEffect("Armored",ARMORED_BIT,[16]),new ConditionEffect("Armor Broken",ARMORBROKEN_BIT,[55]),new ConditionEffect("Hexed",HEXED_BIT,[42])];
