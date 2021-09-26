@@ -393,7 +393,7 @@ import kabam.rotmg.constants.ActivationType;
             switch(activationType)
             {
                case ActivationType.DYE:
-                  this.effects.push("", "Changes texture of your character");
+                  this.effects.push(new Effect("", "Changes texture of your character"));
                   continue;
                case ActivationType.STAT_BOOST_AURA:
                   stat = int(activateXML.@stat);
