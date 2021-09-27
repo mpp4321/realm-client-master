@@ -215,10 +215,23 @@ public class Projectile extends BasicObject
          var speed:Number = this.projProps_.speed_;
          if (this.projProps_.accelerate_)
          {
-            var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
+            //var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
+            var elapsedWithDelay = elapsed;
             var speedIncrease = elapsedWithDelay * (projProps_.accelerate_ / 1000);
             speed += speedIncrease;
             //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
+         }
+
+         if(projProps_.speedClamp_ > 0) {
+            if(projProps_.speed_ > projProps_.speedClamp_) {
+               if(speed < projProps_.speedClamp_) {
+                   speed = projProps_.speedClamp_;
+               }
+            } else {
+                if(speed > projProps_.speedClamp_) {
+                   speed = projProps_.speedClamp_;
+                }
+            }
          }
 
          var dist:Number = (elapsed * (speed / 10000));
