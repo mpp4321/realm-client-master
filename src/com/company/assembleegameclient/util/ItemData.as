@@ -59,7 +59,7 @@ public class ItemData
         {
             value += rank;
         }
-        return value * multiplier + getExtraStats(obj, bit);
+        return multiplier * (value + getExtraStats(obj, bit));
     }
 
     public static function getRank(data:int) : int

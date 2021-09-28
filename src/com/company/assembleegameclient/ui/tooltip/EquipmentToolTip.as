@@ -1,29 +1,23 @@
 package com.company.assembleegameclient.ui.tooltip
 {
-import com.adobe.protocols.dict.Dict;
 import com.company.assembleegameclient.constants.InventoryOwnerTypes;
-   import com.company.assembleegameclient.objects.ObjectLibrary;
-   import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.objects.animation.AnimationsData;
 import com.company.assembleegameclient.parameters.Parameters;
-   import com.company.assembleegameclient.ui.LineBreakDesign;
-import com.company.assembleegameclient.ui.panels.mediators.ItemGridMediator;
-import com.company.assembleegameclient.ui.tooltip.TooltipHelper;
+import com.company.assembleegameclient.ui.LineBreakDesign;
 import com.company.assembleegameclient.util.ItemData;
-import com.company.assembleegameclient.util.RandomUtil;
 import com.company.ui.SimpleText;
-   import com.company.util.BitmapUtil;
-   import com.company.util.KeyCodes;
-   import flash.display.Bitmap;
-   import flash.display.BitmapData;
-   import flash.filters.DropShadowFilter;
-   import flash.text.StyleSheet;
+import com.company.util.BitmapUtil;
+import com.company.util.KeyCodes;
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.filters.DropShadowFilter;
+import flash.text.StyleSheet;
 import flash.utils.Dictionary;
-
 import kabam.rotmg.assets.model.AnimationHelper;
-
 import kabam.rotmg.constants.ActivationType;
-   import kabam.rotmg.messaging.impl.data.StatData;
+import kabam.rotmg.messaging.impl.data.StatData;
    
    public class EquipmentToolTip extends ToolTip
    {
