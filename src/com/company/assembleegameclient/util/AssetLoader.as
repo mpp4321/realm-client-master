@@ -84,6 +84,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AssetLibrary.addImageSet("HanamiParts", new EmbeddedAssets.HanamiParts8x8Embed_().bitmapData, 8, 8);
          AssetLibrary.addImageSet("SakuraEnvironment16x16", new EmbeddedAssets.SakuraEnvironment16x16Embed_().bitmapData, 16, 16);
          AssetLibrary.addImageSet("SakuraEnvironment8x8", new EmbeddedAssets.SakuraEnvironment8x8Embed_().bitmapData, 8, 8);
+
          AssetLibrary.addImageSet("lostHallsObjects8x8",new EmbeddedAssets.lostHallsObjects8x8().bitmapData,8,8);
          AssetLibrary.addImageSet("lostHallsObjects16x16",new EmbeddedAssets.lostHallsObjects16x16().bitmapData,16,16);
 

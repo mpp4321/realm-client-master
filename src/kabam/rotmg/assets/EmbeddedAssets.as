@@ -110,7 +110,7 @@ package kabam.rotmg.assets
       public static var SakuraEnvironment16x16Embed_:Class = EmbeddedAssets_SakuraEnvironment16x16Embed_;
       public static var SakuraEnvironment8x8Embed_:Class = EmbeddedAssets_SakuraEnvironment8x8Embed_;
 
-      public static var lostHallsObjects8x8:Class = EmbeddedAssets_lostHallsObjects8x8
+      public static var lostHallsObjects8x8:Class = EmbeddedAssets_lostHallsObjects8x8;
       public static var lostHallsObjects16x16:Class = EmbeddedAssets_lostHallsObject16x16;
       public static var lostHallsChars16x16:Class = EmbeddedAssets_lostHallsChars16x16;
       public static var lostHallsChars8x8:Class = EmbeddedAssets_lostHallsChars8x8;
