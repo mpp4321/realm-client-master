@@ -1082,7 +1082,7 @@
     </Projectile>
   </Object>
 
-  <Object type="0x5007" id="Electric Snake Ally">
+  <Object type="0x5008" id="Electric Snake Ally">
     <Enemy/>
     <Friendly/>
     <Class>Character</Class>
@@ -1097,7 +1097,7 @@
       <Speed>60</Speed>
       <Damage>60</Damage>
       <LifetimeMS>2000</LifetimeMS>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="1">Paralyzed</ConditionEffect>
     </Projectile>
   </Object>
 
