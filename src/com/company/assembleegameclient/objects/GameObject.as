@@ -213,7 +213,7 @@ public class GameObject extends BasicObject
              origDamage *= 2;
          }
 
-         var min:int = origDamage * 3 / 20;
+         var min:int = origDamage / 20;
          var d:int = Math.max(min,origDamage - def);
          if((targetCondition & ConditionEffect.INVULNERABLE_BIT) != 0)
          {
