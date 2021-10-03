@@ -1007,23 +1007,11 @@ import org.swiftsuspenders.Injector;
          var startId:int = map_.nextProjectileId_;
          var dmgMod:Number = ItemData.getStat(itemData, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
          map_.nextProjectileId_ -= numShots;
-         var noMoreBursts = false;
+
          for(var i:int = 0; i < numShots; i++)
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             proj.reset(weaponType, Math.abs(startId - i),objectId_,startId - i,angle,time);
-
-            if(proj.projProps_.doBurst_) {
-               if(noMoreBursts) continue;
-               var burstCount = proj.projProps_.burstCount_;
-               if(burstShotCount_ >= burstCount) {
-                  burstShotDelay = proj.projProps_.burstCooldown_;
-                  burstShotCount_ = 0;
-                  noMoreBursts = true;
-                  continue;
-               }
-               burstShotCount_++;
-            }
 
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
@@ -1036,6 +1024,16 @@ import org.swiftsuspenders.Injector;
             map_.addObj(proj,x_,y_);
             angle = angle + arcGap;
          }
+
+         var burstShotCount = weaponXML.hasOwnProperty("Burst") ? int(weaponXML.Burst) : 0;
+         var burstShotCD = weaponXML.hasOwnProperty("BurstCooldown") ? int(weaponXML.BurstCooldown) : 0;
+
+         burstShotCount_ += numShots;
+         if(burstShotCount > 0 && burstShotCount <= burstShotCount_ + 1) {
+             burstShotDelay = burstShotCD;
+             burstShotCount_ = 0;
+         }
+
          map_.gs_.gsc_.playerShoot(time, x_, y_, attackAngle, isAbility, numShots);
       }
       
