@@ -129,7 +129,7 @@
 			<Size>130</Size>
 			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
-		<Projectile id="1">
+		<Projectile id="1">					
 			<ObjectId>White Bullet</ObjectId>
 			<Speed>62</Speed>
 			<Damage>60</Damage>

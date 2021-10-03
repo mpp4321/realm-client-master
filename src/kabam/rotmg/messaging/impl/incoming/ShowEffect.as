@@ -51,6 +51,9 @@ package kabam.rotmg.messaging.impl.incoming
       
       public var pos2_:WorldPosData;
 
+      //Throwtime for poisons, havent used otherwise
+      public var speed : int;
+
       
       public function ShowEffect(id:uint, callback:Function)
       {
@@ -64,6 +67,8 @@ package kabam.rotmg.messaging.impl.incoming
          this.effectType_ = data.readUnsignedByte();
          this.targetObjectId_ = data.readInt();
          this.color_ = data.readInt();
+         this.speed = data.readInt();
+
          this.pos1_.parseFromInput(data);
 
          if (data.bytesAvailable > 0) {
