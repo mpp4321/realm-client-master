@@ -990,7 +990,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
             case ShowEffect.THROW_EFFECT_TYPE:
                go = map.goDict_[showEffect.targetObjectId_];
                start = go != null?new Point(go.x_,go.y_):showEffect.pos2_.toPoint();
-               e = new ThrowEffect(start,showEffect.pos1_.toPoint(),showEffect.color_);
+               e = new ThrowEffect(start,showEffect.pos1_.toPoint(),showEffect.color_, showEffect.speed);
                map.addObj(e,start.x,start.y);
                break;
             case ShowEffect.NOVA_EFFECT_TYPE:

@@ -14,7 +14,7 @@ package com.company.assembleegameclient.objects.particles
 
       public var throwtime_ : int;
 
-      public function ThrowEffect(start:Point, end:Point, color:int, throwtime:int = 1500)
+      public function ThrowEffect(start:Point, end:Point, color:int, throwtime:int = 800)
       {
          super();
          this.start_ = start;
