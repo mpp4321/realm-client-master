@@ -130,6 +130,8 @@ package kabam.rotmg.assets
       public static var d3LofiObjEmbed_:Class = EmbeddedAssets_d3LofiObjEmbed_;
       public static var d3LofiObjBigEmbed_:Class = EmbeddedAssets_d3LofiObjBigEmbed_;
 
+      public static var lofiObj64x64Embed_:Class = EmbeddedAssets_lofiObj64x64Embed_;
+
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),
          "Monster Tank2":new monsterTank2Embed_(),
