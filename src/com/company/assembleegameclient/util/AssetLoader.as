@@ -123,6 +123,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AnimatedChars.add("chars16x16rEncounters",new EmbeddedAssets.chars16x16rEncountersEmbed_().bitmapData,null,16,16,112,16,AnimatedChar.RIGHT);
          AnimatedChars.add("players",new EmbeddedAssets.playersEmbed_().bitmapData,new EmbeddedAssets.playersMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("playerskins",new EmbeddedAssets.playersSkinsEmbed_().bitmapData,new EmbeddedAssets.playersSkinsMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
+         AnimatedChars.add("goldenskins",new EmbeddedAssets.goldenskinsEmbed_().bitmapData,new EmbeddedAssets.playersMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("chars8x8rPets1",new EmbeddedAssets.chars8x8rPets1Embed_().bitmapData,new EmbeddedAssets.chars8x8rPets1MaskEmbed_().bitmapData,8,8,56,8,AnimatedChar.RIGHT);
 
          AnimatedChars.add("Hanami8x8chars", new EmbeddedAssets.Hanami8x8charsEmbed_().bitmapData, null, 8, 8, 64, 8, AnimatedChar.RIGHT);

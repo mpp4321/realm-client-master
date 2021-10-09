@@ -46,6 +46,7 @@ package kabam.rotmg.assets
       public static var playersEmbed_:Class = EmbeddedAssets_playersEmbed_;
       public static var playersMaskEmbed_:Class = EmbeddedAssets_playersMaskEmbed_;
       public static var playersSkinsEmbed_:Class = EmbeddedAssets_playersSkinsEmbed_;
+      public static var goldenskinsEmbed_:Class = EmbeddedAssets_goldenskinsEmbed_;
       public static var playersSkinsMaskEmbed_:Class = EmbeddedAssets_playersSkinsMaskEmbed_;
       public static var chars8x8rPets1Embed_:Class = EmbeddedAssets_chars8x8rPets1Embed_;
       public static var chars8x8rPets1MaskEmbed_:Class = EmbeddedAssets_chars8x8rPets1MaskEmbed_;
