@@ -173,7 +173,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
                      this.tierText_.text = "RT";
                      break;
                   case 6:
-                     this.tierText_.setColor(0x6464f4);
+                     this.tierText_.setColor(0xd8bd27);
                      this.tierText_.text = "LT";
                      break;
                   default:
