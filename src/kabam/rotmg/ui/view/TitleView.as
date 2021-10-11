@@ -15,7 +15,7 @@ import org.osflash.signals.Signal;
    
    public class TitleView extends Sprite
    {
-      private static const COPYRIGHT:String = "© 2010, 2011 by Wild Shadow Studios, Inc.";
+      private static const COPYRIGHT:String = "© Year 1610, 1611 by Havoc, Inc.";
        
       
       public var playClicked:Signal;
