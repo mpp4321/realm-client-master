@@ -228,12 +228,12 @@ import kabam.rotmg.messaging.impl.data.StatData;
             uniqueEffectList = new Vector.<Effect>();
             for each(effectDataXML in effectDataList)
             {
-               var name = effectDataXML.attribute("name");
-               var desc = effectDataXML.attribute("description");
+               var name: String = effectDataXML["@name"];
+               var desc: String = effectDataXML["@description"];
                if(itemData_ != null) {
                   for(var prop in itemData_) {
                      name = name.replace("{" + prop + "}", itemData_[prop].toString());
-                     desc = name.replace("{" + prop + "}", itemData_[prop].toString());
+                     desc = desc.replace("{" + prop + "}", itemData_[prop].toString());
                   }
                }
                uniqueEffectList.push(new Effect(name, desc));
