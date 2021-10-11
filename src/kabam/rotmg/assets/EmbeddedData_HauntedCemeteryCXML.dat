@@ -1743,6 +1743,7 @@
 		</Projectile>
 	</Object>
 	
+
 	<Object type="0x0d67" id="Realm Reaper">
 		<Group>Reapers</Group>
 		<Enemy/>
