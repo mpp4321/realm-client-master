@@ -1743,7 +1743,6 @@
 		</Projectile>
 	</Object>
 	
-
 	<Object type="0x0d67" id="Realm Reaper">
 		<Group>Reapers</Group>
 		<Enemy/>
@@ -1796,6 +1795,13 @@
 			<Size>150</Size>
 		</Projectile>
 		<Projectile id="3">
+			<ObjectId>Black Eye</ObjectId>
+			<Damage>120</Damage>
+			<Speed>50</Speed>
+			<LifetimeMS>1800</LifetimeMS>
+			<Size>100</Size>
+		</Projectile>
+		<Projectile id="4">
 			<ObjectId>Black Eye</ObjectId>
 			<Damage>120</Damage>
 			<Speed>50</Speed>
