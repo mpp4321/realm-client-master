@@ -1,6 +1,8 @@
 package com.company.assembleegameclient.objects
 {
-   import com.company.assembleegameclient.map.Camera;
+import com.company.assembleegameclient.effects.EffectsLibrary;
+import com.company.assembleegameclient.effects.ItemEffect;
+import com.company.assembleegameclient.map.Camera;
    import com.company.assembleegameclient.map.Square;
    import com.company.assembleegameclient.map.mapoverlay.CharacterStatusText;
    import com.company.assembleegameclient.objects.particles.HealingEffect;
@@ -8,7 +10,7 @@ package com.company.assembleegameclient.objects
    import com.company.assembleegameclient.parameters.Parameters;
    import com.company.assembleegameclient.sound.SoundEffectLibrary;
    import com.company.assembleegameclient.util.AnimatedChar;
-   import com.company.assembleegameclient.util.ConditionEffect;
+import com.company.assembleegameclient.util.ConditionEffect;
    import com.company.assembleegameclient.util.FameUtil;
    import com.company.assembleegameclient.util.FreeList;
 import com.company.assembleegameclient.util.ItemData;
@@ -16,7 +18,7 @@ import com.company.assembleegameclient.util.MaskedImage;
    import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.ui.SimpleText;
-   import com.company.util.CachingColorTransformer;
+import com.company.util.CachingColorTransformer;
    import com.company.util.ConversionUtil;
    import com.company.util.GraphicsUtil;
    import com.company.util.IntPoint;
@@ -33,18 +35,16 @@ import com.company.ui.SimpleText;
    import flash.geom.Matrix;
    import flash.geom.Point;
    import flash.utils.Dictionary;
-   import kabam.rotmg.assets.services.CharacterFactory;
+
+import kabam.rotmg.assets.services.CharacterFactory;
    import kabam.rotmg.constants.ActivationType;
    import kabam.rotmg.constants.GeneralConstants;
    import kabam.rotmg.core.StaticInjectorContext;
    import kabam.rotmg.game.model.AddTextLineVO;
 import kabam.rotmg.game.model.PotionInventoryModel;
 import kabam.rotmg.game.signals.AddTextLineSignal;
-import kabam.rotmg.messaging.impl.GameServerConnection;
 import kabam.rotmg.stage3D.GraphicsFillExtra;
 import kabam.rotmg.ui.model.TabStripModel;
-
-import org.hamcrest.core.isA;
 
 import org.swiftsuspenders.Injector;
    
@@ -835,7 +835,8 @@ import org.swiftsuspenders.Injector;
          var filteredTexture:BitmapData = texturingCache_[texture];
          if(filteredTexture == null)
          {
-            filteredTexture = GlowRedrawer.outlineGlow(texture,this.legendaryRank_ == -1 ? 0: 16711680);
+            var glowText = this.legendaryRank_ == -1 ? 0: 16711680;
+            filteredTexture = GlowRedrawer.outlineGlow(texture,glowText == 0 ? this.glowOverride_ : glowText);
             texturingCache_[texture] = filteredTexture;
          }
          if(isStasis())
@@ -1008,15 +1009,24 @@ import org.swiftsuspenders.Injector;
          var dmgMod:Number = ItemData.getStat(itemData, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
          map_.nextProjectileId_ -= numShots;
 
+         var uneffs = buildEffectHandlers();
+
          for(var i:int = 0; i < numShots; i++)
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             proj.reset(weaponType, Math.abs(startId - i),objectId_,startId - i,angle,time);
 
+
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
             damage = map_.gs_.gsc_.getNextDamage(minDamage,maxDamage) * Number(this.attackMultiplier());
+
             proj.setDamage(damage);
+
+            for each(var uef in uneffs) {
+               uef.OnProjectileShoot(this, proj);
+            }
+
             if(i == 0 && proj.sound_ != null)
             {
                SoundEffectLibrary.play(proj.sound_,0.75,false);
@@ -1107,6 +1117,39 @@ import org.swiftsuspenders.Injector;
             default:
                return 0;
          }
+      }
+
+      public function getStatTotal(ind) {
+         switch(ind) {
+            case 0: return maxHPBoost_ + maxHP_;
+            case 1: return maxMPBoost_ + maxMP_;
+            case 2: return attack_ + attackBoost_;
+            case 3: return defense_ + defenseBoost_;
+            case 4: return speed_ + speedBoost_;
+            case 5: return dexterity_ + dexterityBoost_;
+            case 6: return vitality_ + vitalityBoost_;
+            case 7: return wisdom_ + wisdomBoost_;
+         }
+      }
+
+      public function buildEffectHandlers(): Array {
+         var effs = new Array();
+         var effLib = new EffectsLibrary();
+         for(var i = 0; i < 4; i++) {
+             var uefxml = ObjectLibrary.xmlLibrary_[equipment_[i]];
+             if(uefxml == null) continue;
+             var uef = uefxml.UniqueEffect;
+             if(uef == null) continue;
+             if(uef in effLib.getEffects()) {
+                effs.push(effLib.getEffects()[uef]);
+             }
+         }
+         for each(var eff in this.runes) {
+            if(eff in effLib.getEffects()) {
+               effs.push(effLib.getEffects()[eff]);
+            }
+         }
+         return effs;
       }
    }
 }

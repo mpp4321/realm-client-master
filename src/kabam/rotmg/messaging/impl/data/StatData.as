@@ -97,7 +97,9 @@ package kabam.rotmg.messaging.impl.data
       public static const ITEMDATA_18_STAT:int = 89;
       public static const ITEMDATA_19_STAT:int = 90;
       public static const OWNER_ACCOUNT_ID_STAT:int = 91;
-       
+      public static const RUNE_EFFECTS : int = 92;
+      public static const GLOW_STAT : int = 93;
+
       
       public var statType_:uint = 0;
       
@@ -144,6 +146,7 @@ package kabam.rotmg.messaging.impl.data
 
          switch(this.statType_)
          {
+            case RUNE_EFFECTS:
             case NAME_STAT:
             case GUILD_NAME_STAT:
                return true;

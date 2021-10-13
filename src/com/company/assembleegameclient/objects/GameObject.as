@@ -59,6 +59,8 @@ public class GameObject extends BasicObject
       public static const DEFAULT_HP_BAR_WIDTH:int = 20;
       public static const HITBOX_RADIUS:Number = 0.5;
 
+      public var glowOverride_ = 0;
+      public var runes: Array = new Array();
       public var props_:ObjectProperties;
       public var name_:String;
       public var facing_:Number = 0;
@@ -71,7 +73,7 @@ public class GameObject extends BasicObject
       public var texture_:BitmapData = null;
       public var mask_:BitmapData = null;
       public var randomTextureData_:Vector.<TextureData> = null;
-      
+
       public var obj3D_:Object3D = null;
       public var object3d_:Object3DStage3D = null;
       public var effect_:ParticleEffect = null;
@@ -870,7 +872,8 @@ public class GameObject extends BasicObject
          }
          if(this.tex1Id_ == 0 && this.tex2Id_ == 0)
          {
-            texture = TextureRedrawer.redraw(texture,size,false,forceGlow);
+            var usingGlow = glowOverride_ == 0 ? forceGlow : glowOverride_;
+            texture = TextureRedrawer.redraw(texture,size,false, usingGlow);
          }
          else
          {
@@ -886,7 +889,7 @@ public class GameObject extends BasicObject
             if(newTexture == null)
             {
                newTexture = TextureRedrawer.resize(texture,mask,size,false,this.tex1Id_,this.tex2Id_);
-               newTexture = GlowRedrawer.outlineGlow(newTexture,0);
+               newTexture = GlowRedrawer.outlineGlow(newTexture,glowOverride_);
                this.texturingCache_[texture] = newTexture;
             }
             texture = newTexture;
@@ -1144,5 +1147,9 @@ public class GameObject extends BasicObject
          return vo;
       }
 
+      public function resetTextures():void {
+          for(var key in texturingCache_) delete texturingCache_[key];
+          texturingCache_ = new Dictionary();
+      }
    }
 }

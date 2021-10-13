@@ -1112,6 +1112,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   continue;
                case StatData.SIZE_STAT:
                   go.size_ = value;
+                  go.resetTextures();
                   continue;
                case StatData.MAX_MP_STAT:
                   player.maxMP_ = value;
@@ -1321,6 +1322,13 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                case StatData.ITEMDATA_18_STAT:
                case StatData.ITEMDATA_19_STAT:
                     go.itemDatas_[stat.statType_ - StatData.ITEMDATA_0_STAT] = JSON.parse(stat.strStatValue_);
+                    continue;
+               case StatData.RUNE_EFFECTS:
+                    go.runes = stat.strStatValue_.split(",");
+                    continue;
+               case StatData.GLOW_STAT:
+                    go.glowOverride_ = stat.statValue_;
+                    go.resetTextures();
                     continue;
                default:
                   trace("unhandled stat: " + stat.statType_);

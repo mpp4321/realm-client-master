@@ -42,6 +42,8 @@ package com.company.assembleegameclient.objects
       
       public var magnitude_:Number;
 
+      public var smartAngle : Boolean = false;
+
       public var noAmpAccel : Boolean = false;
       public var doBurst_ : Boolean = false;
       public var accelerate_: Number;
@@ -84,6 +86,7 @@ package com.company.assembleegameclient.objects
          this.armorPiercing_ = projectileXML.hasOwnProperty("ArmorPiercing");
          this.particleTrail_ = projectileXML.hasOwnProperty("ParticleTrail");
          this.wavy_ = projectileXML.hasOwnProperty("Wavy");
+         this.smartAngle = projectileXML.hasOwnProperty("SmartAngle");
          this.parametric_ = projectileXML.hasOwnProperty("Parametric");
          this.boomerang_ = projectileXML.hasOwnProperty("Boomerang");
          this.amplitude_ = Boolean(projectileXML.hasOwnProperty("Amplitude"))?Number(Number(projectileXML.Amplitude)):Number(0);

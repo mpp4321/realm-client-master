@@ -47,6 +47,7 @@ public class Projectile extends BasicObject
       public var startX_:Number;
       public var startY_:Number;
       public var startTime_:int;
+      public var lastUpdate_:int = 0;
       public var angle_:Number = 0;
       public var multiHitDict_:Dictionary;
       public var p_:Point3D;
@@ -196,9 +197,69 @@ public class Projectile extends BasicObject
          }
          FreeList.deleteObject(this);
       }
+
+      private function speedAt(elapsed: int): Number {
+         var speed:Number = this.projProps_.speed_;
+
+         if (this.projProps_.accelerate_)
+         {
+            //var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
+            var elapsedWithDelay = elapsed;
+            var speedIncrease = elapsedWithDelay * (projProps_.accelerate_ / 1000);
+            speed += speedIncrease;
+            //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
+         }
+
+         if(projProps_.speedClamp_ > 0) {
+            if(projProps_.speed_ > projProps_.speedClamp_) {
+               if(speed < projProps_.speedClamp_) {
+                  speed = projProps_.speedClamp_;
+               }
+            } else {
+               if(speed > projProps_.speedClamp_) {
+                  speed = projProps_.speedClamp_;
+               }
+            }
+         }
+         return speed;
+      }
+
+      private function angleAt(elapsed: int) {
+
+         var speed = speedAt(elapsed);
+
+         var dist:Number = (elapsed * (speed / 10000));
+         var phase:Number = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
+
+         if(this.projProps_.wavy_)
+         {
+            const periodFactor = 6 * Math.PI;
+            const amplitudeFactor = Math.PI / 64;
+            var theta = this.angle_ + amplitudeFactor * Math.sin(phase + periodFactor * elapsed / 1000);
+            return theta;
+         }
+         else
+         {
+            if(this.projProps_.boomerang_)
+            {
+               const halfway = this.projProps_.lifetime_ * (this.projProps_.speed_ / 10000) / 2;
+               if(dist > halfway)
+               {
+                  return Math.PI + this.angle_;
+               }
+            }
+            if(this.projProps_.amplitude_ != 0)
+            {
+              const direction = this.projProps_.amplitude_ * Math.cos(phase + elapsed / this.projProps_.lifetime_ * this.projProps_.frequency_ * 2 * Math.PI);
+              return this.angle_ + Math.atan(direction);
+            }
+         }
+         return this.angle_;
+      }
       
       private function positionAt(elapsed:int, p:Point) : void
       {
+         lastUpdate_ = elapsed;
          var periodFactor:Number = NaN;
          var amplitudeFactor:Number = NaN;
          var theta:Number = NaN;
@@ -212,27 +273,7 @@ public class Projectile extends BasicObject
          p.x = this.startX_;
          p.y = this.startY_;
 
-         var speed:Number = this.projProps_.speed_;
-         if (this.projProps_.accelerate_)
-         {
-            //var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
-            var elapsedWithDelay = elapsed;
-            var speedIncrease = elapsedWithDelay * (projProps_.accelerate_ / 1000);
-            speed += speedIncrease;
-            //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
-         }
-
-         if(projProps_.speedClamp_ > 0) {
-            if(projProps_.speed_ > projProps_.speedClamp_) {
-               if(speed < projProps_.speedClamp_) {
-                   speed = projProps_.speedClamp_;
-               }
-            } else {
-                if(speed > projProps_.speedClamp_) {
-                   speed = projProps_.speedClamp_;
-                }
-            }
-         }
+         var speed = speedAt(elapsed);
 
          var dist:Number = (elapsed * (speed / 10000));
          var phase:Number = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
@@ -408,7 +449,11 @@ public class Projectile extends BasicObject
          this.staticVector3D_.x = x_;
          this.staticVector3D_.y = y_;
          this.staticVector3D_.z = z_;
-         this.p_.draw(graphicsData,this.staticVector3D_,this.angle_ - camera.angleRad_ + this.props_.angleCorrection_ + r,camera.wToS_,camera,texture);
+          if(projProps_.smartAngle) {
+             this.p_.draw(graphicsData,this.staticVector3D_,angleAt(this.lastUpdate_) - camera.angleRad_ + this.props_.angleCorrection_ + r,camera.wToS_,camera,texture);
+          } else {
+             this.p_.draw(graphicsData,this.staticVector3D_,this.angle_ - camera.angleRad_ + this.props_.angleCorrection_ + r,camera.wToS_,camera,texture);
+          }
          if(this.projProps_.particleTrail_ && Parameters.data_.particles)
          {
             map_.addObj(new SparkParticle(100, 16711935, 600, 0.5, RandomUtil.plusMinus(3), RandomUtil.plusMinus(3)), x_, y_);
