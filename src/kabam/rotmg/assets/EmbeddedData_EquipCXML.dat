@@ -5105,7 +5105,6 @@
       <LifetimeMS>475</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>2</Frequency>
-      <SmartAngle></SmartAngle>
     </Projectile>
     <BagType>0</BagType>
     <NumProjectiles>2</NumProjectiles>
@@ -9063,7 +9062,6 @@
       <Size>100</Size>
       <Boomerang />
       <MultiHit />
-      <SmartAngle></SmartAngle>
     </Projectile>
     <Projectile>
       <ObjectId>Fire Mystic Shot</ObjectId>
@@ -9075,7 +9073,6 @@
       <Frequency>2</Frequency>
       <Size>140</Size>
       <MultiHit />
-      <SmartAngle></SmartAngle>
     </Projectile>
     <NumProjectiles>6</NumProjectiles>
     <ArcGap>6</ArcGap>
@@ -10094,14 +10091,14 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>A bow which saps the users life to empower it's shots.</Description>
-    <RateOfFire>0.66</RateOfFire>
+    <RateOfFire>0.33</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Life Bolt</ObjectId>
       <Speed>160</Speed>
       <Size>200</Size>
-      <MinDamage>350</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>700</MinDamage>
+      <MaxDamage>900</MaxDamage>
       <LifetimeMS>440</LifetimeMS>
     </Projectile>
     <BagType>6</BagType>
@@ -10139,9 +10136,9 @@
     </Texture>
     <SlotType>20</SlotType>
     <Description>A long lost artifact recovered by Davy Jones, believed to have been cursed by the gods of the seven seas themselves.</Description>
-    <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="1" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="2" amount="9">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="5" amount="-5">IncrementStat</ActivateOnEquip>
     <Usable />
     <BagType>5</BagType>
     <FameBonus>6</FameBonus>
