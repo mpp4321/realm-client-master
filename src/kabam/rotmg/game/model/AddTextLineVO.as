@@ -2,8 +2,7 @@ package kabam.rotmg.game.model
 {
    public class AddTextLineVO
    {
-       
-      
+
       public var name:String;
       
       public var objectId:int;
