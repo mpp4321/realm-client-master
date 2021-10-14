@@ -256,9 +256,14 @@ public class GameObject extends BasicObject
                return;
             }
          }
+
          this.texture_ = altTextureData.texture_;
+         if(glowOverride_ != 0) {
+            texture_ = TextureRedrawer.redraw(texture_, this.size_,false, glowOverride_);
+         }
          this.mask_ = altTextureData.mask_;
          this.animatedChar_ = altTextureData.animatedChar_;
+
          if(this.effect_ != null)
          {
             map_.removeObj(this.effect_.objectId_);
@@ -894,6 +899,7 @@ public class GameObject extends BasicObject
             }
             texture = newTexture;
          }
+
          return texture;
       }
       
