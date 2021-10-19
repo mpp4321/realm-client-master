@@ -289,6 +289,7 @@ public class Options extends Sprite
          this.addOption(new ChoiceOption("showGuildInvitePopup",new <String>["On","Off"],[true,false],"Show Guild Invite Panel","This toggles whether to show guild invites in the lower-right panel or just in chat.",null));
          this.addOption(new ChoiceOption("particles", new <String>["On","Off"], [true,false], "Particles", "If enabled, particles which are not necessary for gameplay are rendered (e.g. hit/death particles).", null));
          this.addOption(new ChoiceOption("hpBars", new <String>["On","Off"], [true,false], "Health Bars", "Enabling this will render health bars below entities.", null));
+         this.addOption(new ChoiceOption("itemtiers", new <String>["On","Off"], [true,false], "Item Tier Text", "Enabling will render tier text on top of item icons.", null));
          this.addOption(new ChoiceOption("quality", new <String>["High","Low"], [true,false], "Quality", "Enabling this will render UI elements at higher/lower quality.", onQualityToggle));
          this.addOption(new ChoiceOption("cursor", new <String>[
              "OS","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],

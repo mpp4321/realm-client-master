@@ -188,6 +188,7 @@ import flash.net.SharedObject;
          setDefault("particles", true);
          setDefault("hpBars", true)
          setDefault("quality", true);
+         setDefault("itemtiers", true);
          setDefault("cursor", "4");
          setDefault("rankFilter", 5);
       }

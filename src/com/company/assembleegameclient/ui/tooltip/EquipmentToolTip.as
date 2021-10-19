@@ -144,7 +144,37 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.icon_ = new Bitmap(texture);
          addChild(this.icon_);
       }
-      
+
+      public static function setTierColor(tierText_: SimpleText, objectXML_: XML) {
+         if(objectXML_.hasOwnProperty("Tier"))
+         {
+            tierText_.text = "T" + objectXML_.Tier;
+         }
+         else
+         {
+            var bagType = objectXML_.hasOwnProperty("BagType") ? int(objectXML_.BagType) : 4;
+            switch(bagType) {
+               case 4:
+                  tierText_.setColor(0x11ff11);
+                  tierText_.text = "UT";
+                  break;
+               case 5:
+                  tierText_.setColor(0x6464f4);
+                  tierText_.text = "RT";
+                  break;
+               case 6:
+                  tierText_.setColor(0xd8bd27);
+                  tierText_.text = "LT";
+                  break;
+               default:
+                  tierText_.setColor(9055202);
+                  tierText_.text = "UT";
+                  break;
+            }
+
+         }
+      }
+
       private function addTierText() : void
       {
          this.tierText_ = new SimpleText(16,16777215,false,30,0);
@@ -153,37 +183,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.tierText_.x = MAX_WIDTH - 30;
          if(this.objectXML_.hasOwnProperty("Consumable") == false && this.isPet() == false)
          {
-            if(this.objectXML_.hasOwnProperty("Tier"))
-            {
-               this.tierText_.text = "T" + this.objectXML_.Tier;
-            }
-            else
-            {
-
-               var bagType = objectXML_.hasOwnProperty("BagType") ? int(objectXML_.BagType) : 4;
-
-               switch(bagType) {
-                  case 4:
-                     //this.tierText_.setColor(9055202);
-                     this.tierText_.setColor(0x11ff11);
-                     this.tierText_.text = "UT";
-                     break;
-                  case 5:
-                     this.tierText_.setColor(0x6464f4);
-                     this.tierText_.text = "RT";
-                     break;
-                  case 6:
-                     this.tierText_.setColor(0xd8bd27);
-                     this.tierText_.text = "LT";
-                     break;
-                  default:
-                     this.tierText_.setColor(9055202);
-//                     this.tierText_.setColor(0x11ff11);
-                     this.tierText_.text = "UT";
-                     break;
-               }
-
-            }
+            setTierColor(this.tierText_, objectXML_);
             this.tierText_.updateMetrics();
             addChild(this.tierText_);
          }
@@ -208,7 +208,9 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.titleText_ = new SimpleText(16,color,false,MAX_WIDTH - this.icon_.width - 4 - 30,0);
          this.titleText_.setBold(true);
          this.titleText_.wordWrap = true;
-         this.titleText_.text = ObjectLibrary.typeToDisplayId_[this.objectType_];
+         var item_rank: int = ItemData.getRank(this.itemData_.Meta);
+         var item_rank_text: String = item_rank > 0 ? "+" + item_rank : "";
+         this.titleText_.text = ObjectLibrary.typeToDisplayId_[this.objectType_] + item_rank_text;
          this.titleText_.updateMetrics();
          this.titleText_.filters = [new DropShadowFilter(0,0,0,0.5,12,12)];
          this.titleText_.x = this.icon_.width + 4;

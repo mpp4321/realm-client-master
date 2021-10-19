@@ -276,7 +276,11 @@ public class Projectile extends BasicObject
          var speed = speedAt(elapsed);
 
          var dist:Number = (elapsed * (speed / 10000));
-         var phase:Number = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
+
+         var phase: Number = projProps_.phaseLock_ == 1 ? 0 : Math.PI;
+         if(projProps_.phaseLock_ == -1)
+            phase = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
+
          if(this.projProps_.wavy_)
          {
             periodFactor = 6 * Math.PI;

@@ -2,6 +2,9 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
 import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.animation.AnimationsData;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
+import com.company.assembleegameclient.ui.tooltip.EquipmentToolTip;
 import com.company.ui.SimpleText;
 
 import flash.display.Bitmap;
@@ -24,7 +27,8 @@ public class ItemTileSprite extends Sprite
          m.translate(10,5);
          return m;
       }();
-       
+
+      public var tierText: SimpleText;
       
       public var itemId:int;
       public var itemData:Object;
@@ -43,6 +47,28 @@ public class ItemTileSprite extends Sprite
       public function setDim(dim:Boolean) : void
       {
          filters = dim?DIM_FILTER:null;
+      }
+
+      public function doTierText() {
+         if(tierText) removeChild(tierText);
+         tierText = null;
+         if(!Parameters.data_.itemtiers) return;
+         var eqXML = ObjectLibrary.xmlLibrary_[this.itemId];
+         if(!eqXML) return;
+         this.tierText = new SimpleText(12,16777215,false, 0,0);
+         this.tierText.setBold(true);
+         this.tierText.y = 4;
+         if(eqXML.hasOwnProperty("Consumable") == false)
+         {
+            EquipmentToolTip.setTierColor(this.tierText, eqXML);
+         } else {
+            this.tierText.text = "C";
+            this.tierText.setColor(0x22ff44);
+         }
+         this.tierText.updateMetrics();
+         //Think it centers by default so gotta subtract half its width
+         this.tierText.x = (this.width/2) - (3*tierText.actualWidth_ / 2);
+         addChild(this.tierText);
       }
 
       public function doTextureThings() {
@@ -72,6 +98,7 @@ public class ItemTileSprite extends Sprite
          this.itemBitmap.x = -texture.width / 2;
          this.itemBitmap.y = -texture.height / 2;
          visible = true;
+         this.doTierText();
       }
 
       public function setType(displayedItemType:int, displayedItemData : Object) : void

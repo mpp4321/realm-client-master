@@ -19,7 +19,9 @@ package com.company.assembleegameclient.objects
       public var minDamage_:int;
       
       public var maxDamage_:int;
-      
+
+      public var phaseLock_:int;
+
       public var effects_:Vector.<uint> = null;
       
       public var multiHit_:Boolean;
@@ -95,6 +97,7 @@ package com.company.assembleegameclient.objects
          this.accelerate_ = Number(projectileXML.hasOwnProperty("Accelerate") ? Number(projectileXML.Accelerate) : 0.0);
          this.accelerateDelay_ = Number(projectileXML.hasOwnProperty("AccelerateDelay") ? Number(projectileXML.AccelerateDelay) : 0.0);
          this.speedClamp_ = Number(projectileXML.hasOwnProperty("SpeedClamp") ? Number(projectileXML.SpeedClamp) : 0.0);
+         this.phaseLock_ = int(projectileXML.hasOwnProperty("PhaseLock") ? int(projectileXML.PhaseLock) : -1);
 
          //Burst
          this.doBurst_ = projectileXML.hasOwnProperty("Burst");
