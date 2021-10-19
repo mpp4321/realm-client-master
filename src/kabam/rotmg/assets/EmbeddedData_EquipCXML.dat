@@ -5993,6 +5993,7 @@
     <Activate effect="Speedy" duration="2.5">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Cooldown>5</Cooldown>
+    <UniqueEffect>Conflict</UniqueEffect>
   </Object>
   <Object type="0xaa9" id="Purple Drake Egg">
     <Class>Equipment</Class>
@@ -10253,6 +10254,26 @@
     <BagType>5</BagType>
     <MpCost>90</MpCost>
     <Activate id="Spider Decoy" duration="3">Decoy</Activate>
-    <Activate stat="4" amount="6" duration="3">StatBoostSelf</Activate>
+    <Activate stat="5" amount="6" duration="3">StatBoostSelf</Activate>
+  </Object>
+  <Object type="0xcc1" id="Will of the Den">
+    <Class>Equipment</Class>
+    <Item/>
+    <Texture>
+      <File>lofiObj4</File>
+      <Index>0xd3</Index>
+    </Texture>
+    <SlotType>9</SlotType>
+    <Description>The hive mind isn't just an animal instinct, it is a living breathing state of mind.</Description>
+    <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="2" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="5" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="4" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>5</BagType>
+    <FameBonus>5</FameBonus>
+    <ExtraTooltipData>
+      <EffectInfo name="Spider's Will" description="While at full health, gain 15 dex."/>
+    </ExtraTooltipData>
+    <UniqueEffect>WillOfDen</UniqueEffect>
   </Object>
 </Objects>
