@@ -104,7 +104,8 @@ public class Projectile extends BasicObject
             this.projProps_ = this.containerProps_.projectiles_[bulletType];
          }
          else {
-            this.projProps_ = this.containerProps_.projectiles_[findNextBulletId(bulletId, projLength) + keys[0]];
+            var modIndex = findNextBulletId(bulletType, projLength) + keys[0];
+            this.projProps_ = this.containerProps_.projectiles_[modIndex];
          }
 
          this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
