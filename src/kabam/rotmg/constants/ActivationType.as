@@ -28,6 +28,7 @@ package kabam.rotmg.constants
       public static const PERMA_PET:String = "PermaPet";
       public static const TELEPORT:String = "Teleport";
       public static const LIGHTNING:String = "Lightning";
+      public static const STRONG_LIGHTNING:String = "StrongLightning";
       public static const CREATE:String = "Create";
       public static const REMOVE_NEG_COND:String = "RemoveNegativeConditions";
       public static const SHURIKEN:String = "Shuriken";

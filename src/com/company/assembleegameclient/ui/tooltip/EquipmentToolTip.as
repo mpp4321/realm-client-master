@@ -462,6 +462,10 @@ import kabam.rotmg.messaging.impl.data.StatData;
                   this.effects.push(new Effect("Lightning",""));
                   this.effects.push(new StatScaleEffect("","{totalDamage} to " + activateXML.@maxTargets + " targets", activateXML, player_));
                   continue;
+               case ActivationType.STRONG_LIGHTNING:
+                  this.effects.push(new Effect("Strong Lightning",""));
+                  this.effects.push(new StatScaleEffect("","{totalDamage} to " + activateXML.@maxTargets + " targets", activateXML, player_));
+                  continue;
                case ActivationType.POISON_GRENADE:
                   this.effects.push(new Effect("Poison Grenade",""));
                   this.effects.push(new StatScaleEffect("","{totalDamage} HP over {duration} secs within {range} sqrs", activateXML, player_));
