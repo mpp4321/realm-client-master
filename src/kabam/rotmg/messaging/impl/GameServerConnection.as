@@ -106,7 +106,8 @@ import kabam.rotmg.messaging.impl.incoming.GuildResult;
    import kabam.rotmg.messaging.impl.incoming.QuestObjId;
    import kabam.rotmg.messaging.impl.incoming.Reconnect;
 import kabam.rotmg.messaging.impl.incoming.ServerPlayerShoot;
-   import kabam.rotmg.messaging.impl.incoming.ShowEffect;
+import kabam.rotmg.messaging.impl.incoming.ShootDesync;
+import kabam.rotmg.messaging.impl.incoming.ShowEffect;
 import kabam.rotmg.messaging.impl.incoming.SwitchMusic;
 import kabam.rotmg.messaging.impl.incoming.Text;
 import kabam.rotmg.messaging.impl.incoming.TradeAccepted;
@@ -218,7 +219,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const ACCEPTTRADE:int = 56;
       public static const TRADEACCEPTED:int = 57;
       public static const SWITCHMUSIC:int = 58;
-      public static const MIX:int = 59;
+      public static const SHOOTDESYNC:int = 59;
 
       public static var instance:GameServerConnection;
 
@@ -339,7 +340,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(CHANGETRADE).toMessage(ChangeTrade);
          messages.map(CANCELTRADE).toMessage(CancelTrade);
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
-         messages.map(MIX).toMessage(MixMessage);
+         messages.map(SHOOTDESYNC).toMessage(ShootDesync).toMethod(this.onShootDesync);
          messages.map(FAILURE).toMessage(Failure).toMethod(this.onFailure);
          messages.map(CREATE_SUCCESS).toMessage(CreateSuccess).toMethod(this.onCreateSuccess);
          messages.map(TEXT).toMessage(Text).toMethod(this.onText);
@@ -1682,11 +1683,8 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          Music.load(switchMusic.music_);
       }
 
-      public function mix(slotId1: int, slotId2: int) : void {
-         var acceptTrade:MixMessage = this.messages.require(MIX) as MixMessage;
-         acceptTrade.slotId1 = slotId1;
-         acceptTrade.slotId2 = slotId2;
-         this.serverConnection.sendMessage(acceptTrade);
+      private function onShootDesync(shootDesync: ShootDesync):void {
+          this.player.map_.nextProjectileId_ -= shootDesync.diff;
       }
    }
 }

@@ -6443,7 +6443,7 @@
     <Description>A key which opens an entrance to a Spider Den.</Description>
     <Sound>use_key</Sound>
     <Consumable/>
-    <Activate id="Spider Den Portal">Create</Activate>
+    <Activate id="Crawling Depths Portal">Create</Activate>
   </Object>
   <Object type="0x70a" id="Abyss of Demons Key">
     <Class>Equipment</Class>
@@ -10508,5 +10508,19 @@
     <BagType>5</BagType>
     <FameBonus>6</FameBonus>
     <OldSound>daggerSwing</OldSound>
+  </Object>
+  <Object type="0xcc9" id="Realm Equipment Crystal">
+    <Class>Equipment</Class>
+    <Item/>
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x175</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Consumable/>
+    <InvUse/>
+    <Description>A mundane equipment crystal, provides weak enchantments to unenchanted items upon use.</Description>
+    <Activate statScale="1.0" id="Classical" amount="1">MagicCrystal</Activate>
+    <BagType>5</BagType>
   </Object>
 </Objects>
