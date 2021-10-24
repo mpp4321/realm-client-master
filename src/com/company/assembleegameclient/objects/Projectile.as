@@ -202,7 +202,7 @@ public class Projectile extends BasicObject
       private function speedAt(elapsed: int): Number {
          var speed:Number = this.projProps_.speed_;
 
-         if (this.projProps_.accelerate_)
+         if (this.projProps_.accelerate_ && elapsed > this.projProps_.accelerateDelay_)
          {
             //var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
             var elapsedWithDelay = elapsed;
@@ -229,7 +229,9 @@ public class Projectile extends BasicObject
 
          var speed = speedAt(elapsed);
 
-         var dist:Number = (elapsed * (speed / 10000));
+         var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
+         var distAfterAccel = Math.max(0, elapsed - projProps_.accelerateDelay_) * (speed / 10000);
+         var dist:Number = distBeforeAccel + distAfterAccel;
          var phase:Number = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
 
          if(this.projProps_.wavy_)
@@ -276,21 +278,25 @@ public class Projectile extends BasicObject
 
          var speed = speedAt(elapsed);
 
-         var dist:Number = (elapsed * (speed / 10000));
+         var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
+         var distAfterAccel = Math.max(0, elapsed - projProps_.accelerateDelay_) * (speed / 10000);
+         var dist:Number = distBeforeAccel + distAfterAccel;
 
          var phase: Number = projProps_.phaseLock_ == 1 ? 0 : Math.PI;
          if(projProps_.phaseLock_ == -1)
             phase = this.bulletId_ % 2 == 0?Number(0):Number(Math.PI);
 
-         if(this.projProps_.wavy_)
+         if(this.projProps_.wavy_ && this.projProps_.amplitude_ == 0)
          {
             periodFactor = 6 * Math.PI;
             amplitudeFactor = Math.PI / 64;
             theta = this.angle_ + amplitudeFactor * Math.sin(phase + periodFactor * elapsed / 1000);
             p.x = p.x + dist * Math.cos(theta);
             p.y = p.y + dist * Math.sin(theta);
+            return;
          }
-         else if(this.projProps_.parametric_)
+
+         if(this.projProps_.parametric_)
          {
             t = elapsed / this.projProps_.lifetime_ * 2 * Math.PI;
             x = Math.sin(t) * (Boolean(this.bulletId_ % 2)?1:-1);
@@ -299,25 +305,28 @@ public class Projectile extends BasicObject
             cos = Math.cos(this.angle_);
             p.x = p.x + (x * cos - y * sin) * this.projProps_.magnitude_;
             p.y = p.y + (x * sin + y * cos) * this.projProps_.magnitude_;
+            return;
          }
-         else
+         if(this.projProps_.boomerang_)
          {
-            if(this.projProps_.boomerang_)
+            halfway = this.projProps_.lifetime_ * (this.projProps_.speed_ / 10000) / 2;
+            if(dist > halfway)
             {
-               halfway = this.projProps_.lifetime_ * (this.projProps_.speed_ / 10000) / 2;
-               if(dist > halfway)
-               {
-                  dist = halfway - (dist - halfway);
-               }
+               dist = halfway - (dist - halfway);
             }
-            p.x = p.x + dist * Math.cos(this.angle_);
-            p.y = p.y + dist * Math.sin(this.angle_);
-            if(this.projProps_.amplitude_ != 0)
-            {
-               deflection = this.projProps_.amplitude_ * Math.sin(phase + elapsed / this.projProps_.lifetime_ * this.projProps_.frequency_ * 2 * Math.PI);
-               p.x = p.x + deflection * Math.cos(this.angle_ + Math.PI / 2);
-               p.y = p.y + deflection * Math.sin(this.angle_ + Math.PI / 2);
+         }
+         p.x = p.x + dist * Math.cos(this.angle_);
+         p.y = p.y + dist * Math.sin(this.angle_);
+         if(this.projProps_.amplitude_ != 0)
+         {
+
+            var ampFactor = this.projProps_.amplitude_;
+            if(this.projProps_.wavy_) {
+               ampFactor *= Math.pow(elapsed / this.projProps_.lifetime_, 1.4);
             }
+            deflection = ampFactor * Math.sin(phase + elapsed / this.projProps_.lifetime_ * this.projProps_.frequency_ * 2 * Math.PI);
+            p.x = p.x + deflection * Math.cos(this.angle_ + Math.PI / 2);
+            p.y = p.y + deflection * Math.sin(this.angle_ + Math.PI / 2);
          }
       }
       
