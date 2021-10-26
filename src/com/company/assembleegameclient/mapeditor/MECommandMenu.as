@@ -18,7 +18,11 @@ import com.company.assembleegameclient.editor.CommandEvent;
       public static const SAMPLE_COMMAND:int = 3;
       
       public static const EDIT_COMMAND:int = 4;
-       
+
+      public static const COPY_COMMAND:int = 5;
+
+      public static const PASTE_COMMAND:int = 6;
+
       
       public function MECommandMenu()
       {
@@ -30,6 +34,8 @@ import com.company.assembleegameclient.editor.CommandEvent;
          addCommandMenuItem("(U)ndo",KeyCodes.U,this.onUndo,NONE_COMMAND);
          addCommandMenuItem("(R)edo",KeyCodes.R,this.onRedo,NONE_COMMAND);
          addCommandMenuItem("(C)lear",KeyCodes.C,this.onClear,NONE_COMMAND);
+         addCommandMenuItem("Cop(y)",KeyCodes.Y,this.select,COPY_COMMAND);
+         addCommandMenuItem("(P)aste",KeyCodes.P,this.select,PASTE_COMMAND);
          addBreak();
          addCommandMenuItem("(L)oad",KeyCodes.L,this.onLoad,NONE_COMMAND);
          addCommandMenuItem("(S)ave",KeyCodes.S,this.onSave,NONE_COMMAND);

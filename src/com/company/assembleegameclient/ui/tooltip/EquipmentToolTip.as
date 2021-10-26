@@ -376,9 +376,10 @@ import kabam.rotmg.messaging.impl.data.StatData;
                }
                this.effects.push(new Effect("Rate of Fire", rateOfFireString));
 
+               this.effects.push(new Effect("Shot Effects", ""));
                for each(condEffectXML in projXML.ConditionEffect)
                {
-                  this.effects.push(new Effect("Shot Effect",this.objectXML_.Projectile.ConditionEffect + " for " + this.objectXML_.Projectile.ConditionEffect.@duration + " secs"));
+                  this.effects.push(new Effect("",condEffectXML.text() + " for " + condEffectXML.@duration + " secs"));
                }
 //            }
          }
