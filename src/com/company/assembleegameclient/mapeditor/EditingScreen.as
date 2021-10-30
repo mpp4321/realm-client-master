@@ -138,7 +138,9 @@ public class EditingScreen extends Sprite {
                 }
                 break;
             case MECommandMenu.PASTE_COMMAND:
-                var tilesToPaste = copiedTiles_;
+                var tilesToPaste = copiedTiles_.map(function (elm) {
+                    return elm.clone();
+                });
                 //Don't want to modify this
                 var originTile = copiedTiles_[0].clone();
                 var commandList = new CommandList();

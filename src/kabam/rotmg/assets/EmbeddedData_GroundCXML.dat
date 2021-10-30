@@ -4292,8 +4292,7 @@
             <File>d3LofiObjEmbed</File>
             <Index>0x364</Index>
         </Texture>
-        <MinDamage>60</MinDamage>
-        <MaxDamage>90</MaxDamage>
+        <Damage>60</Damage>
         <Animate dx=".33" dy=".33">Flow</Animate>
         <Sink/>
         <Speed>.444</Speed>
