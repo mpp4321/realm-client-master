@@ -800,6 +800,8 @@ class StatScaleEffect extends Effect {
 
    static function getStatByString(p: Player, s): int {
       switch(s) {
+         case "Health": return p.maxHP_;
+         case "Mana": return p.maxMP_;
          case "Attack": return p.attack_;
          case "Defense": return p.defense_;
          case "Speed": return p.speed_;
@@ -826,7 +828,7 @@ class StatScaleEffect extends Effect {
       statRangeScale = Number(oXML.hasOwnProperty("@statRangeScale") ? oXML.@statDurationScale : 0);
       statMin = Number(oXML.hasOwnProperty("@statMin") ? oXML.@statMin : 0);
 
-      var stat = getStatByString(player_, oXML.hasOwnProperty('@statForScale') ? oXML.@statForScale : "Wisdom");
+      var stat = getStatByString(player_, String(oXML.hasOwnProperty('@statForScale') ? oXML.@statForScale : "Wisdom"));
 
       if(totalDamage != -1)
          value = value.replace("{totalDamage}", useWisMod ? scaleFunction(stat, totalDamage, statMin, statScale) : totalDamage);

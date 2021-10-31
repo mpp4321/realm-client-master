@@ -383,7 +383,7 @@ public class Projectile extends BasicObject
                var isAlly = map_.goDict_[this.ownerId_] != null && map_.goDict_[this.ownerId_].props_.ally;
                sendMessage = isPlayer && (this.damagesPlayers_ || (isTargetAnEnemy && (this.ownerId_ == player.objectId_ || isAlly)));
                if (sendMessage) {
-                  d = GameObject.damageWithDefense(this.damage_, target.defense_, this.projProps_.armorPiercing_, target.condition_);
+                  d = GameObject.damageWithDefense(this.damage_, target.defense_, this.projProps_.armorPiercing_, target.condition_, isPlayer ? player.protection_ : 0);
                   if (target == player) {
                      map_.gs_.gsc_.playerHit(this.bulletId_);
                      target.damage(d, this.projProps_.effects_, this);

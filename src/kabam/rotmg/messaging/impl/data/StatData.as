@@ -99,6 +99,8 @@ package kabam.rotmg.messaging.impl.data
       public static const OWNER_ACCOUNT_ID_STAT:int = 91;
       public static const RUNE_EFFECTS : int = 92;
       public static const GLOW_STAT : int = 93;
+      public static const PROTECTION_STAT : int = 94;
+      public static const PROTECTION_BOOST_STAT : int = 94;
 
       
       public var statType_:uint = 0;

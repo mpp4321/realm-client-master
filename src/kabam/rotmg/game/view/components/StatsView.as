@@ -21,10 +21,20 @@ package kabam.rotmg.game.view.components
       public static const VITALITY:int = 4;
       
       public static const WISDOM:int = 5;
-      
+
+      public static const PROTECTION:int = 6;
+
       public static const NUM_STAT:int = 6;
 
-      private static const statsModel:Array = [new StatModel("ATT","Attack","This stat increases the amount of damage done.",true),new StatModel("DEF","Defense","This stat decreases the amount of damage taken.",false),new StatModel("SPD","Speed","This stat increases the speed at which the character moves.",true),new StatModel("DEX","Dexterity","This stat increases the speed at which the character attacks.",true),new StatModel("VIT","Vitality","This stat increases the speed at which hit points are recovered.",true),new StatModel("WIS","Wisdom","This stat increases the speed at which magic points are recovered.",true)];
+      private static const statsModel:Array = [
+         new StatModel("ATT","Attack","This stat increases the amount of damage done.",true),
+         new StatModel("DEF","Defense","This stat decreases the amount of damage taken.",false),
+         new StatModel("SPD","Speed","This stat increases the speed at which the character moves.",true),
+         new StatModel("DEX","Dexterity","This stat increases the speed at which the character attacks.",true),
+         new StatModel("VIT","Vitality","This stat increases the speed at which hit points are recovered.",true),
+         new StatModel("WIS","Wisdom","This stat increases the speed at which magic points are recovered.",true),
+         new StatModel("PRT","Protection","This stat increases the max % reduced damage defense supplies.",true)
+      ];
        
       
       public var w_:int;
@@ -66,6 +76,7 @@ package kabam.rotmg.game.view.components
             this.stats_[DEXTERITY].draw(go.dexterity_,go.dexterityBoost_,go.dexterityMax_);
             this.stats_[VITALITY].draw(go.vitality_,go.vitalityBoost_,go.vitalityMax_);
             this.stats_[WISDOM].draw(go.wisdom_,go.wisdomBoost_,go.wisdomMax_);
+            this.stats_[PROTECTION].draw(go.protection_,go.protectionBoost_,go.protectionMax_);
          }
          this.containerSprite.x = 30 + (191 - this.containerSprite.width) * 0.5;
       }
