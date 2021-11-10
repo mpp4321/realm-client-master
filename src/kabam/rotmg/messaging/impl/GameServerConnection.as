@@ -1151,6 +1151,9 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                case StatData.CONDITION_STAT:
                   go.condition_ = value;
                   continue;
+               case StatData.PROTECTION_STAT:
+                  player.protection_ = value;
+                  continue;
                case StatData.INVENTORY_0_STAT:
                case StatData.INVENTORY_1_STAT:
                case StatData.INVENTORY_2_STAT:
@@ -1243,6 +1246,9 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   continue;
                case StatData.DEXTERITY_BOOST_STAT:
                   player.dexterityBoost_ = value;
+                  continue;
+               case StatData.PROTECTION_BOOST_STAT:
+                  player.protectionBoost_ = value;
                   continue;
                case StatData.OWNER_ACCOUNT_ID_STAT:
                   (go as Container).setOwnerId(value);

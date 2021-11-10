@@ -92,6 +92,7 @@ import org.swiftsuspenders.Injector;
       public var dexterity_:int = 0;
       public var vitality_:int = 0;
       public var wisdom_:int = 0;
+      public var protection_:int = 0;
       public var maxHPBoost_:int = 0;
       public var maxMPBoost_:int = 0;
       public var attackBoost_:int = 0;
@@ -100,6 +101,7 @@ import org.swiftsuspenders.Injector;
       public var vitalityBoost_:int = 0;
       public var wisdomBoost_:int = 0;
       public var dexterityBoost_:int = 0;
+      public var protectionBoost_:int = 0;
       public var healthPotionCount_:int = 0;
       public var magicPotionCount_:int = 0;
       public var attackMax_:int = 0;
@@ -108,6 +110,7 @@ import org.swiftsuspenders.Injector;
       public var dexterityMax_:int = 0;
       public var vitalityMax_:int = 0;
       public var wisdomMax_:int = 0;
+      public var protectionMax_:int = 0;
       public var maxHPMax_:int = 0;
       public var maxMPMax_:int = 0;
       public var hasBackpack_:Boolean = false;
@@ -147,6 +150,7 @@ import org.swiftsuspenders.Injector;
          this.wisdomMax_ = int(objectXML.MpRegen.@max);
          this.maxHPMax_ = int(objectXML.MaxHitPoints.@max);
          this.maxMPMax_ = int(objectXML.MaxMagicPoints.@max);
+         this.protectionMax_ = int(objectXML.Protection.@max);
          texturingCache_ = new Dictionary();
       }
       
@@ -1128,6 +1132,7 @@ import org.swiftsuspenders.Injector;
             case 5: return dexterity_ + dexterityBoost_;
             case 6: return vitality_ + vitalityBoost_;
             case 7: return wisdom_ + wisdomBoost_;
+            case 8: return protection_ + protectionBoost_;
          }
       }
 

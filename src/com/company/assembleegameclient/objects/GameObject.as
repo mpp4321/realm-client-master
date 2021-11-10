@@ -199,7 +199,7 @@ public class GameObject extends BasicObject
          this.props_.loadSounds();
       }
       
-      public static function damageWithDefense(origDamage:int, targetDefense:int, armorPiercing:Boolean, targetCondition:int) : int
+      public static function damageWithDefense(origDamage:int, targetDefense:int, armorPiercing:Boolean, targetCondition:int, protection:Number=0) : int
       {
          var def:int = targetDefense;
          if(armorPiercing || (targetCondition & ConditionEffect.ARMORBROKEN_BIT) != 0)
@@ -215,7 +215,9 @@ public class GameObject extends BasicObject
              origDamage *= 2;
          }
 
-         var min:int = origDamage / 20;
+         if(protection == 0) protection = 95.0;
+         var min:int = origDamage * (1.0 - (protection / 100.0));
+
          var d:int = Math.max(min,origDamage - def);
          if((targetCondition & ConditionEffect.INVULNERABLE_BIT) != 0)
          {
