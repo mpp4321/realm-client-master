@@ -136,6 +136,8 @@ package kabam.rotmg.messaging.impl.data
                return "Vitality";
             case 7:
                return "Wisdom";
+            case 8:
+               return "Protection";
             default:
                return "Unknown Stat";
          }

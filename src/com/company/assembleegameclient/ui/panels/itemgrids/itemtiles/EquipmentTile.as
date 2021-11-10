@@ -29,7 +29,9 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       
       override public function canHoldItem(type:int) : Boolean
       {
-         return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
+         if(type <= 0) return true;
+         var itemSlotType = ObjectLibrary.getSlotTypeFromType(type);
+         return this.itemType == itemSlotType || itemSlotType == 0;
       }
       
       public function setType(type:int) : void
