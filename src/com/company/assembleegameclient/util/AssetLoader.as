@@ -96,6 +96,8 @@ import kabam.rotmg.assets.EmbeddedData;
          AssetLibrary.addImageSet("d2LofiObjBigEmbed", new EmbeddedAssets.d2LofiObjBigEmbed_().bitmapData, 16, 16);
          AssetLibrary.addImageSet("d1lofiObjBig", new EmbeddedAssets.d1LofiObjBigEmbed_().bitmapData, 16, 16);
 
+         AssetLibrary.addImageSet("CustomItems", new EmbeddedAssets.cosmicItems().bitmapData, 8, 8);
+
          AssetLibrary.addImageSet("lofiObj64x64",new EmbeddedAssets.lofiObj64x64Embed_().bitmapData,64,64);
 
       }
