@@ -173,8 +173,8 @@ package com.company.assembleegameclient.mapeditor
          for(indexStr in this.tileDict_)
          {
             tile = this.tileDict_[indexStr];
-            if(!tile.isEmpty())
-            {
+//            if(!tile.isEmpty())
+//            {
                index = int(indexStr);
                x = index % NUM_SQUARES;
                y = index / NUM_SQUARES;
@@ -194,7 +194,7 @@ package com.company.assembleegameclient.mapeditor
                {
                   maxY = y + 1;
                }
-            }
+//            }
          }
          if(minX > maxX)
          {
