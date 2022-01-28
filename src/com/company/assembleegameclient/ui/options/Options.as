@@ -291,6 +291,7 @@ public class Options extends Sprite
          this.addOption(new ChoiceOption("hpBars", new <String>["On","Off"], [true,false], "Health Bars", "Enabling this will render health bars below entities.", null));
          this.addOption(new ChoiceOption("itemtiers", new <String>["On","Off"], [true,false], "Item Tier Text", "Enabling will render tier text on top of item icons.", null));
          this.addOption(new ChoiceOption("quality", new <String>["High","Low"], [true,false], "Quality", "Enabling this will render UI elements at higher/lower quality.", onQualityToggle));
+         this.addOption(new ChoiceOption("chatScale", new <String>["100%", "80%", "60%", "40%", "20%"], [1.0, 0.8, 0.6, 0.4, 0.2], "Chat Scale", "Scales the chat box.", onChatBoxScale));
          this.addOption(new ChoiceOption("cursor", new <String>[
              "OS","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
       [MouseCursor.AUTO, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"], "Cursor", "Changing this will give you a new mouse cursor.", refreshCursor));
@@ -301,6 +302,12 @@ public class Options extends Sprite
             this.addOption(new ChoiceOption("GPURender",new <String>["On","Off"],[true,false],"Hardware Acceleration","Enables Hardware Acceleration if your system supports it",null));
          }
       }
+
+      public function onChatBoxScale() : void
+      {
+         this.gs_.textBox_.scaleAmount(Parameters.data_.chatScale);
+      }
+
       public static function refreshCursor():void {
          var cursorData:MouseCursorData;
          var bitmapData:Vector.<BitmapData>;

@@ -47,7 +47,7 @@ package com.company.assembleegameclient.ui
       private var gs_:GameSprite;
       
       private var w_:int;
-      
+
       private var h_:int;
       
       public var textSprite_:Sprite;
@@ -119,6 +119,15 @@ package com.company.assembleegameclient.ui
          addEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
          this.inputTextClicked = new NativeSignal(this.inputField_,MouseEvent.CLICK,MouseEvent);
          this.speechBubbleClicked = new NativeSignal(this.speechBubbleContainer,MouseEvent.CLICK,MouseEvent);
+
+         scaleAmount(Parameters.data_.chatScale);
+      }
+
+      public function scaleAmount(amount) : void
+      {
+         this.scaleX = amount;
+         this.scaleY = amount;
+         this.y = 600 - (600 * amount);
       }
       
       public function setInputNotAllowedMessage(message:String) : void

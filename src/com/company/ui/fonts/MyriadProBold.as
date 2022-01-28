@@ -4,7 +4,7 @@ import com.company.ui.*;
 
 import mx.core.*;
 
-[Embed(source="MyriadProBold.otf", fontName="Myriad Pro", fontFamily="MyriadPro", fontStyle="Bold", fontWeight="bold", embedAsCFF="false", mimeType="application/x-font")]
+[Embed(source="MyriadProBold.ttf", fontName="Myriad Pro", fontFamily="MyriadPro", fontStyle="Bold", fontWeight="bold", embedAsCFF="false", mimeType="application/x-font")]
 public class MyriadProBold extends FontAsset {
     public function MyriadProBold() {
         super();
