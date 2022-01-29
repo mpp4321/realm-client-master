@@ -89,7 +89,8 @@ import kabam.rotmg.messaging.impl.data.ObjectStatusData;
    import kabam.rotmg.messaging.impl.incoming.AccountList;
    import kabam.rotmg.messaging.impl.incoming.AllyShoot;
    import kabam.rotmg.messaging.impl.incoming.Aoe;
-   import kabam.rotmg.messaging.impl.incoming.BuyResult;
+import kabam.rotmg.messaging.impl.incoming.BulletResync;
+import kabam.rotmg.messaging.impl.incoming.BuyResult;
    import kabam.rotmg.messaging.impl.incoming.CreateSuccess;
    import kabam.rotmg.messaging.impl.incoming.Damage;
    import kabam.rotmg.messaging.impl.incoming.Death;
@@ -220,6 +221,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const TRADEACCEPTED:int = 57;
       public static const SWITCHMUSIC:int = 58;
       public static const SHOOTDESYNC:int = 59;
+      public static const BULLETRESYNC:int = 60;
 
       public static var instance:GameServerConnection;
 
@@ -341,6 +343,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(CANCELTRADE).toMessage(CancelTrade);
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
          messages.map(SHOOTDESYNC).toMessage(ShootDesync).toMethod(this.onShootDesync);
+         messages.map(BULLETRESYNC).toMessage(BulletResync).toMethod(this.onBulletResync);
          messages.map(FAILURE).toMessage(Failure).toMethod(this.onFailure);
          messages.map(CREATE_SUCCESS).toMessage(CreateSuccess).toMethod(this.onCreateSuccess);
          messages.map(TEXT).toMessage(Text).toMethod(this.onText);
@@ -1691,6 +1694,10 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
 
       private function onShootDesync(shootDesync: ShootDesync):void {
           this.player.map_.nextProjectileId_ -= shootDesync.diff;
+      }
+
+      private function onBulletResync(_packet: BulletResync):void {
+         this.player.map_.nextProjectileId_ = 0;
       }
    }
 }
