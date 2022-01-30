@@ -15,8 +15,8 @@ import flash.net.SharedObject;
 
 //      public static const SERVER_ADDRESS:String = "40.71.166.119";
 //        public static const SERVER_ADDRESS:String = "40.121.236.86";
-      //public static const SERVER_ADDRESS:String = "127.0.0.1";
-      public static const SERVER_ADDRESS:String = "199.244.49.231";
+      public static const SERVER_ADDRESS:String = "127.0.0.1";
+      //public static const SERVER_ADDRESS:String = "199.244.49.231";
       //public static const SERVER_ADDRESS:String = "54.202.144.109";
 //      public static const SERVER_ADDRESS:String = "100.14.111.163";
       //public static const SERVER_ADDRESS:String = "192.3.180.54";
