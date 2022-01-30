@@ -16,6 +16,7 @@ import com.company.util.AssetLibrary;
    import flash.utils.ByteArray;
    import kabam.rotmg.assets.EmbeddedAssets;
 import kabam.rotmg.assets.EmbeddedAssets_HanamiParts8x8Embed_;
+import kabam.rotmg.assets.EmbeddedAssets_UTRImport_;
 import kabam.rotmg.assets.EmbeddedAssets_lofiObj64x64Embed_;
 import kabam.rotmg.assets.EmbeddedData;
    
@@ -99,7 +100,8 @@ import kabam.rotmg.assets.EmbeddedData;
          AssetLibrary.addImageSet("CustomItems", new EmbeddedAssets.cosmicItems().bitmapData, 8, 8);
 
          AssetLibrary.addImageSet("lofiObj64x64",new EmbeddedAssets.lofiObj64x64Embed_().bitmapData,64,64);
-
+         AssetLibrary.addImageSet("UTRImport",new EmbeddedAssets.utrItems().bitmapData,8,8);
+         AssetLibrary.addImageSet("UTRProj",new EmbeddedAssets.utrProjs().bitmapData,8,8);
       }
       
       private function addAnimatedCharacters() : void

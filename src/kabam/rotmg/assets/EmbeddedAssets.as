@@ -1,6 +1,8 @@
 package kabam.rotmg.assets
 {
-   public class EmbeddedAssets
+import kabam.rotmg.assets.EmbeddedAssets_UTRProjsEmbed_;
+
+public class EmbeddedAssets
    {
       
       public static var particlesEmbed:Class = EmbeddedAssets_particlesEmbed;
@@ -134,6 +136,9 @@ package kabam.rotmg.assets
       public static var lofiObj64x64Embed_:Class = EmbeddedAssets_lofiObj64x64Embed_;
 
       public static var cosmicItems:Class = EmbeddedAssets_CustomItemsEmbed_;
+
+      public static var utrItems:Class = EmbeddedAssets_UTRImport_;
+      public static var utrProjs:Class = EmbeddedAssets_UTRProjsEmbed_;
 
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),

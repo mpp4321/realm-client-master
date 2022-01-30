@@ -53,11 +53,15 @@ package kabam.rotmg.assets
       private static const IceTombCXML:Class = EmbeddedData_IceTombCXML;
       private static const LostHallsCXML:Class = EmbeddedData_LostHallsCXML;
       private static const ToxicCXML:Class = EmbeddedData_ToxicSewersCXML;
+      private static const utrItemsCXML:Class = EmbeddedData_UTRImportCXML;
+      private static const utrProjsCXML:Class = EmbeddedData_UTRProjsCXML;
 
       private static const hanaminexusObjectCXML:Class = EmbeddedData_hanaminexusObjectCXML;
 
       public static const skinsXML:XML = XML(new SkinsCXML());
       public static const objectFiles:Array = [
+              new utrItemsCXML(),
+              new utrProjsCXML(),
               new ToxicCXML(),
               new LostHallsCXML(),
               new LairOfDraconisCXML(),
