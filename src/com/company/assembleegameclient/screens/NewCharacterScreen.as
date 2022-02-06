@@ -55,6 +55,7 @@ package com.company.assembleegameclient.screens
          {
             playerXML = ObjectLibrary.playerChars_[i];
             objectType = int(playerXML.@type);
+            if(objectType > 0x0327) { break; }
             characterType = playerXML.@id;
 
             charBox = new CharacterBox(playerXML,model.getCharStats()[objectType],model);

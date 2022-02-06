@@ -401,6 +401,22 @@ import kabam.rotmg.messaging.impl.data.StatData;
             activationType = activateXML.toString();
             switch(activationType)
             {
+               case ActivationType.EGG_ITEM:
+                 var workingString = "";
+                 var type = parseInt(this.objectXML_.EggType[0].text());
+                 switch(type)
+                 {
+                    case 1:
+                         workingString = "Gives a random item when this item collects: " + itemData_.Meta + " / 200000 xp";
+                         break;
+                    case 2:
+                         workingString = "Gives a random item when this item collects: " + itemData_.Meta + " / 500000 xp"
+                         break;
+                    default:
+                         break;
+                 }
+                  this.effects.push(new Effect("", workingString));
+                  continue;
                case ActivationType.DYE:
                   this.effects.push(new Effect("", "Changes texture of your character"));
                   continue;

@@ -41,7 +41,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          "Container":Container,
          "GameObject":GameObject,
          "GuildBoard":GuildBoard,
-         "MixingBowl": MixingBowl,
+         "MixingBowl": ChangeJob,
          "GuildChronicle":GuildChronicle,
          "GuildHallPortal":GuildHallPortal,
          "GuildMerchant":GuildMerchant,
