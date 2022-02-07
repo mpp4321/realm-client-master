@@ -140,6 +140,9 @@ public class EmbeddedAssets
       public static var utrItems:Class = EmbeddedAssets_UTRImport_;
       public static var utrProjs:Class = EmbeddedAssets_UTRProjsEmbed_;
 
+      public static var lairOfDraconis:Class = EmbeddedAssets_lairOfDraconisEmbed_;
+      public static var lairOfDraconisBig:Class = EmbeddedAssets_lairOfDraconisBigEmbed_;
+
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),
          "Monster Tank2":new monsterTank2Embed_(),

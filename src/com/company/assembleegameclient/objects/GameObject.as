@@ -734,12 +734,12 @@ public class GameObject extends BasicObject
                }
                if(ce != null)
                {
-                  //if((this.condition_ | ce.bit_) != this.condition_)
-                  //{
+                  if((this.condition_ | ce.bit_) != this.condition_)
+                  {
                      //this.condition_ = this.condition_ | ce.bit_; //Applies the effect on the client-side
                      map_.mapOverlay_.addStatusText(new CharacterStatusText(this,ce.name_,16711680,3000,offsetTime));
                      offsetTime = offsetTime + 500;
-                  //}
+                  }
                }
             }
          }

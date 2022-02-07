@@ -102,6 +102,10 @@ import kabam.rotmg.assets.EmbeddedData;
          AssetLibrary.addImageSet("lofiObj64x64",new EmbeddedAssets.lofiObj64x64Embed_().bitmapData,64,64);
          AssetLibrary.addImageSet("UTRImport",new EmbeddedAssets.utrItems().bitmapData,8,8);
          AssetLibrary.addImageSet("UTRProj",new EmbeddedAssets.utrProjs().bitmapData,8,8);
+
+         AssetLibrary.addImageSet("lairOfDraconis",new EmbeddedAssets.lairOfDraconis().bitmapData,8,8);
+         AssetLibrary.addImageSet("lairOfDraconisBig",new EmbeddedAssets.lairOfDraconisBig().bitmapData,16, 16);
+
       }
       
       private function addAnimatedCharacters() : void
