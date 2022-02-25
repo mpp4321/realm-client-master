@@ -276,11 +276,30 @@ public class Projectile extends BasicObject
          p.x = this.startX_;
          p.y = this.startY_;
 
-         var speed = speedAt(elapsed);
+         var elapsedT = elapsed / 1000.0;
+         var dist;
 
-         var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
-         var distAfterAccel = Math.max(0, elapsed - projProps_.accelerateDelay_) * (speed / 10000);
-         var dist:Number = distBeforeAccel + distAfterAccel;
+         //TODO projectile accel delay
+
+         var delayT = this.projProps_.accelerateDelay_ / 1000.0;
+         var distDelayT = this.projProps_.speed_ * delayT;
+
+         if(Math.abs(this.projProps_.accelerate_) > 0 && elapsedT >= delayT) {
+            var delta = -this.projProps_.speed_ / this.projProps_.accelerate_;
+            if((elapsedT - delayT) > delta && delta > 0.0) {
+               dist = (this.projProps_.accelerate_ * Math.pow(delta, 2) / 2.0) + (this.projProps_.speed_ * delta);
+            } else {
+               dist = (this.projProps_.accelerate_ * Math.pow(elapsedT - delayT, 2) / 2.0) + (this.projProps_.speed_ * (elapsedT - delayT));
+            }
+            dist += distDelayT;
+            dist /= 10.0;
+         } else {
+            dist = elapsed * projProps_.speed_ / 10000.0;
+         }
+
+         /*var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
+         var distAfterAccel = Math.max(0, elapsed - projProps_.accelerateDelay_) * (speed / 10000);*/
+         //var dist:Number = distBeforeAccel + distAfterAccel;
 
          var phase: Number = projProps_.phaseLock_ == 1 ? 0 : Math.PI;
          if(projProps_.phaseLock_ == -1)

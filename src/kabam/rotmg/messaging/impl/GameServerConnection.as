@@ -45,6 +45,7 @@ import com.company.assembleegameclient.util.Currency;
    import com.company.assembleegameclient.util.FreeList;
    import com.company.util.MoreStringUtil;
    import com.company.util.Random;
+import com.company.util.SpriteUtil;
 import com.company.util.Trig;
 import com.hurlant.crypto.Crypto;
    import com.hurlant.crypto.rsa.RSAKey;
@@ -64,7 +65,11 @@ import com.hurlant.crypto.Crypto;
    import kabam.lib.net.impl.Message;
    import kabam.lib.net.impl.SocketServer;
    import kabam.rotmg.account.core.Account;
-   import kabam.rotmg.classes.model.CharacterClass;
+import kabam.rotmg.assets.EmbeddedAssets;
+import kabam.rotmg.assets.EmbeddedAssets_legendaryPopupEmbed_;
+import kabam.rotmg.assets.EmbeddedAssets_rtPopupEmbed_;
+import kabam.rotmg.assets.EmbeddedAssets_utPopupEmbed_;
+import kabam.rotmg.classes.model.CharacterClass;
 import kabam.rotmg.classes.model.CharacterSkin;
 import kabam.rotmg.classes.model.CharacterSkinState;
 import kabam.rotmg.classes.model.ClassesModel;
@@ -100,7 +105,8 @@ import kabam.rotmg.messaging.impl.incoming.Goto;
 import kabam.rotmg.messaging.impl.incoming.GuildResult;
    import kabam.rotmg.messaging.impl.incoming.InvResult;
    import kabam.rotmg.messaging.impl.incoming.InvitedToGuild;
-   import kabam.rotmg.messaging.impl.incoming.MapInfo;
+import kabam.rotmg.messaging.impl.incoming.LootNotif;
+import kabam.rotmg.messaging.impl.incoming.MapInfo;
    import kabam.rotmg.messaging.impl.incoming.NewTick;
    import kabam.rotmg.messaging.impl.incoming.Notification;
    import kabam.rotmg.messaging.impl.incoming.PlaySound;
@@ -222,6 +228,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const SWITCHMUSIC:int = 58;
       public static const SHOOTDESYNC:int = 59;
       public static const BULLETRESYNC:int = 60;
+      public static const LOOTNOTIF: int = 61;
 
       public static var instance:GameServerConnection;
 
@@ -342,6 +349,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(CHANGETRADE).toMessage(ChangeTrade);
          messages.map(CANCELTRADE).toMessage(CancelTrade);
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
+         messages.map(LOOTNOTIF).toMessage(LootNotif).toMethod(this.onLootNotif);
          messages.map(SHOOTDESYNC).toMessage(ShootDesync).toMethod(this.onShootDesync);
          messages.map(BULLETRESYNC).toMessage(BulletResync).toMethod(this.onBulletResync);
          messages.map(FAILURE).toMessage(Failure).toMethod(this.onFailure);
@@ -1226,6 +1234,9 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                case StatData.MERCHANDISE_RANK_REQ_STAT:
                   (go as SellableObject).setRankReq(value);
                   continue;
+               case StatData.MERCHANDISE_ITEM_DATA_STAT:
+                  merchant.itemData_ = JSON.parse(stat.strStatValue_)
+                  continue;
                case StatData.MAX_HP_BOOST_STAT:
                   player.maxHPBoost_ = value;
                   continue;
@@ -1698,6 +1709,21 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
 
       private function onBulletResync(_packet: BulletResync):void {
          this.player.map_.nextProjectileId_ = 0;
+      }
+
+      private function onLootNotif(_packet: LootNotif):void {
+         switch(_packet.type)
+         {
+            case 0:
+               SpriteUtil.createFadeoutSprite(this.gs_, new EmbeddedAssets.legendary_popup().bitmapData, 200, 130, 2.0);
+               break;
+            case 1:
+               SpriteUtil.createFadeoutSprite(this.gs_, new EmbeddedAssets.rt_popup().bitmapData, 200, 130, 2.0);
+               break;
+            case 0:
+               SpriteUtil.createFadeoutSprite(this.gs_, new EmbeddedAssets.ut_popup().bitmapData, 200, 0, 2.0);
+               break;
+         }
       }
    }
 }

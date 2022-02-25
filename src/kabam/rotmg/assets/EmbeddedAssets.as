@@ -134,6 +134,8 @@ public class EmbeddedAssets
       public static var d3LofiObjBigEmbed_:Class = EmbeddedAssets_d3LofiObjBigEmbed_;
 
       public static var lofiObj64x64Embed_:Class = EmbeddedAssets_lofiObj64x64Embed_;
+      public static var lofiChar32x32Embed_:Class = EmbeddedAssets_lofiChar32x32Embed_;
+
 
       public static var cosmicItems:Class = EmbeddedAssets_CustomItemsEmbed_;
 
@@ -142,6 +144,11 @@ public class EmbeddedAssets
 
       public static var lairOfDraconis:Class = EmbeddedAssets_lairOfDraconisEmbed_;
       public static var lairOfDraconisBig:Class = EmbeddedAssets_lairOfDraconisBigEmbed_;
+
+      public static var legendary_popup: Class = EmbeddedAssets_legendaryPopupEmbed_;
+      public static var rt_popup: Class = EmbeddedAssets_rtPopupEmbed_;
+      public static var ut_popup: Class = EmbeddedAssets_utPopupEmbed_;
+
 
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),

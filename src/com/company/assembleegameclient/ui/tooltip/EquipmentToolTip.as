@@ -401,6 +401,9 @@ import kabam.rotmg.messaging.impl.data.StatData;
             activationType = activateXML.toString();
             switch(activationType)
             {
+               case ActivationType.FAME_CONSUME:
+                  this.effects.push(new Effect("", "Gives " + itemData_.MiscIntOne + " fame on use."));
+                  break;
                case ActivationType.EGG_ITEM:
                  var workingString = "";
                  var type = parseInt(this.objectXML_.EggType[0].text());

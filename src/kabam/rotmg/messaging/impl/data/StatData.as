@@ -101,6 +101,7 @@ package kabam.rotmg.messaging.impl.data
       public static const GLOW_STAT : int = 93;
       public static const PROTECTION_STAT : int = 94;
       public static const PROTECTION_BOOST_STAT : int = 95;
+      public static const MERCHANDISE_ITEM_DATA_STAT : int = 96;
 
       
       public var statType_:uint = 0;
@@ -145,7 +146,6 @@ package kabam.rotmg.messaging.impl.data
       
       public function isStringStat() : Boolean
       {
-
          if(this.statType_ >= ITEMDATA_0_STAT && this.statType_ <= ITEMDATA_19_STAT) return true;
 
          switch(this.statType_)
@@ -153,6 +153,7 @@ package kabam.rotmg.messaging.impl.data
             case RUNE_EFFECTS:
             case NAME_STAT:
             case GUILD_NAME_STAT:
+            case MERCHANDISE_ITEM_DATA_STAT:
                return true;
             default:
                return false;

@@ -5,7 +5,8 @@ package kabam.rotmg.game.view
    import com.company.assembleegameclient.objects.SellableObject;
    import com.company.assembleegameclient.ui.RankText;
    import com.company.assembleegameclient.ui.panels.Panel;
-   import com.company.assembleegameclient.ui.tooltip.ToolTip;
+import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTileSprite;
+import com.company.assembleegameclient.ui.tooltip.ToolTip;
    import com.company.assembleegameclient.util.Currency;
    import com.company.assembleegameclient.util.GuildUtil;
    import com.company.ui.SimpleText;
@@ -41,11 +42,14 @@ package kabam.rotmg.game.view
       private var bitmap:Bitmap;
       
       private const BUTTON_OFFSET:int = 17;
+
+      private var itemTileSprite: ItemTileSprite;
       
       public function SellableObjectPanel(gs:GameSprite, owner:SellableObject)
       {
          this.buyItem = new Signal(SellableObject);
          this.coinIcon = new Sprite();
+         this.itemTileSprite = new ItemTileSprite();
          this.bitmap = new Bitmap();
          super(gs);
          this.createNameText();
@@ -89,15 +93,31 @@ package kabam.rotmg.game.view
       {
          this.buyButton = new LegacyBuyButton("",16,0,0);
          this.buyButton.addEventListener(MouseEvent.CLICK,this.onBuyButtonClick);
+         this.buyButton.y = 44;
+         this.buyButton.x = 60;
          addChild(this.buyButton);
       }
       
       private function createIcon() : void
       {
-         this.bitmap.x = -4;
-         this.bitmap.y = -8;
-         this.bitmap.bitmapData = this.owner.getIcon();
-         addChild(this.bitmap);
+         this.itemTileSprite.x = -4;
+         this.itemTileSprite.y = -8;
+         var icon = this.owner.getIcon();
+         this.itemTileSprite.itemBitmap.bitmapData = icon;
+         /*this.bitmap.bitmapData = icon;
+         this.bitmap.width = icon.width;
+         this.bitmap.height = icon.height;
+         this.coinIcon.width = icon.width;
+         this.coinIcon.height = icon.height;
+         this.coinIcon.scaleX = 1.0;
+         this.coinIcon.scaleY = 1.0;
+         this.coinIcon.mouseEnabled = true;
+         this.coinIcon.buttonMode = true;*/
+         this.itemTileSprite.mouseEnabled = true;
+
+         addChild(this.itemTileSprite);
+         //addChild(this.bitmap);
+         //addChild(this.coinIcon);
       }
       
       private function createNameText() : void
@@ -127,21 +147,22 @@ package kabam.rotmg.game.view
       
       private function onAddedToStage(event:Event) : void
       {
-         this.coinIcon.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
-         this.coinIcon.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
+         this.itemTileSprite.addEventListener(MouseEvent.ROLL_OVER, onMouseOver);
+         this.itemTileSprite.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
       }
       
       private function onRemovedFromStage(event:Event) : void
       {
-         this.coinIcon.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
-         this.coinIcon.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
+         this.itemTileSprite.removeEventListener(MouseEvent.ROLL_OVER,this.onMouseOver);
+         this.itemTileSprite.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
          this.resetTooltip();
       }
       
-      private function onMouseOver(event:MouseEvent) : void
+      private function onMouseOver(event: MouseEvent) : void
       {
          this.resetTooltip();
-         stage.addChild(this.toolTip = this.owner.getTooltip());
+         this.toolTip = this.owner.getTooltip()
+         stage.addChild(this.toolTip);
       }
       
       private function resetTooltip() : void
@@ -168,7 +189,10 @@ package kabam.rotmg.game.view
       
       override public function draw() : void
       {
-         var player:Player = gs_.map.player_;
+         graphics.beginFill(0xFF0000);
+         graphics.drawRect(0, 0, this.coinIcon.width, this.coinIcon.height);
+         graphics.endFill();
+         /*var player:Player = gs_.map.player_;
          this.nameText.y = this.nameText.height > 30?Number(0):Number(12);
          var rankReq:int = this.owner.rankReq_;
          if(player.numStars_ < rankReq)
@@ -198,7 +222,7 @@ package kabam.rotmg.game.view
             {
                removeChild(this.rankReqText);
             }
-         }
+         }*/
       }
       
       private function updateRankRequiredText(rankReq:int) : void

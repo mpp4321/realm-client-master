@@ -53,12 +53,15 @@ package com.company.util
          return v;
       }
 
-      public static function parseXMLItemDataJson(obj: Object) {
-         var stringArrayItemDatas = ConversionUtil.toStringArray(obj);
-         var ItemDataConv: Vector.<Object> = new Vector.<Object>();
-         for(var s in stringArrayItemDatas) {
-            ItemDataConv.push(JSON.parse(s));
+      public static function parseXMLItemDataJson(obj) : Vector.<Object> {
+         var wrappedString = "[" + obj + "]";
+         var stringArrayItemDatas = JSON.parse(wrappedString);
+         var vectorOfObjects = new Vector.<Object>();
+         for(var i = 0; i < stringArrayItemDatas.length; i++)
+         {
+            vectorOfObjects.push(stringArrayItemDatas[i]);
          }
+         return vectorOfObjects;
       }
       
       public static function toStringArray(obj:Object, delim:String = ",") : Array

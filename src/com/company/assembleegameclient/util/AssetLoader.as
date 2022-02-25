@@ -17,6 +17,7 @@ import com.company.util.AssetLibrary;
    import kabam.rotmg.assets.EmbeddedAssets;
 import kabam.rotmg.assets.EmbeddedAssets_HanamiParts8x8Embed_;
 import kabam.rotmg.assets.EmbeddedAssets_UTRImport_;
+import kabam.rotmg.assets.EmbeddedAssets_d1Chars16x16rEmbed_;
 import kabam.rotmg.assets.EmbeddedAssets_lofiObj64x64Embed_;
 import kabam.rotmg.assets.EmbeddedData;
    
@@ -133,6 +134,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AnimatedChars.add("playerskins",new EmbeddedAssets.playersSkinsEmbed_().bitmapData,new EmbeddedAssets.playersSkinsMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("goldenskins",new EmbeddedAssets.goldenskinsEmbed_().bitmapData,new EmbeddedAssets.playersMaskEmbed_().bitmapData,8,8,56,24,AnimatedChar.RIGHT);
          AnimatedChars.add("chars8x8rPets1",new EmbeddedAssets.chars8x8rPets1Embed_().bitmapData,new EmbeddedAssets.chars8x8rPets1MaskEmbed_().bitmapData,8,8,56,8,AnimatedChar.RIGHT);
+         AnimatedChars.add("lofiChar32x32",new EmbeddedAssets.lofiChar32x32Embed_().bitmapData, null,32,32, 224, 32, AnimatedChar.RIGHT);
 
          AnimatedChars.add("Hanami8x8chars", new EmbeddedAssets.Hanami8x8charsEmbed_().bitmapData, null, 8, 8, 64, 8, AnimatedChar.RIGHT);
 
@@ -144,6 +146,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AnimatedChars.add("d3Chars16x16rEmbed", new EmbeddedAssets.d3Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
          AnimatedChars.add("d2Chars8x8rEmbed", new EmbeddedAssets.d2Chars8x8rEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
          AnimatedChars.add("d2Chars16x16rEmbed", new EmbeddedAssets.d2Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
+         AnimatedChars.add("d1chars16x16r", new EmbeddedAssets.d1Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
 
       }
       

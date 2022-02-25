@@ -27,7 +27,7 @@ package com.company.assembleegameclient.mapeditor
       
       private static var transbackgroundBD_:BitmapData = new transbackgroundEmbed_().bitmapData;
       
-      public static const NUM_SQUARES:int = 256;
+      public static const NUM_SQUARES:int = 1024;
       
       public static const SQUARE_SIZE:int = 16;
       

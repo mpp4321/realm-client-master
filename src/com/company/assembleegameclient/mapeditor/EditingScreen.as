@@ -53,6 +53,8 @@ public class EditingScreen extends Sprite {
 
     public var chooserDropDown_:DropDown;
 
+    public var wallChooser_:WallChooser;
+
     public var groundChooser_:GroundChooser;
 
     public var objChooser_:ObjectChooser;
@@ -95,7 +97,7 @@ public class EditingScreen extends Sprite {
         this.infoPane_.x = 4;
         this.infoPane_.y = 600 - InfoPane.HEIGHT - 10;
         addChild(this.infoPane_);
-        this.chooserDropDown_ = new DropDown(new <String>["Ground", "Objects", "Regions"], Chooser.WIDTH, 26);
+        this.chooserDropDown_ = new DropDown(new <String>["Ground", "Objects", "Regions", "Walls"], Chooser.WIDTH, 26);
         this.chooserDropDown_.x = this.meMap_.x + MEMap.SIZE + 4;
         this.chooserDropDown_.y = MAP_Y;
         this.chooserDropDown_.addEventListener(Event.CHANGE, this.onDropDownChange);
@@ -116,6 +118,9 @@ public class EditingScreen extends Sprite {
         this.regionChooser_ = new RegionChooser();
         this.regionChooser_.x = this.filter_.x;
         this.regionChooser_.y = this.filter_.y + this.filter_.height + 4;
+        this.wallChooser_ = new WallChooser();
+        this.wallChooser_.x = this.filter_.x;
+        this.wallChooser_.y = this.filter_.y + this.filter_.height + 4;
     }
 
     private function onTilesEvent(event:TilesEvent):void {
@@ -224,19 +229,30 @@ public class EditingScreen extends Sprite {
                 SpriteUtil.safeAddChild(this, this.groundChooser_);
                 SpriteUtil.safeRemoveChild(this, this.objChooser_);
                 SpriteUtil.safeRemoveChild(this, this.regionChooser_);
+                SpriteUtil.safeRemoveChild(this, this.wallChooser_);
                 this.chooser_ = this.groundChooser_;
                 break;
             case "Objects":
                 SpriteUtil.safeRemoveChild(this, this.groundChooser_);
                 SpriteUtil.safeAddChild(this, this.objChooser_);
                 SpriteUtil.safeRemoveChild(this, this.regionChooser_);
+                SpriteUtil.safeRemoveChild(this, this.wallChooser_);
                 this.chooser_ = this.objChooser_;
                 break;
             case "Regions":
                 SpriteUtil.safeRemoveChild(this, this.groundChooser_);
                 SpriteUtil.safeRemoveChild(this, this.objChooser_);
                 SpriteUtil.safeAddChild(this, this.regionChooser_);
+                SpriteUtil.safeRemoveChild(this, this.wallChooser_);
                 this.chooser_ = this.regionChooser_;
+                break;
+            case "Walls":
+                SpriteUtil.safeRemoveChild(this, this.groundChooser_);
+                SpriteUtil.safeRemoveChild(this, this.objChooser_);
+                SpriteUtil.safeAddChild(this, this.wallChooser_);
+                SpriteUtil.safeRemoveChild(this, this.regionChooser_);
+                this.chooser_ = this.wallChooser_;
+                break;
         }
         this.chooser_.reloadElements(this.filter_.text());
     }

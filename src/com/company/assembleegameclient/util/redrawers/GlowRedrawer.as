@@ -18,9 +18,10 @@ public class GlowRedrawer
 
     private static const GRADIENT_MAX_SUB:uint = 2631720;
 
-    private static const GLOW_FILTER:GlowFilter = new GlowFilter(0,0.3,12,12,2,BitmapFilterQuality.LOW,false,false);
-
-    private static const GLOW_FILTER_ALT:GlowFilter = new GlowFilter(0,0.5,16,16,3,BitmapFilterQuality.LOW,false,false);
+    //private static const GLOW_FILTER:GlowFilter = new GlowFilter(0,0.3,12,12,2,BitmapFilterQuality.LOW,false,false);
+    //private static const GLOW_FILTER_ALT:GlowFilter = new GlowFilter(0,0.5,16,16,3,BitmapFilterQuality.LOW,false,false);
+    private static const GLOW_FILTER:GlowFilter = new GlowFilter(0, 0.3, 8, 8, 2, 1, false, false);
+    private static const GLOW_FILTER_OUTLINE:GlowFilter = new GlowFilter(0, 1, 2, 2, 255, 1, false, false);
 
     private static var tempMatrix_:Matrix = new Matrix();
 
@@ -53,16 +54,27 @@ public class GlowRedrawer
         newTexture.applyFilter(newTexture,newTexture.rect,PointUtil.ORIGIN,TextureRedrawer.OUTLINE_FILTER);
         if(glowColor != 4294967295)
         {
-            if(Parameters.GPURenderFrame && glowColor != 0)
+            if(glowColor != 0)
             {
-                GLOW_FILTER_ALT.color = glowColor;
-                newTexture.applyFilter(newTexture,newTexture.rect,PointUtil.ORIGIN,GLOW_FILTER_ALT);
+                GLOW_FILTER_OUTLINE.color = glowColor;
+                newTexture.applyFilter(newTexture, newTexture.rect, PointUtil.ORIGIN, GLOW_FILTER_OUTLINE);
+                GLOW_FILTER.color = glowColor;
+                newTexture.applyFilter(newTexture, newTexture.rect, PointUtil.ORIGIN, GLOW_FILTER);
+            }
+            /*if(Parameters.GPURenderFrame && glowColor != 0)
+            {
+                //GLOW_FILTER_ALT.color = glowColor;
+                //newTexture.applyFilter(newTexture,newTexture.rect,PointUtil.ORIGIN,GLOW_FILTER_ALT);
+                GLOW_FILTER_OUTLINE.color = glowColor;
+                newTexture.applyFilter(newTexture, newTexture.rect, PointUtil.ORIGIN, GLOW_FILTER_OUTLINE);
+                GLOW_FILTER.color = glowColor;
+                newTexture.applyFilter(newTexture, newTexture.rect, PointUtil.ORIGIN, GLOW_FILTER);
             }
             else
             {
                 GLOW_FILTER.color = glowColor;
                 newTexture.applyFilter(newTexture,newTexture.rect,PointUtil.ORIGIN,GLOW_FILTER);
-            }
+            }*/
         }
         if(caching)
         {

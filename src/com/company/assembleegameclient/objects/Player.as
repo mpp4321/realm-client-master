@@ -1122,6 +1122,20 @@ import org.swiftsuspenders.Injector;
          }
       }
 
+      public function getBoosts(ind) {
+         switch(ind) {
+            case 0: return maxHPBoost_;
+            case 1: return maxMPBoost_;
+            case 2: return attackBoost_;
+            case 3: return defenseBoost_;
+            case 4: return speedBoost_;
+            case 5: return dexterityBoost_;
+            case 6: return vitalityBoost_;
+            case 7: return wisdomBoost_;
+            case 8: return protectionBoost_;
+         }
+      }
+
       public function getStatTotal(ind) {
          switch(ind) {
             case 0: return maxHPBoost_ + maxHP_;
