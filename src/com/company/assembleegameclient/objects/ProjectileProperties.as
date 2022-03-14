@@ -80,7 +80,9 @@ package com.company.assembleegameclient.objects
             {
                this.effects_ = new Vector.<uint>();
             }
-            this.effects_.push(ConditionEffect.getConditionEffectFromName(String(condEffectXML)));
+            if(!condEffectXML.hasOwnProperty("@probability")) {
+               this.effects_.push(ConditionEffect.getConditionEffectFromName(String(condEffectXML)));
+            }
          }
          this.noAmpAccel = projectileXML.hasOwnProperty("NoAmpAccel");
          this.multiHit_ = projectileXML.hasOwnProperty("MultiHit");
