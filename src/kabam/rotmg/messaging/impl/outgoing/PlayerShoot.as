@@ -10,6 +10,7 @@ package kabam.rotmg.messaging.impl.outgoing
       public var angle_:Number;
       public var ability_:Boolean;
       public var numShots_:int;
+      public var expectedId_:int;
       
       public function PlayerShoot(id:uint, callback:Function)
       {
@@ -23,6 +24,7 @@ package kabam.rotmg.messaging.impl.outgoing
          this.startingPos_.writeToOutput(data);
          data.writeFloat(this.angle_);
          data.writeBoolean(ability_);
+         data.writeInt(expectedId_);
          if (numShots_ != 1)
          {
             data.writeByte(numShots_);

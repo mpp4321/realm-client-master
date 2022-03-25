@@ -14,7 +14,9 @@ import com.company.assembleegameclient.ui.options.Options;
 import com.company.util.AssetLibrary;
    import flash.display.BitmapData;
    import flash.utils.ByteArray;
-   import kabam.rotmg.assets.EmbeddedAssets;
+
+import kabam.rotmg.assets.EmbeddedAssets_alienInvasionChars16x16Embed_;
+import kabam.rotmg.assets.EmbeddedAssets;
 import kabam.rotmg.assets.EmbeddedAssets_HanamiParts8x8Embed_;
 import kabam.rotmg.assets.EmbeddedAssets_UTRImport_;
 import kabam.rotmg.assets.EmbeddedAssets_d1Chars16x16rEmbed_;
@@ -147,6 +149,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AnimatedChars.add("d2Chars8x8rEmbed", new EmbeddedAssets.d2Chars8x8rEmbed_().bitmapData, null, 8, 8, 56, 8, AnimatedChar.RIGHT);
          AnimatedChars.add("d2Chars16x16rEmbed", new EmbeddedAssets.d2Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
          AnimatedChars.add("d1chars16x16r", new EmbeddedAssets.d1Chars16x16rEmbed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
+         AnimatedChars.add("alienInvasionChars16x16", new EmbeddedAssets.alioenInvasionChars16x16Embed_().bitmapData, null, 16, 16, 112, 16, AnimatedChar.RIGHT);
 
       }
       

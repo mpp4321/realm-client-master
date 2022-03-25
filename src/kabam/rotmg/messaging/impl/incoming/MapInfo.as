@@ -23,6 +23,8 @@ package kabam.rotmg.messaging.impl.incoming
       public var showDisplays_:Boolean;
 
       public var music_:String;
+
+      public var nextProjectileId_: int;
       
       public function MapInfo(id:uint, callback:Function)
       {
@@ -40,6 +42,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.showDisplays_ = data.readBoolean();
          this.allowPlayerTeleport_ = data.readBoolean();
          this.music_ = data.readUTF();
+         this.nextProjectileId_ = data.readInt();
       }
       
       override public function toString() : String

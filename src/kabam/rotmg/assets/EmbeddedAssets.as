@@ -1,5 +1,6 @@
 package kabam.rotmg.assets
 {
+import kabam.rotmg.assets.EmbeddedAssets_alienInvasionChars16x16Embed_;
 import kabam.rotmg.assets.EmbeddedAssets_UTRProjsEmbed_;
 
 public class EmbeddedAssets
@@ -135,6 +136,7 @@ public class EmbeddedAssets
 
       public static var lofiObj64x64Embed_:Class = EmbeddedAssets_lofiObj64x64Embed_;
       public static var lofiChar32x32Embed_:Class = EmbeddedAssets_lofiChar32x32Embed_;
+      public static var alioenInvasionChars16x16Embed_:Class = EmbeddedAssets_alienInvasionChars16x16Embed_;
 
 
       public static var cosmicItems:Class = EmbeddedAssets_CustomItemsEmbed_;

@@ -2454,12 +2454,12 @@
             <Index>1</Index>
         </AnimatedTexture>
         <DisplayId>Spectral Sentry</DisplayId>
-        <Size>0</Size>
-        <Invincible/>
+        <Size>110</Size>
+		<MaxHitPoints>100000</MaxHitPoints>
         <Exp>10000</Exp>
         <Projectile id="0">
             <ObjectId>Spectral Spinner Blue</ObjectId>
-            <Damage>125</Damage>
+            <Damage>90</Damage>
             <Size>100</Size>
             <Speed>100</Speed>
             <LifetimeMS>1000</LifetimeMS>
@@ -2468,7 +2468,7 @@
         </Projectile>
         <Projectile id="1">
             <ObjectId>Spectral Spinner Green</ObjectId>
-            <Damage>125</Damage>
+            <Damage>80</Damage>
             <Size>100</Size>
             <Speed>85</Speed>
             <LifetimeMS>1000</LifetimeMS>

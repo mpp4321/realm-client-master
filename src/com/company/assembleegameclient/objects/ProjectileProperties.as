@@ -55,6 +55,9 @@ package com.company.assembleegameclient.objects
       public var burstCount_: int;
       public var burstCooldown_: int;
 
+      public var explodeProjectile: ProjectileProperties = null;
+      public var explodeCount: int;
+
 
       public function ProjectileProperties(projectileXML:XML)
       {
@@ -105,6 +108,10 @@ package com.company.assembleegameclient.objects
          this.doBurst_ = projectileXML.hasOwnProperty("Burst");
          this.burstCount_ = Number(projectileXML.hasOwnProperty("Burst") ? int(projectileXML.Burst) : 0);
          this.burstCooldown_ = Number(projectileXML.hasOwnProperty("BurstCooldown") ? int(projectileXML.BurstCooldown) : 1000);
+
+         // Exploding projectiles
+         this.explodeCount = projectileXML.hasOwnProperty("ExplodeCount") ? Number(projectileXML.ExplodeCount) : 0;
+         this.explodeProjectile = projectileXML.hasOwnProperty("ExplodeProjectile") ? new ProjectileProperties(projectileXML.ExplodeProjectile[0]) : null;
       }
    }
 }

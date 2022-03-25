@@ -85,6 +85,7 @@ import kabam.rotmg.ui.UIUtils;
       public function applyMapInfo(mapInfo:MapInfo) : void
       {
          this.map.setProps(mapInfo.width_,mapInfo.height_,mapInfo.name_,mapInfo.background_,mapInfo.allowPlayerTeleport_,mapInfo.showDisplays_);
+         //this.map.nextProjectileId_ = mapInfo.nextProjectileId_;
       }
 
       public function hudModelInitialized() : void

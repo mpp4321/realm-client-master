@@ -9377,27 +9377,6 @@
 		<Activate amount="150">TreasureActivate</Activate>
 		<DisplayId>Golden Crystal</DisplayId>
 	</Object>
-	<Object type="0x510a" id="Ouija Board">
-		<Class>Equipment</Class>
-		<Item />
-		<SlotType>10</SlotType>
-		<Texture>
-			<File>UTRImport</File>
-			<Index>0x227</Index>
-		</Texture>
-		<Description>A treasure from the Undead Lair.</Description>
-		<ExtraTooltipData>
-			<EffectInfo name="" description="Can be used to obtain 125 gold." />
-		</ExtraTooltipData>
-		<Sound>spell/fire_nova</Sound>
-		<BagType>9</BagType>
-		<White />
-		<Treasure />
-		<Soulbound />
-		<Consumable />
-		<Activate amount="125">TreasureActivate</Activate>
-		<DisplayId>Ouija Board</DisplayId>
-	</Object>
 	<Object type="0x510b" id="Golden Urn">
 		<Class>Equipment</Class>
 		<Item />

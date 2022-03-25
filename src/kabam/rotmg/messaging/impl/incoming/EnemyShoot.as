@@ -6,7 +6,6 @@ package kabam.rotmg.messaging.impl.incoming
    public class EnemyShoot extends IncomingMessage
    {
 
-
       public var bulletId_:uint;
 
       public var ownerId_:int;

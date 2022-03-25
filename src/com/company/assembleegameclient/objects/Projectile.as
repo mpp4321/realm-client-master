@@ -84,6 +84,53 @@ public class Projectile extends BasicObject
          }
       }
 
+      public function reset_with_props(proj_props: ProjectileProperties, props: ObjectProperties, bulletType: int, ownerId:int, bulletId:int, angle:Number, startTime:int, notItem: Boolean = false) {
+         var size:Number = NaN;
+         clear();
+         this.bulletType_ = bulletType;
+         this.bulletId_ = bulletId;
+         this.ownerId_ = ownerId;
+         this.angle_ = Trig.boundToPI(angle);
+         this.startTime_ = startTime;
+         objectId_ = getNextFakeObjectId();
+         z_ = 0.5;
+
+         this.containerProps_ = props;
+         this.containerType_ = props.type_;
+         this.projProps_ = proj_props;
+         this.props_ = ObjectLibrary.getPropsFromId(this.projProps_.objectId_);
+
+         hasShadow_ = this.props_.shadowSize_ > 0;
+
+         var textureData:TextureData = ObjectLibrary.typeToTextureData_[this.props_.type_];
+         var animationData: AnimationsData = ObjectLibrary.typeToAnimationsData_[this.props_.type_];
+         if(animationData != null) {
+            animation = new AnimationHelper();
+            animation.setFrames(animationData.animations[0].frames);
+            animation.setSpeed(animationData.animations[0].period_ / animationData.animations[0].frames.length);
+            animation.signal.add(doTextureThings);
+            doTextureThings();
+         } else {
+            this.texture_ = textureData.getTexture(objectId_);
+         }
+
+         this.damagesPlayers_ = this.containerProps_.isEnemy_;
+         this.damagesEnemies_ = !this.damagesPlayers_;
+         this.sound_ = this.containerProps_.oldSound_;
+         this.multiHitDict_ = this.projProps_.multiHit_ ? new Dictionary() : null;
+         if(this.projProps_.size_ >= 0)
+         {
+            size = this.projProps_.size_;
+         }
+         else
+         {
+            size = ObjectLibrary.getSizeFromType(this.containerType_);
+         }
+         this.p_.setSize(8 * (size / 100));
+         this.damage_ = 0;
+
+      }
+
       public function reset(containerType:int, bulletType:int, ownerId:int, bulletId:int, angle:Number, startTime:int, notItem: Boolean = false) : void
       {
          var size:Number = NaN;
@@ -348,6 +395,44 @@ public class Projectile extends BasicObject
             p.y = p.y + deflection * Math.sin(this.angle_ + Math.PI / 2);
          }
       }
+
+      public function bulletIdByIsPlayer(isPlayer, startId, k) {
+         if(isPlayer) return startId - k;
+         return startId + k;
+      }
+
+      public function dieAndExplode(time: int) {
+         if(this.projProps_.explodeCount == 0)
+              return;
+         if(map_.player_ != null) {
+            var count = this.projProps_.explodeCount;
+            var props = this.projProps_.explodeProjectile;
+
+            var object: GameObject = map_.goDict_[ownerId_];
+            if(object == null) return;
+
+            var isPlayer = !object.props_.isEnemy_;
+
+            var attackMultiplier = 1.0;
+
+            var startId = map_.player_.map_.nextProjectileId_;
+            map_.player_.map_.nextProjectileId_ -= count;
+
+            for(var i = 0; i < count; i++) {
+               var angle = 360.0 / count * i * (Math.PI / 180.0);
+               var proj = FreeList.newObject(Projectile) as Projectile;
+               proj.reset_with_props(props, object.props_, Math.abs(startId - i), ownerId_, startId - i,angle,time);
+
+               var minDamage = int(props.minDamage_) + int(props.minDamage_);
+               var maxDamage = int(props.maxDamage_) + int(props.maxDamage_);
+               var damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage);
+
+               proj.setDamage(damage);
+               map_.addObj(proj,x_,y_);
+            }
+            map_.gs_.gsc_.playerExplosion(time, this.bulletId_);
+         }
+      }
       
       override public function update(time:int, dt:int) : Boolean
       {
@@ -360,6 +445,7 @@ public class Projectile extends BasicObject
          var elapsed:int = time - this.startTime_;
          if(elapsed > this.projProps_.lifetime_)
          {
+            dieAndExplode(time);
             return false;
          }
          var p:Point = this.staticPoint_;

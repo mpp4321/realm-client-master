@@ -144,7 +144,8 @@ import kabam.rotmg.messaging.impl.outgoing.GuildInvite;
    import kabam.rotmg.messaging.impl.outgoing.Load;
 import kabam.rotmg.messaging.impl.outgoing.MixMessage;
 import kabam.rotmg.messaging.impl.outgoing.Move;
-   import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
+import kabam.rotmg.messaging.impl.outgoing.PlayerExplode;
+import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
    import kabam.rotmg.messaging.impl.outgoing.PlayerShoot;
    import kabam.rotmg.messaging.impl.outgoing.PlayerText;
 import kabam.rotmg.messaging.impl.outgoing.TradeRequest;
@@ -229,6 +230,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const SHOOTDESYNC:int = 59;
       public static const BULLETRESYNC:int = 60;
       public static const LOOTNOTIF: int = 61;
+      public static const BULLETEXPLODE: int = 62;
 
       public static var instance:GameServerConnection;
 
@@ -349,6 +351,8 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(CHANGETRADE).toMessage(ChangeTrade);
          messages.map(CANCELTRADE).toMessage(CancelTrade);
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
+         // No the player is not exploding lol
+         messages.map(BULLETEXPLODE).toMessage(PlayerExplode);
          messages.map(LOOTNOTIF).toMessage(LootNotif).toMethod(this.onLootNotif);
          messages.map(SHOOTDESYNC).toMessage(ShootDesync).toMethod(this.onShootDesync);
          messages.map(BULLETRESYNC).toMessage(BulletResync).toMethod(this.onBulletResync);
@@ -483,7 +487,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          this.serverConnection.sendMessage(load);
       }
       
-      public function playerShoot(time:int, startX:Number, startY:Number, angle:Number, ability:Boolean, numShots:int) : void
+      public function playerShoot(time:int, startX:Number, startY:Number, angle:Number, ability:Boolean, numShots:int, startId: int) : void
       {
          var playerShoot:PlayerShoot = this.messages.require(PLAYERSHOOT) as PlayerShoot;
          playerShoot.time_ = time;
@@ -492,7 +496,16 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          playerShoot.angle_ = angle;
          playerShoot.ability_ = ability;
          playerShoot.numShots_ = numShots;
+         playerShoot.expectedId_ = startId;
          this.serverConnection.sendMessage(playerShoot);
+      }
+
+      public function playerExplosion(time:int, origBulletId: int) : void
+      {
+         var playerExplode: PlayerExplode = this.messages.require(BULLETEXPLODE) as PlayerExplode;
+         playerExplode.time_ = time;
+         playerExplode.bulletId_ = origBulletId;
+         this.serverConnection.sendMessage(playerExplode);
       }
 
       private function onGoto(gotoPkt:Goto) : void

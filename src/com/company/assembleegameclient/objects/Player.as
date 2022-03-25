@@ -707,7 +707,7 @@ import org.swiftsuspenders.Injector;
          return attFreq;
       }
       
-      private function attackMultiplier() : Number
+      public function attackMultiplier() : Number
       {
          if(isWeak())
          {
@@ -987,7 +987,7 @@ import org.swiftsuspenders.Injector;
          var rateOfFire:Number = Number(weaponXML.RateOfFire);
          rateOfFire *= 1 + rateOfFireMod;
          this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
-         if(time < attackStart_ + this.attackPeriod_ + this.burstShotDelay)
+         if(time <= attackStart_ + this.attackPeriod_ + this.burstShotDelay)
          {
             return;
          }
@@ -997,8 +997,10 @@ import org.swiftsuspenders.Injector;
          this.doShoot(attackStart_,weaponType, itemData, weaponXML,attackAngle_,false);
       }
 
+      function doExplosion(time: int, p: Projectile) {
 
-      
+      }
+
       private function doShoot(time:int, weaponType:int, itemData:Object, weaponXML:XML, attackAngle:Number, isAbility:Boolean) : void
       {
          var proj:Projectile = null;
@@ -1047,7 +1049,7 @@ import org.swiftsuspenders.Injector;
              burstShotCount_ = 0;
          }
 
-         map_.gs_.gsc_.playerShoot(time, x_, y_, attackAngle, isAbility, numShots);
+         map_.gs_.gsc_.playerShoot(time, x_, y_, attackAngle, isAbility, numShots, startId);
       }
       
       public function isHexed() : Boolean

@@ -82,6 +82,7 @@ public class Map extends Sprite
       public var pushX_:Number;
       public var pushY_:Number;
       public var reconnect_:ReconnectEvent;
+      public var nextExplodingProjectileId: int;
       
       public function Map(gs:GameSprite)
       {
