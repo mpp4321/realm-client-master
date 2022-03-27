@@ -10970,7 +10970,7 @@
 		<RateOfFire>1.6</RateOfFire>
 		<Sound>weapon/golden_bow</Sound>
 		<Projectile>
-			<ObjectId>Leaf Arrow</ObjectId>
+			<ObjectId>Leaf Magic</ObjectId>
 			<Speed>70</Speed>
 			<MinDamage>35</MinDamage>
 			<MaxDamage>55</MaxDamage>
@@ -11190,8 +11190,8 @@
 			<ObjectId>Heat Bolt</ObjectId>
 			<Speed>100</Speed>
 			<Size>150</Size>
-			<MinDamage>135</MinDamage>
-			<MaxDamage>250</MaxDamage>
+			<MinDamage>155</MinDamage>
+			<MaxDamage>270</MaxDamage>
 			<LifetimeMS>600</LifetimeMS>
 		</Projectile>
 		<BagType>5</BagType>
@@ -11455,10 +11455,9 @@
 		<Projectile>
 			<ObjectId>Chain Boomerang</ObjectId>
 			<Speed>180</Speed>
-			<MinDamage>120</MinDamage>
-			<MaxDamage>120</MaxDamage>
+			<MinDamage>100</MinDamage>
+			<MaxDamage>110</MaxDamage>
 			<LifetimeMS>350</LifetimeMS>
-			<ArmorPiercing>true</ArmorPiercing>
 			<Boomerang/>
 			<MultiHit/>
 		</Projectile>
@@ -11641,7 +11640,7 @@
 		<InvUse/>
 		<Description>An equipment crystal, provides battle-ready enchantments to unenchanted items upon use.</Description>
 		<Activate statScale="1.0" id="Classical" amount="4">MagicCrystal</Activate>
-		<BagType>5</BagType>
+		<BagType>6</BagType>
 	</Object>
 	<Object type="0xd49" id="Ephemeral Flail">
 		<Class>Equipment</Class>
@@ -12011,5 +12010,235 @@
 		<FameBonus>5</FameBonus>
 		<NumProjectiles>1</NumProjectiles>
 		<OldSound>bladeSwing</OldSound>
+	</Object>
+	<Object type="0x5109" id="Golden Demonic Metal">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj2</File>
+			<Index>0x11b</Index>
+		</Texture>
+		<Description>A piece of precious demon metal. (/mix with Demon Blade)</Description>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x510a" id="Sor Reactor">
+		<Class>Equipment</Class>
+		<Item />
+		<SlotType>9</SlotType>
+		<Texture>
+			<File>lofiObj2</File>
+			<Index>0x106</Index>
+		</Texture>
+		<Description>A radioactive pendant. It's kinda sweaty.</Description>
+		<ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="1" amount="80">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="3" amount="5">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="6" amount="3">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="7" amount="3">IncrementStat</ActivateOnEquip>
+		<UniqueEffect>SorReactor</UniqueEffect>
+		<BagType>5</BagType>
+		<FameBonus>5</FameBonus>
+	</Object>
+	<Object type="0x510c" id="Ephemeral Flail of Doom">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj2</File>
+			<Index>0x101</Index>
+		</Texture>
+		<SlotType>1</SlotType>
+		<Description>A flail that swings around a ghostly ball of destruction.</Description>
+		<RateOfFire>1.2</RateOfFire>
+		<Sound>weapon/long_sword</Sound>
+		<ActivateOnEquip stat="1" amount="25">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="0" amount="25">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="2" amount="5">IncrementStat</ActivateOnEquip>
+		<Projectile>
+			<ObjectId>Dark Mace Shot</ObjectId>
+			<Accelerate>-800</Accelerate>
+			<Speed>270</Speed>
+			<MinDamage>200</MinDamage>
+			<MaxDamage>240</MaxDamage>
+			<LifetimeMS>400</LifetimeMS>
+			<Size>120</Size>
+			<MultiHit/>
+			<ExplodeCount>8</ExplodeCount>
+			<ExplodeProjectile>
+				<ObjectId>Dark Mace Shot</ObjectId>
+				<Accelerate>-800</Accelerate>
+				<Speed>270</Speed>
+				<MinDamage>300</MinDamage>
+				<MaxDamage>440</MaxDamage>
+				<LifetimeMS>400</LifetimeMS>
+				<Size>120</Size>
+				<Wavy/>
+				<MultiHit/>
+				<ExplodeCount>8</ExplodeCount>
+				<ExplodeProjectile>
+					<ObjectId>Silver Shield</ObjectId>
+					<Accelerate>-800</Accelerate>
+					<Speed>120</Speed>
+					<MinDamage>300</MinDamage>
+					<MaxDamage>440</MaxDamage>
+					<LifetimeMS>200</LifetimeMS>
+					<Size>120</Size>
+					<Wavy/>
+					<MultiHit/>
+				</ExplodeProjectile>
+			</ExplodeProjectile>
+		</Projectile>
+		<NumProjectiles>1</NumProjectiles>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x5250" id="Bark of the Ancient">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj6</File>
+			<Index>0x40</Index>
+		</Texture>
+		<SlotType>11</SlotType>
+		<Description>A spell that surrounds the user in a protective shield of bark.</Description>
+		<Sound>spell/fire_spray</Sound>
+		<NumProjectiles>20</NumProjectiles>
+		<Projectile>
+			<ObjectId>Advanced Brown Bolt</ObjectId>
+			<Speed>160</Speed>
+			<MinDamage>10</MinDamage>
+			<MaxDamage>80</MaxDamage>
+			<LifetimeMS>300</LifetimeMS>
+			<ExplodeCount>1</ExplodeCount>
+			<MultiHit/>
+			<ExplodeProjectile>
+				<ObjectId>Bark Bolt</ObjectId>
+				<Speed>0</Speed>
+				<MinDamage>2400</MinDamage>
+				<MaxDamage>3600</MaxDamage>
+				<LifetimeMS>8000</LifetimeMS>
+			</ExplodeProjectile>
+		</Projectile>
+		<Usable/>
+		<Activate>BulletNova</Activate>
+		<BagType>5</BagType>
+		<MpCost>50</MpCost>
+	</Object>
+	<Object type="0x5251" id="Orb of Undeniable Insight">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xb8</Index>
+		</Texture>
+		<SlotType>21</SlotType>
+		<Description>A crystal orb with a mythical eye trapped inside.</Description>
+		<Usable/>
+		<BagType>6</BagType>
+		<MpCost>240</MpCost>
+		<Activate radius="4.5" totalDamage="200" duration="3" useWisMod="true" statMin="30" statScale="25.0" color="0xFF00FF00" throwTime="0.7">PoisonGrenade</Activate>
+		<Activate radius="3.5" totalDamage="200" duration="3" useWisMod="true" statMin="30" statScale="50.0" color="0xFF00FF00" throwTime="0.9">PoisonGrenade</Activate>
+		<Activate radius="2.5" totalDamage="200" duration="3" useWisMod="true" statMin="30" statScale="75.0" color="0xFF00FF00" throwTime="1.1">PoisonGrenade</Activate>
+		<Activate color="0xff333333" targetCursor="true" effect="Slowed" duration="3" range="4.5">ConditionEffectBlast</Activate>
+		<Activate color="0xff333333" targetCursor="true" effect="Weak" duration="3" range="4.5">ConditionEffectBlast</Activate>
+	</Object>
+	<Object type="0x5252" id="Arched Dagger">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xb7</Index>
+		</Texture>
+		<SlotType>2</SlotType>
+		<RateOfFire>0.8</RateOfFire>
+		<Sound>weapon/blunt_dagger</Sound>
+		<Projectile>
+			<ObjectId>Arched Dagger Shot</ObjectId>
+			<Speed>100</Speed>
+			<MinDamage>210</MinDamage>
+			<MaxDamage>240</MaxDamage>
+			<LifetimeMS>500</LifetimeMS>
+			<MultiHit/>
+			<ExplodeCount>4</ExplodeCount>
+			<ExplodeProjectile>
+				<ObjectId>Arched Dagger Shot</ObjectId>
+				<Speed>100</Speed>
+				<MinDamage>210</MinDamage>
+				<MaxDamage>240</MaxDamage>
+				<LifetimeMS>500</LifetimeMS>
+			</ExplodeProjectile>
+		</Projectile>
+		<BagType>6</BagType>
+		<FameBonus>6</FameBonus>
+		<OldSound>daggerSwing</OldSound>
+	</Object>
+	<Object type="0x5253" id="Cloak of the Timeless">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xba</Index>
+		</Texture>
+		<SlotType>13</SlotType>
+		<Description>A cloak that lets the user move outside the stream of time.</Description>
+		<Sound>spell/fire_nova</Sound>
+		<Usable/>
+		<BagType>6</BagType>
+		<FameBonus>6</FameBonus>
+		<MpCost>120</MpCost>
+		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+		<Activate effect="Slowed" duration="6.0">ConditionEffectSelf</Activate>
+		<Activate stat="5" amount="35" duration="4.5">StatBoostSelf</Activate>
+		<Activate stat="4" amount="-10" duration="4.5">StatBoostSelf</Activate>
+		<Cooldown>6.5</Cooldown>
+	</Object>
+	<Object type="0x5254" id="Timeworn Daggers">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xb5</Index>
+		</Texture>
+		<SlotType>0</SlotType>
+		<Description>Battle and time worn daggers turned to stone from countless years.</Description>
+		<Usable/>
+		<ActivateOnEquip stat="0" amount="-40">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="2" amount="9">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="5" amount="9">IncrementStat</ActivateOnEquip>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x5255" id="King of the Jellyfish">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xc5</Index>
+		</Texture>
+		<SlotType>24</SlotType>
+		<Description></Description>
+		<RateOfFire>1</RateOfFire>
+		<Sound>weapon/long_sword</Sound>
+		<Projectile>
+			<ObjectId>Jellyfish Shot</ObjectId>
+			<Speed>80</Speed>
+			<MinDamage>390</MinDamage>
+			<MaxDamage>590</MaxDamage>
+			<LifetimeMS>500</LifetimeMS>
+			<Amplitude>0.5</Amplitude>
+			<Frequency>1</Frequency>
+			<Size>100</Size>
+			<SmartAngle></SmartAngle>
+		</Projectile>
+		<Projectile>
+			<ObjectId>Jellyfish Shot</ObjectId>
+			<Speed>100</Speed>
+			<MinDamage>390</MinDamage>
+			<MaxDamage>590</MaxDamage>
+			<LifetimeMS>500</LifetimeMS>
+			<Amplitude>0.5</Amplitude>
+			<Frequency>1</Frequency>
+			<Size>100</Size>
+			<SmartAngle></SmartAngle>
+		</Projectile>
+		<NumProjectiles>3</NumProjectiles>
+		<BagType>6</BagType>
 	</Object>
 </Objects>

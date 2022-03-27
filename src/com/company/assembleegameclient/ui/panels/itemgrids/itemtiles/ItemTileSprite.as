@@ -5,6 +5,8 @@ import com.company.assembleegameclient.objects.animation.AnimationsData;
 import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
 import com.company.assembleegameclient.ui.tooltip.EquipmentToolTip;
+import com.company.assembleegameclient.util.ItemData;
+import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.ui.SimpleText;
 
 import flash.display.Bitmap;
@@ -12,6 +14,8 @@ import flash.display.BitmapData;
 import flash.display.Sprite;
 import flash.filters.ColorMatrixFilter;
 import flash.geom.Matrix;
+import flash.text.AntiAliasType;
+import flash.text.TextFormat;
 
 import kabam.rotmg.assets.model.AnimationHelper;
 import kabam.rotmg.constants.ItemConstants;
@@ -29,7 +33,8 @@ public class ItemTileSprite extends Sprite
       }();
 
       public var tierText: SimpleText;
-      
+      public var enchantmentText: SimpleText;
+
       public var itemId:int;
       public var itemData:Object;
       public var itemBitmap:Bitmap;
@@ -49,6 +54,28 @@ public class ItemTileSprite extends Sprite
          filters = dim?DIM_FILTER:null;
       }
 
+      public function doEnchantmentText(texture: BitmapData) {
+         if(enchantmentText) removeChild(enchantmentText);
+         enchantmentText = null;
+         if(!Parameters.data_.itemtiers || itemData == null || itemData.Meta == -1) return;
+         var rank = ItemData.getRank(itemData.Meta);
+         var greenpart = 0xFF00FF22 - ((rank-1) * 2 * 0x00001100);
+         var redpart = 0xFF000022 + ((rank-1) * 2 * 0x00110000);
+
+         this.enchantmentText = new SimpleText(12,greenpart | redpart,false, 0,0);
+         this.enchantmentText.setBold(true);
+         this.enchantmentText.y = -22;
+         this.enchantmentText.text = "+" + rank;
+         this.enchantmentText.updateMetrics();
+
+         GlowRedrawer.GLOW_FILTER_OUTLINE.color = 0xFF000000;
+         this.enchantmentText.filters = [ GlowRedrawer.GLOW_FILTER_OUTLINE ];
+
+         //Think it centers by default so gotta subtract half its width
+         this.enchantmentText.x = (this.width/2) - (3*enchantmentText.actualWidth_ / 2);
+         addChild(this.enchantmentText);
+      }
+
       public function doTierText() {
          if(tierText) removeChild(tierText);
          tierText = null;
@@ -65,9 +92,13 @@ public class ItemTileSprite extends Sprite
             this.tierText.text = "C";
             this.tierText.setColor(0x22ff44);
          }
+
+         GlowRedrawer.GLOW_FILTER_OUTLINE.color = 0xFF000000;
+         this.tierText.filters = [ GlowRedrawer.GLOW_FILTER_OUTLINE ];
+
          this.tierText.updateMetrics();
          //Think it centers by default so gotta subtract half its width
-         this.tierText.x = (this.width/2) - (3*tierText.actualWidth_ / 2);
+         this.tierText.x = (this.width/2) - (3*tierText.actualWidth_ / 2) + 2;
          addChild(this.tierText);
       }
 
@@ -99,6 +130,7 @@ public class ItemTileSprite extends Sprite
          this.itemBitmap.y = -texture.height / 2;
          visible = true;
          this.doTierText();
+         this.doEnchantmentText(texture);
       }
 
       public function setType(displayedItemType:int, displayedItemData : Object) : void

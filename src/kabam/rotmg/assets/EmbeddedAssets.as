@@ -136,6 +136,8 @@ public class EmbeddedAssets
       public static var lofiObj64x64Embed_:Class = EmbeddedAssets_lofiObj64x64Embed_;
       public static var lofiChar32x32Embed_:Class = EmbeddedAssets_lofiChar32x32Embed_;
 
+      public static var alioenInvasionChars16x16Embed_:Class = EmbeddedAssets_alienInvasionChars16x16Embed_;
+      public static var miu8x8:Class = EmbeddedAssets_miu8x8Embed_;
 
       public static var cosmicItems:Class = EmbeddedAssets_CustomItemsEmbed_;
 

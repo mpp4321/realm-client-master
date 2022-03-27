@@ -36,6 +36,7 @@ package kabam.rotmg.constants
       public static const SMALL_DIG:String = "Small_Dig";
       public static const FILL:String = "Fill";
       public static const EGG_ITEM:String = "EggBreak";
+      public static const BAG_REMOVE:String = "RemoveFromBag";
       public static const FAME_CONSUME:String = "FameConsume";
 
       public function ActivationType()

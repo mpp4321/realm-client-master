@@ -3,6 +3,7 @@
 		<DisplayId>Oryx the Mad God</DisplayId>
 		<Enemy/>
 		<Class>Character</Class>
+		<Group>O2 Minions</Group>
 		<Texture>
 			<File>lofiChar16x16</File>
 			<Index>0x54</Index>
@@ -95,6 +96,7 @@
 	<Object type="0x0944" id="Henchman of Oryx">
 		<Enemy/>
 		<Class>Character</Class>
+		<Group>O2 Minions</Group>
 		<AnimatedTexture>
 			<File>chars16x16dEncounters2</File>
 			<Index>20</Index>

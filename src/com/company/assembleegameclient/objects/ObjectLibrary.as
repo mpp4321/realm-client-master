@@ -187,12 +187,33 @@ import kabam.rotmg.messaging.impl.data.StatData;
          }
          var mask:BitmapData = Boolean(textureData)?textureData.mask_:null;
 
+         var objectXML:XML = xmlLibrary_[objectType];
+
          if(mask == null)
          {
-            return TextureRedrawer.redraw(texture, size, includeBottom, ItemData.getColor(itemMetaData), useCaching, scaleValue, ratio);
+            var glow = 0;
+            if(objectXML.hasOwnProperty("BagType")) {
+               switch(int(objectXML.BagType)) {
+                  case 4:
+                     glow = 0x4446b989;
+                     break;
+                  case 5:
+                     glow = 0xFF6464f4;
+                     break;
+                  case 6:
+                     glow = 0xFFd8bd27;
+                     break;
+                  case 7:
+                     glow = 0xFFc13e54;
+                     break;
+                  case 8:
+                     glow = 0xffc13e95;
+                     break;
+               }
+            }
+            return TextureRedrawer.redraw(texture, size, includeBottom, glow, useCaching, scaleValue, ratio);
          }
 
-         var objectXML:XML = xmlLibrary_[objectType];
          var tex1:int = Boolean(objectXML.hasOwnProperty("Tex1"))?int(int(objectXML.Tex1)):int(0);
          var tex2:int = Boolean(objectXML.hasOwnProperty("Tex2"))?int(int(objectXML.Tex2)):int(0);
          texture = TextureRedrawer.resize(texture,mask,size,includeBottom,tex1,tex2, ratio);
