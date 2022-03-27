@@ -109,6 +109,7 @@ import kabam.rotmg.assets.EmbeddedData;
          AssetLibrary.addImageSet("lairOfDraconis",new EmbeddedAssets.lairOfDraconis().bitmapData,8,8);
          AssetLibrary.addImageSet("lairOfDraconisBig",new EmbeddedAssets.lairOfDraconisBig().bitmapData,16, 16);
 
+         AssetLibrary.addImageSet("miu8x8",new EmbeddedAssets.miu8x8().bitmapData,8,8);
       }
       
       private function addAnimatedCharacters() : void

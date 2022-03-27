@@ -155,7 +155,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
             var bagType = objectXML_.hasOwnProperty("BagType") ? int(objectXML_.BagType) : 4;
             switch(bagType) {
                case 4:
-                  tierText_.setColor(0x11ff11);
+                  tierText_.setColor(0x46b989);
                   tierText_.text = "UT";
                   break;
                case 5:
@@ -165,6 +165,14 @@ import kabam.rotmg.messaging.impl.data.StatData;
                case 6:
                   tierText_.setColor(0xd8bd27);
                   tierText_.text = "LT";
+                  break;
+               case 7:
+                  tierText_.setColor(0xc13e54);
+                  tierText_.text = "GT";
+                  break;
+               case 8:
+                  tierText_.setColor(0xc13e95);
+                  tierText_.text = "MT";
                   break;
                default:
                   tierText_.setColor(9055202);
@@ -401,9 +409,20 @@ import kabam.rotmg.messaging.impl.data.StatData;
             activationType = activateXML.toString();
             switch(activationType)
             {
+               case ActivationType.BAG_REMOVE:
+                  var string = "";
+                  for(var item in itemData_.StoredItems)
+                  {
+                     var itemXML = ObjectLibrary.getXMLfromId(
+                             ObjectLibrary.getIdFromType(int(itemData_.StoredItems[item]))
+                     );
+                     string = "[" + itemXML.@id + "]";
+                     this.effects.push(new Effect("", string));
+                  }
+                  continue;
                case ActivationType.FAME_CONSUME:
                   this.effects.push(new Effect("", "Gives " + itemData_.MiscIntOne + " fame on use."));
-                  break;
+                  continue;
                case ActivationType.EGG_ITEM:
                  var workingString = "";
                  var type = parseInt(this.objectXML_.EggType[0].text());
@@ -522,7 +541,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
                   this.effects.push(new Effect("",val));
                   continue;
                default:
-
+                  break;
             }
          }
       }

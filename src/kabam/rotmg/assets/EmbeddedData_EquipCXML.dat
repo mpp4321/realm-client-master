@@ -10990,7 +10990,7 @@
 		<RateOfFire>1.6</RateOfFire>
 		<Sound>weapon/golden_bow</Sound>
 		<Projectile>
-			<ObjectId>Leaf Arrow</ObjectId>
+			<ObjectId>Leaf Magic</ObjectId>
 			<Speed>70</Speed>
 			<MinDamage>35</MinDamage>
 			<MaxDamage>55</MaxDamage>
@@ -11210,8 +11210,8 @@
 			<ObjectId>Heat Bolt</ObjectId>
 			<Speed>100</Speed>
 			<Size>150</Size>
-			<MinDamage>135</MinDamage>
-			<MaxDamage>250</MaxDamage>
+			<MinDamage>155</MinDamage>
+			<MaxDamage>270</MaxDamage>
 			<LifetimeMS>600</LifetimeMS>
 		</Projectile>
 		<BagType>5</BagType>
@@ -11475,10 +11475,9 @@
 		<Projectile>
 			<ObjectId>Chain Boomerang</ObjectId>
 			<Speed>180</Speed>
-			<MinDamage>120</MinDamage>
-			<MaxDamage>120</MaxDamage>
+			<MinDamage>100</MinDamage>
+			<MaxDamage>110</MaxDamage>
 			<LifetimeMS>350</LifetimeMS>
-			<ArmorPiercing>true</ArmorPiercing>
 			<Boomerang/>
 			<MultiHit/>
 		</Projectile>
@@ -11661,7 +11660,7 @@
 		<InvUse/>
 		<Description>An equipment crystal, provides battle-ready enchantments to unenchanted items upon use.</Description>
 		<Activate statScale="1.0" id="Classical" amount="4">MagicCrystal</Activate>
-		<BagType>5</BagType>
+		<BagType>6</BagType>
 	</Object>
 	<Object type="0xd49" id="Ephemeral Flail">
 		<Class>Equipment</Class>
@@ -12189,5 +12188,76 @@
 		<BagType>6</BagType>
 		<FameBonus>6</FameBonus>
 		<OldSound>daggerSwing</OldSound>
+	</Object>
+	<Object type="0x5253" id="Cloak of the Timeless">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xba</Index>
+		</Texture>
+		<SlotType>13</SlotType>
+		<Description>A cloak that lets the user move outside the stream of time.</Description>
+		<Sound>spell/fire_nova</Sound>
+		<Usable/>
+		<BagType>6</BagType>
+		<FameBonus>6</FameBonus>
+		<MpCost>120</MpCost>
+		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+		<Activate effect="Slowed" duration="6.0">ConditionEffectSelf</Activate>
+		<Activate stat="5" amount="35" duration="4.5">StatBoostSelf</Activate>
+		<Activate stat="4" amount="-10" duration="4.5">StatBoostSelf</Activate>
+		<Cooldown>6.5</Cooldown>
+	</Object>
+	<Object type="0x5254" id="Timeworn Daggers">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xb5</Index>
+		</Texture>
+		<SlotType>0</SlotType>
+		<Description>Battle and time worn daggers turned to stone from countless years.</Description>
+		<Usable/>
+		<ActivateOnEquip stat="0" amount="-40">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="2" amount="9">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="5" amount="9">IncrementStat</ActivateOnEquip>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x5255" id="King of the Jellyfish">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xc5</Index>
+		</Texture>
+		<SlotType>24</SlotType>
+		<Description></Description>
+		<RateOfFire>1</RateOfFire>
+		<Sound>weapon/long_sword</Sound>
+		<Projectile>
+			<ObjectId>Jellyfish Shot</ObjectId>
+			<Speed>80</Speed>
+			<MinDamage>390</MinDamage>
+			<MaxDamage>590</MaxDamage>
+			<LifetimeMS>500</LifetimeMS>
+			<Amplitude>0.5</Amplitude>
+			<Frequency>1</Frequency>
+			<Size>100</Size>
+			<SmartAngle></SmartAngle>
+		</Projectile>
+		<Projectile>
+			<ObjectId>Jellyfish Shot</ObjectId>
+			<Speed>100</Speed>
+			<MinDamage>390</MinDamage>
+			<MaxDamage>590</MaxDamage>
+			<LifetimeMS>500</LifetimeMS>
+			<Amplitude>0.5</Amplitude>
+			<Frequency>1</Frequency>
+			<Size>100</Size>
+			<SmartAngle></SmartAngle>
+		</Projectile>
+		<NumProjectiles>3</NumProjectiles>
+		<BagType>6</BagType>
 	</Object>
 </Objects>
