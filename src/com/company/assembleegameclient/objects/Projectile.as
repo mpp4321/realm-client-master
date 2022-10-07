@@ -404,6 +404,7 @@ public class Projectile extends BasicObject
       public function dieAndExplode(time: int) {
          if(this.projProps_.explodeCount == 0)
               return;
+
          if(map_.player_ != null) {
             var count = this.projProps_.explodeCount;
             var props = this.projProps_.explodeProjectile;
@@ -413,21 +414,32 @@ public class Projectile extends BasicObject
 
             var isPlayer = !object.props_.isEnemy_;
 
-            var attackMultiplier = 1.0;
-
             var startId = map_.player_.map_.nextProjectileId_;
-            map_.player_.map_.nextProjectileId_ -= count;
+            if(ownerId_ == map_.player_.objectId_) {
+               map_.player_.map_.nextProjectileId_ -= count;
+            } else {
+               Projectile.nextFakeBulletId_ += count;
+            }
 
             for(var i = 0; i < count; i++) {
                var angle = 360.0 / count * i * (Math.PI / 180.0);
                var proj = FreeList.newObject(Projectile) as Projectile;
+
                proj.reset_with_props(props, object.props_, Math.abs(startId - i), ownerId_, startId - i,angle,time);
 
                var minDamage = int(props.minDamage_) + int(props.minDamage_);
                var maxDamage = int(props.maxDamage_) + int(props.maxDamage_);
-               var damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage);
+               var damage;
+
+               if(isPlayer) {
+                  damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage);
+               } else {
+                  // min max are same here
+                  damage = props.minDamage_;
+               }
 
                proj.setDamage(damage);
+
                map_.addObj(proj,x_,y_);
             }
             map_.gs_.gsc_.playerExplosion(time, this.bulletId_);

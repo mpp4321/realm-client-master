@@ -62,7 +62,9 @@ import com.company.util.AssetLibrary;
       
       public static const HEXED:uint = 25;
 
-      public static const CURSED:uint = 26;
+      public static const CURSED_LOWER:uint = 26;
+
+      public static const CURSED_HIGHER:uint = 27;
 
       public static const QUIET_BIT:uint = 1 << QUIET;
       
@@ -114,7 +116,9 @@ import com.company.util.AssetLibrary;
       
       public static const HEXED_BIT:uint = 1 << HEXED;
 
-      public static const CURSED_BIT:uint = 1 << CURSED;
+      public static const CURSED_LOWER_BIT:uint = 1 << CURSED_LOWER;
+
+      public static const CURSED_UPPER_BIT:uint = 1 << CURSED_HIGHER;
 
       public static const MAP_FILTER_BITMASK:uint = DRUNK_BIT | BLIND_BIT;
       

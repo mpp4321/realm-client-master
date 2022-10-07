@@ -22,7 +22,8 @@ import com.company.util.CachingColorTransformer;
    import com.company.util.ConversionUtil;
    import com.company.util.GraphicsUtil;
    import com.company.util.IntPoint;
-   import com.company.util.MoreColorUtil;
+import com.company.util.MichaelUtil;
+import com.company.util.MoreColorUtil;
    import com.company.util.PointUtil;
    import com.company.util.Trig;
    import flash.display.BitmapData;
@@ -935,7 +936,8 @@ import org.swiftsuspenders.Injector;
             return false;
          }
 
-         var cooldownMod:Number = 1 - ItemData.getStat(itemData, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var enchantmentStrength = MichaelUtil.getIfFieldExistsOr(objectXML, "EnchantmentStrength", 0.75);
+         var cooldownMod:Number = 1 - ItemData.getStat(itemData, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER, enchantmentStrength);
          cooldown = 200;
          if(objectXML.hasOwnProperty("Cooldown"))
          {
@@ -982,8 +984,9 @@ import org.swiftsuspenders.Injector;
             return;
          }
          var weaponXML:XML = ObjectLibrary.xmlLibrary_[weaponType];
+         var enchantmentStrength = MichaelUtil.getIfFieldExistsOr(weaponXML, "EnchantmentStrength", 0.75);
          var time:int = map_.gs_.lastUpdate_;
-         var rateOfFireMod:Number = ItemData.getStat(itemData, ItemData.RATE_OF_FIRE_BIT, ItemData.RATE_OF_FIRE_MULTIPLIER);
+         var rateOfFireMod:Number = ItemData.getStat(itemData, ItemData.RATE_OF_FIRE_BIT, ItemData.RATE_OF_FIRE_MULTIPLIER, enchantmentStrength);
          var rateOfFire:Number = Number(weaponXML.RateOfFire);
          rateOfFire *= 1 + rateOfFireMod;
          this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
@@ -1009,10 +1012,11 @@ import org.swiftsuspenders.Injector;
          var damage:int = 0;
          var numShots:int = Boolean(weaponXML.hasOwnProperty("NumProjectiles"))?int(int(weaponXML.NumProjectiles)):int(1);
          var arcGap:Number = (Boolean(weaponXML.hasOwnProperty("ArcGap"))?Number(weaponXML.ArcGap):11.25) * Trig.toRadians;
+         var enchantmentStrength: Number = Number(MichaelUtil.getIfFieldExistsOr(weaponXML, "EnchantmentStrength", 0.75));
          var totalArc:Number = arcGap * (numShots - 1);
          var angle:Number = attackAngle - totalArc / 2;
          var startId:int = map_.nextProjectileId_;
-         var dmgMod:Number = ItemData.getStat(itemData, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
+         var dmgMod:Number = ItemData.getStat(itemData, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER, enchantmentStrength);
          map_.nextProjectileId_ -= numShots;
 
          var uneffs = buildEffectHandlers();
@@ -1024,7 +1028,7 @@ import org.swiftsuspenders.Injector;
 
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
-            damage = map_.gs_.gsc_.getNextDamage(minDamage,maxDamage) * Number(this.attackMultiplier());
+            damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage) * Number(this.attackMultiplier());
 
             proj.setDamage(damage);
 

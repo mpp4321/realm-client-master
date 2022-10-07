@@ -52,6 +52,7 @@ public class GameObject extends BasicObject
    {
       protected static const PAUSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.greyscaleFilterMatrix);
       protected static const CURSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.redFilterMatrix);
+      protected static const LOWER_CURSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.pinkFilterMatrix);
 
       public static const ATTACK_PERIOD:int = 500;
       public static const DEFAULT_HP_BAR_Y_OFFSET:int = 5;
@@ -211,9 +212,17 @@ public class GameObject extends BasicObject
             def = def * 2;
          }
 
-         if((targetCondition & ConditionEffect.CURSED_BIT) != 0) {
-             origDamage *= 2;
+         var cursedAmount = 1.0;
+
+         if((targetCondition & ConditionEffect.CURSED_LOWER_BIT) != 0) {
+            cursedAmount = 1.25;
          }
+
+         if((targetCondition & ConditionEffect.CURSED_UPPER_BIT) != 0) {
+            cursedAmount = 1.75;
+         }
+
+         origDamage *= cursedAmount;
 
          if(protection == 0) protection = 95.0;
          var min:int = origDamage * (1.0 - (protection / 100.0));
@@ -483,9 +492,14 @@ public class GameObject extends BasicObject
          return (this.condition_ & ConditionEffect.STASIS_BIT) != 0;
       }
 
-      public function isCursed():Boolean
+      public function isCursedLower():Boolean
       {
-         return (this.condition_ & ConditionEffect.CURSED_BIT) != 0;
+         return (this.condition_ & ConditionEffect.CURSED_LOWER_BIT) != 0;
+      }
+
+      public function isCursedUpper():Boolean
+      {
+         return (this.condition_ & ConditionEffect.CURSED_UPPER_BIT) != 0;
       }
 
       public function isInvincible() : Boolean
@@ -874,8 +888,11 @@ public class GameObject extends BasicObject
          {
             texture = CachingColorTransformer.filterBitmapData(texture,PAUSED_FILTER);
          }
-         else if(this.isCursed()) {
+         else if(this.isCursedUpper()) {
             texture = CachingColorTransformer.filterBitmapData(texture,CURSED_FILTER);
+         }
+         else if(this.isCursedLower()) {
+            texture = CachingColorTransformer.filterBitmapData(texture,LOWER_CURSED_FILTER);
          }
          if(this.tex1Id_ == 0 && this.tex2Id_ == 0)
          {

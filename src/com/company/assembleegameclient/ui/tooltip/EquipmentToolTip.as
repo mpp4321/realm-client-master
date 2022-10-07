@@ -10,6 +10,8 @@ import com.company.assembleegameclient.util.ItemData;
 import com.company.ui.SimpleText;
 import com.company.util.BitmapUtil;
 import com.company.util.KeyCodes;
+import com.company.util.MichaelUtil;
+
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.filters.DropShadowFilter;
@@ -48,6 +50,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
       private var inventorySlotID:uint;
       private var isInventoryFull:Boolean;
       private var yOffset:int;
+      private var enchantmentStrength: Number;
       
       public function EquipmentToolTip(objectType:int, itemData, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0)
       {
@@ -67,6 +70,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.effects = new Vector.<Effect>();
          this.invType = invType;
          this.itemSlotTypeId = int(this.objectXML_.SlotType);
+         this.enchantmentStrength = MichaelUtil.determineEnchantmentStrength(objectXML_);
          this.addIcon();
          this.addTitle();
          this.addTierText();
@@ -284,7 +288,8 @@ import kabam.rotmg.messaging.impl.data.StatData;
       
       private function addFameBonusTagToEffectsList() : void
       {
-         var fameBonusMod:Number = ItemData.getStat(this.itemData_, ItemData.FAME_BONUS_BIT, 1);
+         var fameBonusMod:Number = ItemData.getStat(this.itemData_, ItemData.FAME_BONUS_BIT, 1, enchantmentStrength);
+
          if(this.objectXML_.hasOwnProperty("FameBonus") || fameBonusMod != 0)
          {
             var fameBonus:int = this.objectXML_.hasOwnProperty("FameBonus") ? int(this.objectXML_.FameBonus) : 0;
@@ -308,7 +313,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
 
       private function addCooldownTagToEffectsList() : void
       {
-         var cooldownMod:Number = ItemData.getStat(this.itemData_, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER);
+         var cooldownMod:Number = ItemData.getStat(this.itemData_, ItemData.COOLDOWN_BIT, ItemData.COOLDOWN_MULTIPLIER, enchantmentStrength);
          if(this.objectXML_.hasOwnProperty("Cooldown") || cooldownMod != 0)
          {
             var cooldown:Number = this.objectXML_.hasOwnProperty("Cooldown") ? Number(this.objectXML_.Cooldown) : 0.2;
@@ -347,7 +352,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
 //               projXML = XML(this.objectXML_.Projectile);
                var minDmg:int = int(projXML.MinDamage);
                var maxDmg:int = int(projXML.MaxDamage);
-               var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER);
+               var dmgMod:Number = ItemData.getStat(this.itemData_, ItemData.DAMAGE_BIT, ItemData.DAMAGE_MULTIPLIER, enchantmentStrength);
                minDmg += int(minDmg * dmgMod);
                maxDmg += int(maxDmg * dmgMod);
                var dmgString:String = (minDmg == maxDmg ? minDmg : minDmg + " - " + maxDmg).toString();
@@ -375,7 +380,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
 
                var rateOfFire:Number = this.objectXML_.hasOwnProperty("RateOfFire") ? Number(this.objectXML_.RateOfFire) : 1.0;
                var rateOfFireDataValue:Number = ItemData.RATE_OF_FIRE_MULTIPLIER * rateOfFire;
-               var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue);
+               var rateOfFireData:Number = ItemData.getStat(this.itemData_, ItemData.RATE_OF_FIRE_BIT, rateOfFireDataValue, enchantmentStrength);
                var rateOfFireString:String = (int(rateOfFire * 100) + int(rateOfFireData * 100)) + "%";
                if (rateOfFireData != 0)
                {
@@ -574,35 +579,35 @@ import kabam.rotmg.messaging.impl.data.StatData;
          if (this.itemData_.Meta != -1)
          {
             var k:int = -1;
-            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_HP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_HP_BIT, 5, enchantmentStrength)) != 0) {
                stats[0] = (stats[0] || 0) + k;
                datas[0] = (datas[0] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_MP_BIT, 5)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_MP_BIT, 5, enchantmentStrength)) != 0) {
                stats[1] = (stats[1] || 0) + k;
                datas[1] = (datas[1] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.ATTACK_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.ATTACK_BIT, 1, enchantmentStrength)) != 0) {
                stats[2] = (stats[2] || 0) + k;
                datas[2] = (datas[2] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEFENSE_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.DEFENSE_BIT, 1, enchantmentStrength)) != 0) {
                stats[3] = (stats[3] || 0) + k;
                datas[3] = (datas[3] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.SPEED_BIT, 1, enchantmentStrength)) != 0) {
                stats[4] = (stats[4] || 0) + k;
                datas[4] = (datas[4] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.DEXTERITY_BIT, 1, enchantmentStrength)) != 0) {
                stats[5] = (stats[5] || 0) + k;
                datas[5] = (datas[5] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.VITALITY_BIT, 1, enchantmentStrength)) != 0) {
                stats[6] = (stats[6] || 0) + k;
                datas[6] = (datas[6] || 0) + k;
             }
-            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1)) != 0) {
+            if ((k = ItemData.getStat(this.itemData_, ItemData.WISDOM_BIT, 1, enchantmentStrength)) != 0) {
                stats[7] = (stats[7] || 0) + k;
                datas[7] = (datas[7] || 0) + k;
             }

@@ -1,4 +1,6 @@
 package com.company.assembleegameclient.util {
+import avmplus.metadataXml;
+
 import starling.utils.Color;
 
 public class ItemData
@@ -46,7 +48,7 @@ public class ItemData
         return 0;
     }
 
-    public static function getStat(obj:Object, bit:uint, multiplier:Number) : Number
+    public static function getStat(obj:Object, bit:uint, multiplier:Number, enchantmentStrength:Number) : Number
     {
         if(obj == null) return 0;
         var data = obj.Meta;
@@ -59,7 +61,9 @@ public class ItemData
         {
             value += rank;
         }
-        return multiplier * (value + getExtraStats(obj, bit));
+        var enchantmentPart = (bit == DAMAGE_BIT || bit == RATE_OF_FIRE_BIT) ? 1.0 : enchantmentStrength / 8.0;
+        var finish = Math.ceil(enchantmentPart * (value + getExtraStats(obj, bit)));
+        return finish * multiplier;
     }
 
     public static function getRank(data:int) : int

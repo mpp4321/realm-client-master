@@ -1,3 +1,6 @@
+# Locals
+air/
+
 # Build and Release Folders
 bin/
 bin-debug/

@@ -74,6 +74,8 @@ package com.company.assembleegameclient.objects
       public var rotation_:Number = 0;
 
       public var ally: Boolean = false;
+
+      public var enchantmentStrength:Number = 0;
       
       public function ObjectProperties(objectXML:XML)
       {
@@ -179,6 +181,10 @@ package com.company.assembleegameclient.objects
          if(objectXML.hasOwnProperty("WhileMoving"))
          {
             this.whileMoving_ = new WhileMovingProperties(XML(objectXML.WhileMoving));
+         }
+         if(objectXML.hasOwnProperty("EnchantmentStrength"))
+         {
+            this.enchantmentStrength = Number(objectXML.enchantmentStrength);
          }
       }
       

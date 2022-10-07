@@ -4429,6 +4429,7 @@
 		<Tier>6</Tier>
 		<ActivateOnEquip stat="2" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
+		<EnchantmentStrength>10</EnchantmentStrength>
 		<FameBonus>5</FameBonus>
 	</Object>
 	<Object type="0xba4" id="Ring of Unbound Defense">
@@ -4442,6 +4443,7 @@
 		<Tier>6</Tier>
 		<ActivateOnEquip stat="3" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
+		<EnchantmentStrength>10</EnchantmentStrength>
 		<FameBonus>5</FameBonus>
 	</Object>
 	<Object type="0xba5" id="Ring of Unbound Speed">
@@ -4455,6 +4457,7 @@
 		<Tier>6</Tier>
 		<ActivateOnEquip stat="4" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
+		<EnchantmentStrength>10</EnchantmentStrength>
 		<FameBonus>5</FameBonus>
 	</Object>
 	<Object type="0xba6" id="Ring of Unbound Vitality">
@@ -4469,6 +4472,7 @@
 		<ActivateOnEquip stat="6" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
 		<FameBonus>5</FameBonus>
+		<EnchantmentStrength>10</EnchantmentStrength>
 	</Object>
 	<Object type="0xba7" id="Ring of Unbound Wisdom">
 		<Class>Equipment</Class>
@@ -4482,6 +4486,7 @@
 		<ActivateOnEquip stat="7" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
 		<FameBonus>5</FameBonus>
+		<EnchantmentStrength>10</EnchantmentStrength>
 	</Object>
 	<Object type="0xba8" id="Ring of Unbound Dexterity">
 		<Class>Equipment</Class>
@@ -4495,6 +4500,7 @@
 		<ActivateOnEquip stat="5" amount="9">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
 		<FameBonus>5</FameBonus>
+		<EnchantmentStrength>10</EnchantmentStrength>
 	</Object>
 	<Object type="0xba9" id="Ring of Unbound Health">
 		<Class>Equipment</Class>
@@ -4508,6 +4514,7 @@
 		<ActivateOnEquip stat="0" amount="180">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
 		<FameBonus>5</FameBonus>
+		<EnchantmentStrength>10</EnchantmentStrength>
 	</Object>
 	<Object type="0xbaa" id="Ring of Unbound Magic">
 		<Class>Equipment</Class>
@@ -4521,6 +4528,7 @@
 		<ActivateOnEquip stat="1" amount="180">IncrementStat</ActivateOnEquip>
 		<BagType>3</BagType>
 		<FameBonus>5</FameBonus>
+		<EnchantmentStrength>10</EnchantmentStrength>
 	</Object>
 	<Object type="0xb44" id="Firebrand Staff">
 		<Class>Equipment</Class>
@@ -4786,10 +4794,10 @@
 		</Texture>
 		<SlotType>7</SlotType>
 		<Description>Battle armor made from Fire Dragon scales, one of the strongest materials in the realm.</Description>
-		<ActivateOnEquip stat="2" amount="8">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="4" amount="6">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="6" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="2" amount="14">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="3" amount="18">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="4" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="6" amount="20">IncrementStat</ActivateOnEquip>
 		<BagType>6</BagType>
 		<FameBonus>6</FameBonus>
 	</Object>
@@ -18247,7 +18255,7 @@
 		<BagType>6</BagType>
 		<FameBonus>5</FameBonus>
 		<MpCost>75</MpCost>
-		<Activate effect="Cursed" duration="4" range="3" color="0xffffff" target="enemy" center="mouse" visualEffect="5" useWisMod="false">GenericActivate</Activate>
+		<Activate effect="CursedLower" duration="4" range="3" color="0xffffff" target="enemy" center="mouse" visualEffect="5" useWisMod="false">GenericActivate</Activate>
 		<Activate useWisMod="true" radius="6" totalDamage="450" duration="10" color="0xFF69B4" impactDamage="300" throwTime="1">PoisonGrenade</Activate>
 		<DisplayId>Treacherous Venom</DisplayId>
 	</Object>
@@ -20577,62 +20585,6 @@
 		<Consumable />
 		<Legendary />
 		<Activate>InsigniaActivate</Activate>
-	</Object>
-	<Object type="0x64c3" id="Ring of Unbound Restoration">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>UTRImport</File>
-			<Index>0x44e</Index>
-		</Texture>
-		<SlotType>9</SlotType>
-		<Tier>6</Tier>
-		<Description>A huge flawless corundom set in a stunningly beautiful gold ring.</Description>
-		<BagType>3</BagType>
-		<FameBonus>5</FameBonus>
-		<DisplayId>Ring of Unbound Restoration</DisplayId>
-	</Object>
-	<Object type="0x64c4" id="Ring of Unbound Protection">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>UTRImport</File>
-			<Index>0x44f</Index>
-		</Texture>
-		<SlotType>9</SlotType>
-		<Tier>6</Tier>
-		<Description>A huge flawless diamond set in a stunningly beautiful gold ring.</Description>
-		<BagType>3</BagType>
-		<FameBonus>5</FameBonus>
-		<DisplayId>Ring of Unbound Protection</DisplayId>
-	</Object>
-	<Object type="0x64c5" id="Ring of Unbound Luck">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>UTRImport</File>
-			<Index>0x450</Index>
-		</Texture>
-		<SlotType>9</SlotType>
-		<Tier>6</Tier>
-		<Description>A huge flawless sphene set in a stunningly beautiful gold ring.</Description>
-		<BagType>3</BagType>
-		<FameBonus>5</FameBonus>
-		<DisplayId>Ring of Unbound Luck</DisplayId>
-	</Object>
-	<Object type="0x64c6" id="Ring of Unbound Might">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>UTRImport</File>
-			<Index>0x451</Index>
-		</Texture>
-		<SlotType>9</SlotType>
-		<Tier>6</Tier>
-		<Description>A huge flawless garnet set in a stunningly beautiful gold ring.</Description>
-		<BagType>3</BagType>
-		<FameBonus>5</FameBonus>
-		<DisplayId>Ring of Unbound Might</DisplayId>
 	</Object>
 	<Object type="0x64c7" id="Shine">
 		<Class>Equipment</Class>
@@ -25592,13 +25544,10 @@
 		<Level>20</Level>
 		<PerRealmMax>1</PerRealmMax>
 		<KeepDamageRecord/>
-		<AnimatedTexture>
-			<File>chars16x16dEncounters2</File>
-			<Index>45</Index>
-		</AnimatedTexture>
+		<Texture><File>lofiChar216x16</File><Index>0x2a</Index></Texture>
 		<Size>100</Size>
 		<MaxHitPoints>52500</MaxHitPoints>
-		<Defense>85</Defense>
+		<Defense>270</Defense>
 		<XpMult>25</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
@@ -25675,7 +25624,6 @@
 	</Object>
 
 	<Object type="0x2f63" id="PhoenixGodPhase1">
-		<DisplayID>Phoenix God</DisplayID>
 		<Group>Phoenix God Encounter</Group>
 		<Enemy/>
 		<Class>Character</Class>
@@ -25685,13 +25633,15 @@
 		</AnimatedTexture>
 		<ShadowSize>0</ShadowSize>
 		<NoMiniMap/>
-		<MaxHitPoints>100000</MaxHitPoints>
+		<MaxHitPoints>20000</MaxHitPoints>
+		<Defense>100</Defense>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Red Fire</ObjectId>
 			<Damage>95</Damage>
-			<Speed>100</Speed>
-			<LifetimeMS>5000</LifetimeMS>
+			<Speed>90</Speed>
+			<Size>120</Size>
+			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit/>
 		</Projectile>
 	</Object>

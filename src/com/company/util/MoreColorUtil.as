@@ -8,7 +8,8 @@ package com.company.util
       public static const greyscaleFilterMatrix:Array = [0.3,0.59,0.11,0,0,0.3,0.59,0.11,0,0,0.3,0.59,0.11,0,0,0,0,0,1,0];
       
       public static const redFilterMatrix:Array = [0.3,0.59,0.11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0];
-      
+      public static const pinkFilterMatrix:Array = [0.0, 0.0, 0.0, 0, 0, 0,0.59,0.3,0.11, 0,0,0,0,0,0,0,0,0,1,0];
+
       public static const identity:ColorTransform = new ColorTransform();
       
       public static const invisible:ColorTransform = new ColorTransform(1,1,1,0,0,0,0,0);
