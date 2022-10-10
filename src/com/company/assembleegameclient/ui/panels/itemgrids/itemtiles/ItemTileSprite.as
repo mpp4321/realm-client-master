@@ -58,7 +58,7 @@ public class ItemTileSprite extends Sprite
          if(enchantmentText) removeChild(enchantmentText);
          enchantmentText = null;
          if(!Parameters.data_.itemtiers || itemData == null || itemData.Meta == -1) return;
-         var rank = ItemData.getRank(itemData.Meta);
+         var rank = ItemData.getRank(itemData);
          var greenpart = 0xFF00FF22 - ((rank-1) * 2 * 0x00001100);
          var redpart = 0xFF000022 + ((rank-1) * 2 * 0x00110000);
 

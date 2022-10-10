@@ -5,15 +5,6 @@ import starling.utils.Color;
 
 public class ItemData
 {
-    public static const T0_BIT:uint = 1 << 0;
-    public static const T1_BIT:uint = 1 << 1;
-    public static const T2_BIT:uint = 1 << 2;
-    public static const T3_BIT:uint = 1 << 3;
-    public static const T4_BIT:uint = 1 << 4;
-    public static const T5_BIT:uint = 1 << 5;
-    public static const T6_BIT:uint = 1 << 6;
-    public static const T7_BIT:uint = 1 << 7;
-
     public static const MAX_HP_BIT:uint = 1 << 8;
     public static const MAX_MP_BIT:uint = 1 << 9;
     public static const ATTACK_BIT:uint = 1 << 10;
@@ -52,7 +43,7 @@ public class ItemData
     {
         if(obj == null) return 0;
         var data = obj.Meta;
-        var rank:int = getRank(data);
+        var rank:int = getRank(obj);
         if (rank == -1) {
             return 0;
         }
@@ -61,111 +52,89 @@ public class ItemData
         {
             value += rank;
         }
-        var enchantmentPart = (bit == DAMAGE_BIT || bit == RATE_OF_FIRE_BIT) ? 1.0 : enchantmentStrength / 8.0;
-        var finish = Math.ceil(enchantmentPart * (value + getExtraStats(obj, bit)));
+        var finish = (value + getExtraStats(obj, bit));
         return finish * multiplier;
     }
 
-    public static function getRank(data:int) : int
+    public static function getRank(data: Object) : int
     {
-        if (data == -1){
-            return -1;
-        }
-        if (hasStat(data, T0_BIT)) {
-            return 1;
-        }
-        if (hasStat(data, T1_BIT)) {
-            return 2;
-        }
-        if (hasStat(data, T2_BIT)) {
-            return 3;
-        }
-        if (hasStat(data, T3_BIT)) {
-            return 4;
-        }
-        if (hasStat(data, T4_BIT)) {
-            return 5;
-        }
-        if (hasStat(data, T5_BIT)) {
-            return 6;
-        }
-        if (hasStat(data, T6_BIT)) {
-            return 7;
-        }
-        if (hasStat(data, T7_BIT)) {
-            return 8;
-        }
-        return -1;
+        return data.hasOwnProperty("ItemLevel") ? data.ItemLevel : -1;
     }
 
-    public static function getColor(data:int) : int
+    public static function getColor(data: Object) : int
     {
-        if (hasStat(data, ItemData.T0_BIT))
+        var rank = getRank(data);
+        if (rank == -1) {
+            return -1;
+        }
+        if (rank % 8 == 0)
         {
             return 0x00a6ff;
         }
-        else if (hasStat(data, ItemData.T1_BIT))
+        else if (rank % 8 == 1)
         {
             return 0x7300ff;
         }
-        else if (ItemData.hasStat(data, ItemData.T2_BIT))
+        else if (rank % 8 == 2)
         {
             return 0xffc800;
         }
-        else if (ItemData.hasStat(data, ItemData.T3_BIT))
+        else if (rank % 8 == 3)
         {
             return 0x84ff00;
         }
-        else if (ItemData.hasStat(data, ItemData.T4_BIT))
+        else if (rank % 8 == 4)
         {
             return 0xf542e6;
         }
-        else if (ItemData.hasStat(data, ItemData.T5_BIT))
+        else if (rank % 8 == 5)
         {
             return 0x00ffdd;
         }
-        else if (ItemData.hasStat(data, ItemData.T6_BIT))
+        else if (rank % 8 == 6)
         {
             return 0xffffff;
         }
-        else if (ItemData.hasStat(data, ItemData.T7_BIT))
+        else if (rank % 8 == 7)
         {
             return 0xff5500;
         }
         return -1;
     }
 
-    public static function getColorString(data:int) : String
+    public static function getColorString(data:Object) : String
     {
-        if (hasStat(data, ItemData.T0_BIT))
+        var rank = getRank(data);
+        if (rank == -1) return "";
+        if (rank % 8 == 0)
         {
             return "#00a6ff";
         }
-        else if (hasStat(data, ItemData.T1_BIT))
+        else if (rank % 8 == 1)
         {
             return "#7300ff";
         }
-        else if (ItemData.hasStat(data, ItemData.T2_BIT))
+        else if (rank % 8 == 2)
         {
             return "#ffc800";
         }
-        else if (ItemData.hasStat(data, ItemData.T3_BIT))
+        else if (rank % 8 == 3)
         {
             return "#84ff00";
         }
-        else if (ItemData.hasStat(data, ItemData.T4_BIT))
+        else if (rank % 8 == 4)
         {
             return "#f542e6";
         }
-        else if (ItemData.hasStat(data, ItemData.T5_BIT))
+        else if (rank % 8 == 5)
         {
             return "#00ffdd";
         }
-        else if (ItemData.hasStat(data, ItemData.T6_BIT))
+        else if (rank % 8 == 6)
         {
             return "#ffffff";
         }
-        else if (ItemData.hasStat(data, ItemData.T7_BIT))
+        else if (rank % 8 == 7)
         {
             return "#ff5500";
         }

@@ -31,8 +31,8 @@ public class Container extends GameObject implements IInteractiveObject
           var bestRankData = 0;
           for each(var idata in this.itemDatas_) {
               if(!('Meta' in idata)) continue;
-              var rank = ItemData.getRank(idata.Meta);
-              if(rank > bestRank) {bestRank = rank; bestRankData = idata.Meta};
+              var rank = ItemData.getRank(idata);
+              if(rank > bestRank) {bestRank = rank; bestRankData = idata};
           }
 
           if(bestRank > Parameters.data_.rankFilter) {

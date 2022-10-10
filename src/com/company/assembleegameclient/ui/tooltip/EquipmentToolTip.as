@@ -220,7 +220,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.titleText_ = new SimpleText(16,color,false,MAX_WIDTH - this.icon_.width - 4 - 30,0);
          this.titleText_.setBold(true);
          this.titleText_.wordWrap = true;
-         var item_rank: int = ItemData.getRank(this.itemData_.Meta);
+         var item_rank: int = ItemData.getRank(this.itemData_);
          var item_rank_text: String = item_rank > 0 ? "+" + item_rank : "";
          this.titleText_.text = ObjectLibrary.typeToDisplayId_[this.objectType_] + item_rank_text;
          this.titleText_.updateMetrics();
@@ -297,7 +297,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
             if (fameBonusMod != 0)
             {
                fameBonusString += " (+" + fameBonusMod + "%)";
-               fameBonusString = TooltipHelper.wrapInFontTag(fameBonusString, ItemData.getColorString(this.itemData_.Meta));
+               fameBonusString = TooltipHelper.wrapInFontTag(fameBonusString, ItemData.getColorString(this.itemData_));
             }
             this.effects.push(new Effect("Fame Bonus",fameBonusString));
          }
@@ -342,7 +342,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          var projXML:XML = null;
          var range:Number = NaN;
          var condEffectXML:XML = null;
-         var color:String = ItemData.getColorString(this.itemData_.Meta);
+         var color:String = ItemData.getColorString(this.itemData_);
          if(this.objectXML_.hasOwnProperty("Projectile"))
          {
              var projs = this.objectXML_.elements("Projectile")
@@ -656,7 +656,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
          if (data > 0)
          {
             dataString = " (+" + data + ")";
-            textColor = ItemData.getColorString(this.itemData_.Meta);
+            textColor = ItemData.getColorString(this.itemData_);
          }
          else {
             dataString = "";

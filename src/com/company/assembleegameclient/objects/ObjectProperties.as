@@ -75,7 +75,7 @@ package com.company.assembleegameclient.objects
 
       public var ally: Boolean = false;
 
-      public var enchantmentStrength:Number = 0;
+      public var enchantmentStrength:Number = 8;
       
       public function ObjectProperties(objectXML:XML)
       {
