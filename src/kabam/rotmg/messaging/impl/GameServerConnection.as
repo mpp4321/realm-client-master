@@ -454,7 +454,12 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       {
          return this.rand_.nextIntRange(minDamage,maxDamage);
       }
-      
+
+      public function getNextDecimal() : Number
+      {
+         return 2 * this.rand_.nextNumber();
+      }
+
       public function enableJitterWatcher() : void
       {
          if(this.jitterWatcher_ == null)
@@ -1178,6 +1183,9 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                case StatData.PROTECTION_STAT:
                   player.protection_ = value;
                   continue;
+               case StatData.CRITCHANCE_STAT:
+                  player.critChance_ = value;
+                  continue;
                case StatData.INVENTORY_0_STAT:
                case StatData.INVENTORY_1_STAT:
                case StatData.INVENTORY_2_STAT:
@@ -1276,6 +1284,9 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   continue;
                case StatData.PROTECTION_BOOST_STAT:
                   player.protectionBoost_ = value;
+                  continue;
+               case StatData.CRITCHANCE_BOOST_STAT:
+                  player.critChanceBoost_ = value;
                   continue;
                case StatData.OWNER_ACCOUNT_ID_STAT:
                   (go as Container).setOwnerId(value);

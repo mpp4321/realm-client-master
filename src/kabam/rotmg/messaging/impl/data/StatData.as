@@ -102,6 +102,8 @@ package kabam.rotmg.messaging.impl.data
       public static const PROTECTION_STAT : int = 94;
       public static const PROTECTION_BOOST_STAT : int = 95;
       public static const MERCHANDISE_ITEM_DATA_STAT : int = 96;
+      public static const CRITCHANCE_STAT : int = 97;
+      public static const CRITCHANCE_BOOST_STAT : int = 98;
 
       
       public var statType_:uint = 0;

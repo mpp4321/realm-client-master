@@ -23,7 +23,14 @@ public class Random
       {
          return min == max? min :min + this.gen() % (max - min);
       }
-      
+
+      public function nextNumber() : Number
+      {
+         var t_24: Number = gen() >> 8; // discard 8 bytes to make it 24
+         var secondary = Number(1 << 24);
+         return t_24 / secondary;
+      }
+
       private function gen() : uint
       {
          var lb:uint = 16807 * (this.seed & 0xFFFF);

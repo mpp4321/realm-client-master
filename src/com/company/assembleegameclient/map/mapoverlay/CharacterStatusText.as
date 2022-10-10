@@ -24,8 +24,8 @@ package com.company.assembleegameclient.map.mapoverlay
       public var offsetTime_:int;
       
       private var startTime_:int = 0;
-      
-      public function CharacterStatusText(go:GameObject, text:String, color:uint, lifetime:int, offsetTime:int = 0)
+
+      public function CharacterStatusText(go:GameObject, text:String, color:uint, lifetime:int, offsetTime:int = 0, size:int = 24)
       {
          super();
          this.go_ = go;
@@ -33,7 +33,7 @@ package com.company.assembleegameclient.map.mapoverlay
          this.color_ = color;
          this.lifetime_ = lifetime;
          this.offsetTime_ = offsetTime;
-         var t:SimpleText = new SimpleText(24,color,false,0,0);
+         var t:SimpleText = new SimpleText(size,color,false,0,0);
          t.setBold(true);
          t.text = text;
          t.updateMetrics();

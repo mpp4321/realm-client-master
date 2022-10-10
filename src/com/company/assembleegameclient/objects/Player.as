@@ -94,6 +94,7 @@ import org.swiftsuspenders.Injector;
       public var vitality_:int = 0;
       public var wisdom_:int = 0;
       public var protection_:int = 0;
+      public var critChance_:int = 0;
       public var maxHPBoost_:int = 0;
       public var maxMPBoost_:int = 0;
       public var attackBoost_:int = 0;
@@ -103,6 +104,7 @@ import org.swiftsuspenders.Injector;
       public var wisdomBoost_:int = 0;
       public var dexterityBoost_:int = 0;
       public var protectionBoost_:int = 0;
+      public var critChanceBoost_:int = 0;
       public var healthPotionCount_:int = 0;
       public var magicPotionCount_:int = 0;
       public var attackMax_:int = 0;
@@ -176,6 +178,8 @@ import org.swiftsuspenders.Injector;
          player.dexterity_ = int(playerXML.Dexterity);
          player.vitality_ = int(playerXML.HpRegen);
          player.wisdom_ = int(playerXML.MpRegen);
+         player.protection_ = int(playerXML.Protection);
+         player.critChance_ = int(playerXML.CritChance);
          player.tex1Id_ = int(playerXML.Tex1);
          player.tex2Id_ = int(playerXML.Tex2);
          return player;
@@ -1028,9 +1032,14 @@ import org.swiftsuspenders.Injector;
 
             minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
             maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
+            trace(map_.gs_.gsc_.getNextDecimal());
+            var critRoll = map_.gs_.gsc_.getNextDecimal() < (getStatTotal(9) / 100.0);
             damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage) * Number(this.attackMultiplier());
-
+            if(critRoll) {
+               damage *= 2;
+            }
             proj.setDamage(damage);
+            proj.didCrit_ = critRoll;
 
             for each(var uef in uneffs) {
                uef.OnProjectileShoot(this, proj);
@@ -1139,6 +1148,7 @@ import org.swiftsuspenders.Injector;
             case 6: return vitalityBoost_;
             case 7: return wisdomBoost_;
             case 8: return protectionBoost_;
+            case 9: return critChanceBoost_;
          }
       }
 
@@ -1153,6 +1163,7 @@ import org.swiftsuspenders.Injector;
             case 6: return vitality_ + vitalityBoost_;
             case 7: return wisdom_ + wisdomBoost_;
             case 8: return protection_ + protectionBoost_;
+            case 9: return critChance_ + critChanceBoost_;
          }
       }
 

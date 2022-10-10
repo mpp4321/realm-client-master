@@ -768,7 +768,11 @@ public class GameObject extends BasicObject
          if(damageAmount > 0)
          {
             pierced = this.isArmorBroken() || proj != null && proj.projProps_.armorPiercing_;
-            map_.mapOverlay_.addStatusText(new CharacterStatusText(this,"-" + damageAmount,pierced?9437439:16711680,1000));
+            var color = pierced? 9437439: 0xFF0000;
+            if((proj.didCrit_ || false)) {
+               color = color | 0xFFff00;
+            }
+            map_.mapOverlay_.addStatusText(new CharacterStatusText(this,"-" + damageAmount, color,1000, 0, proj.didCrit_ ? 48 : 24));
          }
       }
       

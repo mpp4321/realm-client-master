@@ -12014,7 +12014,7 @@
 		<Consumable/>
 		<InvUse/>
 		<Description>An equipment crystal burning with strength.</Description>
-		<Activate statScale="1.0" id="Strength" amount="5">MagicCrystal</Activate>
+		<Activate statScale="1.0" id="Strength" amount="7">MagicCrystal</Activate>
 		<BagType>6</BagType>
 	</Object>
 	<Object type="0x5105" id="Ghastly Equipment Crystal">
@@ -12028,7 +12028,7 @@
 		<Consumable/>
 		<InvUse/>
 		<Description>An ethereal crystal pulsing with unknown knowledge.</Description>
-		<Activate statScale="1.0" id="Wisdom" amount="5">MagicCrystal</Activate>
+		<Activate statScale="1.0" id="Wisdom" amount="7">MagicCrystal</Activate>
 		<BagType>6</BagType>
 	</Object>
 	<Object type="0x5106" id="Dummy Item for Res Armor">
@@ -12318,6 +12318,7 @@
 			<Size>100</Size>
 			<SmartAngle></SmartAngle>
 		</Projectile>
+		<EnchantmentStrength>10</EnchantmentStrength>
 		<NumProjectiles>3</NumProjectiles>
 		<BagType>6</BagType>
 	</Object>
@@ -12374,6 +12375,7 @@
 		<Usable/>
 		<BagType>5</BagType>
 		<MpCost>100</MpCost>
+		<EnchantmentStrength>8</EnchantmentStrength>
 		<Activate effect="Berserk" duration="1">ConditionEffectSelf</Activate>
 		<Activate amount="4">Shuriken</Activate>
 	</Object>
@@ -12397,6 +12399,7 @@
 			<Amplitude>1.0</Amplitude>
 			<Frequency>-0.75</Frequency>
 		</Projectile>
+		<EnchantmentStrength>8</EnchantmentStrength>
 		<ArcGap>0</ArcGap>
 		<NumProjectiles>2</NumProjectiles>
 		<BagType>5</BagType>
@@ -12420,6 +12423,7 @@
 		<ExtraTooltipData>
 			<EffectInfo name="Defender" description="Chance to ignite enemies dealing damage based on defense."/>
 		</ExtraTooltipData>
+		<EnchantmentStrength>8</EnchantmentStrength>
 		<UniqueEffect>ObsidianPlatemail</UniqueEffect>
 	</Object>
 	<Object type="0x525c" id="Horrific Spear">
@@ -12445,5 +12449,33 @@
 		<BagType>5</BagType>
 		<FameBonus>5</FameBonus>
 		<OldSound>bladeSwing</OldSound>
+	</Object>
+	<Object type="0x525d" id="Lesser Fiery Equipment Crystal">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xb4</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Consumable/>
+		<InvUse/>
+		<Description>An equipment crystal burning with strength.</Description>
+		<Activate statScale="1.0" id="Strength" amount="3">MagicCrystal</Activate>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x525e" id="Lesser Ghastly Equipment Crystal">
+		<Class>Equipment</Class>
+		<Item/>
+		<Texture>
+			<File>lofiObj4</File>
+			<Index>0xc4</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Consumable/>
+		<InvUse/>
+		<Description>An ethereal crystal pulsing with unknown knowledge.</Description>
+		<Activate statScale="1.0" id="Wisdom" amount="3">MagicCrystal</Activate>
+		<BagType>5</BagType>
 	</Object>
 </Objects>
