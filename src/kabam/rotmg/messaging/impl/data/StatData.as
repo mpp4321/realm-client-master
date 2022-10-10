@@ -141,6 +141,8 @@ package kabam.rotmg.messaging.impl.data
                return "Wisdom";
             case 8:
                return "Protection";
+            case 9:
+               return "% Crit Chance";
             default:
                return "Unknown Stat";
          }
