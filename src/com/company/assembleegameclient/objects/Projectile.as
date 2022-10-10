@@ -43,6 +43,7 @@ public class Projectile extends BasicObject
       public var damagesEnemies_:Boolean;
       public var damagesPlayers_:Boolean;
       public var damage_:int;
+      public var didCrit_:Boolean;
       public var sound_:String;
       public var startX_:Number;
       public var startY_:Number;
