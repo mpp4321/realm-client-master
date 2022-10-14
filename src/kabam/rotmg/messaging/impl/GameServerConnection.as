@@ -887,7 +887,24 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
             angle = enemyShoot.angle_ + enemyShoot.angleInc_ * i;
             proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i, angle,this.gs_.lastUpdate_, true);
             proj.setDamage(enemyShoot.damage_);
-            this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
+
+            if(proj.projProps_.doStretchShot) {
+               var burstCount = proj.projProps_.stretchShotCount;
+               for(var z:int = 1; z <= burstCount; z++) {
+                  var ratio = z / burstCount;
+                  var newSpeed = proj.projProps_.speed_ * ratio;
+                  var newProjectile = FreeList.newObject(Projectile) as Projectile;
+
+                  newProjectile.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i + z - 1, angle,this.gs_.lastUpdate_, true);
+                  newProjectile.setDamage(enemyShoot.damage_);
+                  newProjectile.speedOverride = newSpeed;
+                  newProjectile.angle_ = proj.angle_;
+
+                  this.gs_.map.addObj(newProjectile, enemyShoot.startingPos_.x_, enemyShoot.startingPos_.y_);
+               }
+            } else {
+               this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
+            }
          }
 
          this.shootAck(this.gs_.lastUpdate_);

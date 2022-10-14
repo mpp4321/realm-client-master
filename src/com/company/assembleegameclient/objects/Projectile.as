@@ -56,6 +56,8 @@ public class Projectile extends BasicObject
       private var staticVector3D_:Vector3D;
       protected var shadowGradientFill_:GraphicsGradientFill;
       protected var shadowPath_:GraphicsPath;
+
+      public var speedOverride: Number = -1.0;
       
       public function Projectile()
       {
@@ -64,6 +66,7 @@ public class Projectile extends BasicObject
          this.staticVector3D_ = new Vector3D();
          this.shadowGradientFill_ = new GraphicsGradientFill(GradientType.RADIAL,[0,0],[0.5,0],null,new Matrix());
          this.shadowPath_ = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
+         this.speedOverride = -1.0;
          super();
       }
 
@@ -136,6 +139,7 @@ public class Projectile extends BasicObject
       {
          var size:Number = NaN;
          clear();
+         this.speedOverride = -1.0;
          this.containerType_ = containerType;
          this.bulletType_ = bulletType;
          this.bulletId_ = bulletId;
@@ -248,13 +252,14 @@ public class Projectile extends BasicObject
       }
 
       private function speedAt(elapsed: int): Number {
-         var speed:Number = this.projProps_.speed_;
+         var speed:Number = this.speedOverride != -1.0 ? this.speedOverride : this.projProps_.speed_;
+         var accel = this.projProps_.accelerate_;
 
-         if (this.projProps_.accelerate_ && elapsed > this.projProps_.accelerateDelay_)
+         if (accel && elapsed > this.projProps_.accelerateDelay_)
          {
             //var elapsedWithDelay = Math.max(0, elapsed - projProps_.accelerateDelay_);
             var elapsedWithDelay = elapsed;
-            var speedIncrease = elapsedWithDelay * (projProps_.accelerate_ / 1000);
+            var speedIncrease = elapsedWithDelay * (accel / 1000);
             speed += speedIncrease;
             //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
          }
@@ -329,20 +334,27 @@ public class Projectile extends BasicObject
 
          //TODO projectile accel delay
 
-         var delayT = this.projProps_.accelerateDelay_ / 1000.0;
-         var distDelayT = this.projProps_.speed_ * delayT;
+         var accel = this.projProps_.accelerate_;
+         var speed = speedOverride != -1.0 ? speedOverride : this.projProps_.speed_;
 
-         if(Math.abs(this.projProps_.accelerate_) > 0 && elapsedT >= delayT) {
-            var delta = -this.projProps_.speed_ / this.projProps_.accelerate_;
+         var delayT = this.projProps_.accelerateDelay_ / 1000.0;
+         var distDelayT = speed * delayT;
+
+         trace("S: " + speed);
+         trace("A: " + accel);
+         trace("PP: " + speedOverride);
+
+         if(Math.abs(accel) > 0 && elapsedT >= delayT) {
+            var delta = -speed / accel;
             if((elapsedT - delayT) > delta && delta > 0.0) {
-               dist = (this.projProps_.accelerate_ * Math.pow(delta, 2) / 2.0) + (this.projProps_.speed_ * delta);
+               dist = (accel * Math.pow(delta, 2) / 2.0) + (speed * delta);
             } else {
-               dist = (this.projProps_.accelerate_ * Math.pow(elapsedT - delayT, 2) / 2.0) + (this.projProps_.speed_ * (elapsedT - delayT));
+               dist = (accel * Math.pow(elapsedT - delayT, 2) / 2.0) + (speed * (elapsedT - delayT));
             }
             dist += distDelayT;
             dist /= 10.0;
          } else {
-            dist = elapsed * projProps_.speed_ / 10000.0;
+            dist = elapsed * speed / 10000.0;
          }
 
          /*var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
@@ -376,7 +388,7 @@ public class Projectile extends BasicObject
          }
          if(this.projProps_.boomerang_)
          {
-            halfway = this.projProps_.lifetime_ * (this.projProps_.speed_ / 10000) / 2;
+            halfway = this.projProps_.lifetime_ * (speed / 10000) / 2;
             if(dist > halfway)
             {
                dist = halfway - (dist - halfway);

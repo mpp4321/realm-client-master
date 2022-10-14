@@ -58,6 +58,9 @@ package com.company.assembleegameclient.objects
       public var explodeProjectile: ProjectileProperties = null;
       public var explodeCount: int;
 
+      public var doStretchShot = false;
+      public var stretchShotCount = -1;
+
 
       public function ProjectileProperties(projectileXML:XML)
       {
@@ -112,6 +115,9 @@ package com.company.assembleegameclient.objects
          // Exploding projectiles
          this.explodeCount = projectileXML.hasOwnProperty("ExplodeCount") ? Number(projectileXML.ExplodeCount) : 0;
          this.explodeProjectile = projectileXML.hasOwnProperty("ExplodeProjectile") ? new ProjectileProperties(projectileXML.ExplodeProjectile[0]) : null;
+
+         this.doStretchShot = projectileXML.hasOwnProperty("DoStretchShot");
+         this.stretchShotCount = projectileXML.hasOwnProperty("StretchShotCount") ? int(projectileXML.StretchShotCount) : 0;
       }
    }
 }

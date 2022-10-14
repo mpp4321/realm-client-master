@@ -1556,4 +1556,35 @@
 			<LifetimeMS>2400</LifetimeMS>
 		</Projectile>
 	</Object>
+	<Object type="0x5206" id="Super Snail">
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>d3Chars8x8rEmbed</File>
+			<Index>18</Index>
+		</AnimatedTexture>
+		<StasisImmune/>
+		<Level>20</Level>
+		<XpMult>2</XpMult>
+		<Enemy/>
+		<Size>150</Size>
+		<Defense>20</Defense>
+		<MaxHitPoints>1500</MaxHitPoints>
+		<Projectile id="0">
+			<ObjectId>Yellow Brother Orb</ObjectId>
+			<Speed>50</Speed>
+			<Damage>120</Damage>
+			<Size>120</Size>
+			<LifetimeMS>1000</LifetimeMS>
+			<DoStretchShot/>
+			<StretchShotCount>5</StretchShotCount>
+			<ConditionEffect duration="1.0">ArmorBroken</ConditionEffect>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Dragon Attack Red Small Fireball</ObjectId>
+			<Speed>100</Speed>
+			<Damage>80</Damage>
+			<Size>100</Size>
+			<LifetimeMS>1000</LifetimeMS>
+		</Projectile>
+	</Object>
 </Objects>
