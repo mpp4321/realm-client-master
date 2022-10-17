@@ -1641,10 +1641,11 @@
       </Projectile>
       <Projectile id="2">
          <ObjectId>Dragon Attack Green Arrow</ObjectId>
-         <Speed>100</Speed>
-         <Damage>75</Damage>
-         <Size>100</Size>
-         <LifetimeMS>1200</LifetimeMS>
+         <Speed>50</Speed>
+         <Damage>300</Damage>
+		 <ArmorPierce/>
+         <Size>250</Size>
+         <LifetimeMS>2400</LifetimeMS>
       </Projectile>
       <Projectile id="3">
          <ObjectId>Dragon Attack Green Bullet</ObjectId>
