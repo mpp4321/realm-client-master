@@ -144,6 +144,7 @@ public class Projectile extends BasicObject
          this.bulletType_ = bulletType;
          this.bulletId_ = bulletId;
          this.ownerId_ = ownerId;
+         this.didCrit_ = false;
          this.angle_ = Trig.boundToPI(angle);
          this.startTime_ = startTime;
          objectId_ = getNextFakeObjectId();

@@ -1641,10 +1641,11 @@
       </Projectile>
       <Projectile id="2">
          <ObjectId>Dragon Attack Green Arrow</ObjectId>
-         <Speed>100</Speed>
-         <Damage>75</Damage>
-         <Size>100</Size>
-         <LifetimeMS>1200</LifetimeMS>
+         <Speed>50</Speed>
+         <Damage>300</Damage>
+		 <ArmorPierce/>
+         <Size>250</Size>
+         <LifetimeMS>2400</LifetimeMS>
       </Projectile>
       <Projectile id="3">
          <ObjectId>Dragon Attack Green Bullet</ObjectId>
@@ -1676,4 +1677,16 @@
          <ConditionEffect duration="3">Armor Broken</ConditionEffect>
       </Projectile>
    </Object>
+	<Object type="0x520b" id="Dragon God Gas Cloud">
+		<Enemy/>
+		<Class>Character</Class>
+		<Texture>
+			<File>lofiCharBig</File>
+			<Index>0x21</Index>
+		</Texture>
+		<Size>120</Size>
+		<MaxHitPoints>1000000</MaxHitPoints>
+		<Defense>0</Defense>
+		<XpMult>0</XpMult>
+	</Object>
 </Objects>
