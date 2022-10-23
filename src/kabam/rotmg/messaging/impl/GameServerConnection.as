@@ -131,7 +131,8 @@ import kabam.rotmg.messaging.impl.outgoing.ChangeGuildRank;
 import kabam.rotmg.messaging.impl.outgoing.ChangeTrade;
 import kabam.rotmg.messaging.impl.outgoing.Create;
    import kabam.rotmg.messaging.impl.outgoing.CreateGuild;
-   import kabam.rotmg.messaging.impl.outgoing.EditAccountList;
+import kabam.rotmg.messaging.impl.outgoing.CrystalConv;
+import kabam.rotmg.messaging.impl.outgoing.EditAccountList;
    import kabam.rotmg.messaging.impl.outgoing.EnemyHit;
    import kabam.rotmg.messaging.impl.outgoing.Escape;
 import kabam.rotmg.messaging.impl.outgoing.GotoAck;
@@ -231,6 +232,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const BULLETRESYNC:int = 60;
       public static const LOOTNOTIF: int = 61;
       public static const BULLETEXPLODE: int = 62;
+      public static const CRYSTALCONV: int = 63;
 
       public static var instance:GameServerConnection;
 
@@ -353,6 +355,8 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
          // No the player is not exploding lol
          messages.map(BULLETEXPLODE).toMessage(PlayerExplode);
+         // Yes the player is exploding lol
+         messages.map(CRYSTALCONV).toMessage(CrystalConv);
          messages.map(LOOTNOTIF).toMessage(LootNotif).toMethod(this.onLootNotif);
          messages.map(SHOOTDESYNC).toMessage(ShootDesync).toMethod(this.onShootDesync);
          messages.map(BULLETRESYNC).toMessage(BulletResync).toMethod(this.onBulletResync);
@@ -1765,6 +1769,12 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                SpriteUtil.createFadeoutSprite(this.gs_, new EmbeddedAssets.ut_popup().bitmapData, 200, 0, 2.0);
                break;
          }
+      }
+
+      public function attemptCrystalConversion() : void
+      {
+         var msg : CrystalConv = this.messages.require(CRYSTALCONV) as CrystalConv;
+         this.serverConnection.sendMessage(msg);
       }
    }
 }

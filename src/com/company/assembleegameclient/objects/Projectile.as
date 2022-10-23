@@ -532,6 +532,11 @@ public class Projectile extends BasicObject
          }
          return true;
       }
+
+      public function determineHitBox() : Number {
+         var size = this.projProps_.size_ == -1 ? 100 : this.projProps_.size_;
+         return GameObject.HITBOX_RADIUS + (((size / 100.0) - 1.0)/2.0);
+      }
       
       public function getHit(pX:Number, pY:Number) : Vector.<GameObject>
       {
@@ -549,7 +554,8 @@ public class Projectile extends BasicObject
             {
                xDiff = go.x_ > pX?Number(go.x_ - pX):Number(pX - go.x_);
                yDiff = go.y_ > pY?Number(go.y_ - pY):Number(pY - go.y_);
-               if(xDiff <= GameObject.HITBOX_RADIUS && yDiff <= GameObject.HITBOX_RADIUS)
+               var hB = determineHitBox();
+               if(xDiff <= hB && yDiff <= hB)
                {
                   if(!(this.projProps_.multiHit_ && this.multiHitDict_[go] != null))
                   {
