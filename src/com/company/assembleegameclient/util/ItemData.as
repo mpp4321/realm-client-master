@@ -44,9 +44,6 @@ public class ItemData
         if(obj == null) return 0;
         var data = obj.Meta;
         var rank:int = getRank(obj);
-        if (rank == -1) {
-            return 0;
-        }
         var value:int = 0;
         if (hasStat(data, bit))
         {
@@ -58,6 +55,7 @@ public class ItemData
 
     public static function getRank(data: Object) : int
     {
+        if(data == null) return -1;
         return data.hasOwnProperty("ItemLevel") ? data.ItemLevel : -1;
     }
 

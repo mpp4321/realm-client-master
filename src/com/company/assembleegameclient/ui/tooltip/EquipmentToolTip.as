@@ -82,10 +82,18 @@ import kabam.rotmg.messaging.impl.data.StatData;
          this.addCooldownTagToEffectsList();
          this.addDoseTagsToEffectsList();
          this.addMpCostTagToEffectsList();
+         this.addAdornTag()
          this.addFameBonusTagToEffectsList();
          this.makeEffectsList();
          this.makeRestrictionList();
          this.makeRestrictionText();
+      }
+
+      public function addAdornTag() : void {
+         if(this.itemData_ != null && this.itemData_.hasOwnProperty("ItemComponent")) {
+            const color = "#AA6633";
+            this.effects.push(new Effect("", TooltipHelper.wrapInFontTag("Adorned with "  + this.itemData_.ItemComponent, color)));
+         }
       }
 
       public override function detachFromTarget() : void {
@@ -576,7 +584,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
             stats[stat] = stats[stat] + amount;
          }
 
-         if (this.itemData_.Meta != -1)
+         if (this.itemData_.Meta != -1 || this.itemData_.hasOwnProperty("ExtraStatBonuses"))
          {
             var k:int = -1;
             if ((k = ItemData.getStat(this.itemData_, ItemData.MAX_HP_BIT, 5, enchantmentStrength)) != 0) {
@@ -662,7 +670,7 @@ import kabam.rotmg.messaging.impl.data.StatData;
             dataString = "";
          }
 
-         return  TooltipHelper.wrapInFontTag(amountString + dataString + " " + StatData.statToName(stat), textColor);
+         return amountString + TooltipHelper.wrapInFontTag(dataString, textColor) + " " + StatData.statToName(stat);
       }
       
       private function addEquipmentItemRestrictions() : void

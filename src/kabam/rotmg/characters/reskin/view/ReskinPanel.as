@@ -22,7 +22,7 @@ package kabam.rotmg.characters.reskin.view
       
       private const button:TextButton = makeButton();
       
-      public const reskin:Signal = new NativeMappedSignal(button,MouseEvent.CLICK);
+      public const reskin:Signal = new NativeMappedSignal(button, MouseEvent.CLICK);
       
       public function ReskinPanel(gs:GameSprite)
       {
