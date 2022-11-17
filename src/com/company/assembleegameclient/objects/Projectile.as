@@ -341,10 +341,6 @@ public class Projectile extends BasicObject
          var delayT = this.projProps_.accelerateDelay_ / 1000.0;
          var distDelayT = speed * delayT;
 
-         trace("S: " + speed);
-         trace("A: " + accel);
-         trace("PP: " + speedOverride);
-
          if(Math.abs(accel) > 0 && elapsedT >= delayT) {
             var delta = -speed / accel;
             if((elapsedT - delayT) > delta && delta > 0.0) {

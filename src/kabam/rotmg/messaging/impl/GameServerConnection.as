@@ -1162,6 +1162,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   go.hp_ = value;
                   continue;
                case StatData.SIZE_STAT:
+                  trace(value);
                   go.size_ = value;
                   go.resetTextures();
                   continue;

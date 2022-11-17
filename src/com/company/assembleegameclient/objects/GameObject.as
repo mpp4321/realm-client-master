@@ -270,7 +270,7 @@ public class GameObject extends BasicObject
 
          this.texture_ = altTextureData.texture_;
          if(glowOverride_ != 0) {
-            texture_ = TextureRedrawer.redraw(texture_, this.size_,false, glowOverride_);
+            texture_ = TextureRedrawer.redraw(texture_, 100,false, glowOverride_, true, 1.0);
          }
          this.mask_ = altTextureData.mask_;
          this.animatedChar_ = altTextureData.animatedChar_;
@@ -903,7 +903,7 @@ public class GameObject extends BasicObject
          if(this.tex1Id_ == 0 && this.tex2Id_ == 0)
          {
             var usingGlow = glowOverride_ == 0 ? forceGlow : glowOverride_;
-            texture = TextureRedrawer.redraw(texture,size,false, usingGlow);
+            texture = TextureRedrawer.redraw(texture,size,false, usingGlow, true);
          }
          else
          {
