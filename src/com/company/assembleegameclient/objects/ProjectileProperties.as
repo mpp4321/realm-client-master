@@ -61,6 +61,10 @@ package com.company.assembleegameclient.objects
       public var doStretchShot = false;
       public var stretchShotCount = -1;
 
+      public var rotate: Boolean = false;
+      public var radialSpeed: Number;
+      public var maxRadius: Number;
+
 
       public function ProjectileProperties(projectileXML:XML)
       {
@@ -118,6 +122,10 @@ package com.company.assembleegameclient.objects
 
          this.doStretchShot = projectileXML.hasOwnProperty("DoStretchShot");
          this.stretchShotCount = projectileXML.hasOwnProperty("StretchShotCount") ? int(projectileXML.StretchShotCount) : 0;
+
+         this.rotate = projectileXML.hasOwnProperty("Rotate");
+         this.maxRadius = Number(projectileXML.hasOwnProperty("MaxRadius") ? Number(projectileXML.MaxRadius) : 0.0);
+         this.radialSpeed = Number(projectileXML.hasOwnProperty("RadialSpeed") ? Number(projectileXML.RadialSpeed) : 1.0);
       }
    }
 }

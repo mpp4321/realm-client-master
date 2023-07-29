@@ -1008,6 +1008,10 @@ import org.swiftsuspenders.Injector;
 
       }
 
+      function getNextProjectileProperties() {
+
+      }
+
       private function doShoot(time:int, weaponType:int, itemData:Object, weaponXML:XML, attackAngle:Number, isAbility:Boolean) : void
       {
          var proj:Projectile = null;
@@ -1027,30 +1031,61 @@ import org.swiftsuspenders.Injector;
 
          for(var i:int = 0; i < numShots; i++)
          {
-            proj = FreeList.newObject(Projectile) as Projectile;
-            proj.reset(weaponType, Math.abs(startId - i), objectId_,startId - i,angle,time);
-
-            minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
-            maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
-            trace(map_.gs_.gsc_.getNextDecimal());
-            var critRoll = map_.gs_.gsc_.getNextDecimal() < (getStatTotal(9) / 100.0);
-            damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage) * Number(this.attackMultiplier());
-            if(critRoll) {
-               damage *= 2;
-            }
-            proj.setDamage(damage);
-            proj.didCrit_ = critRoll;
-
             for each(var uef in uneffs) {
                uef.OnProjectileShoot(this, proj);
             }
 
-            if(i == 0 && proj.sound_ != null)
-            {
-               SoundEffectLibrary.play(proj.sound_,0.75,false);
+            var projProps = Projectile.getPropertiesOf(weaponType, Math.abs(startId - i));
+
+            if(projProps.doStretchShot) {
+               map_.nextProjectileId_ -= projProps.stretchShotCount;
+               for(var z:int = 1; z <= projProps.stretchShotCount; z++) {
+                  proj = FreeList.newObject(Projectile) as Projectile;
+                  proj.reset(weaponType, Math.abs(startId - i), objectId_,startId - i - z + 1,angle,time, 0, 0);
+
+                  var ratio = z / projProps.stretchShotCount;
+                  var newSpeed = proj.projProps_.speed_ * ratio;
+                  var newProjectile = FreeList.newObject(Projectile) as Projectile;
+
+                  newProjectile.speedOverride = newSpeed;
+                  newProjectile.angle_ = proj.angle_;
+
+                  proj.speedOverride = newSpeed;
+
+                  minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
+                  maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
+                  var critRoll = map_.gs_.gsc_.getNextDecimal() < (getStatTotal(9) / 100.0);
+                  damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage) * Number(this.attackMultiplier());
+                  if(critRoll) {
+                     damage *= 2;
+                  }
+                  proj.setDamage(damage);
+                  proj.didCrit_ = critRoll;
+
+                  map_.addObj(proj,x_,y_);
+                  angle = angle + arcGap;
+               }
+            } else {
+               proj = FreeList.newObject(Projectile) as Projectile;
+               proj.reset(weaponType, Math.abs(startId - i), objectId_,startId - i,angle,time, 0, 0);
+
+               minDamage = int(proj.projProps_.minDamage_) + int(proj.projProps_.minDamage_ * dmgMod);
+               maxDamage = int(proj.projProps_.maxDamage_) + int(proj.projProps_.maxDamage_ * dmgMod);
+               var critRoll = map_.gs_.gsc_.getNextDecimal() < (getStatTotal(9) / 100.0);
+               damage = map_.gs_.gsc_.getNextDamage(minDamage, maxDamage) * Number(this.attackMultiplier());
+               if(critRoll) {
+                  damage *= 2;
+               }
+               proj.setDamage(damage);
+               proj.didCrit_ = critRoll;
+
+               if(i == 0 && proj.sound_ != null)
+               {
+                  SoundEffectLibrary.play(proj.sound_,0.75,false);
+               }
+               map_.addObj(proj,x_,y_);
+               angle = angle + arcGap;
             }
-            map_.addObj(proj,x_,y_);
-            angle = angle + arcGap;
          }
 
          var burstShotCount = weaponXML.hasOwnProperty("Burst") ? int(weaponXML.Burst) : 0;

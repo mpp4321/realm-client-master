@@ -21,7 +21,9 @@ package kabam.rotmg.messaging.impl.incoming
       public var numShots_:int;
       
       public var angleInc_:Number;
-      
+      public var offsetX:Number;
+      public var offsetY:Number;
+
       public function EnemyShoot(id:uint, callback:Function)
       {
          this.startingPos_ = new WorldPosData();
@@ -36,6 +38,8 @@ package kabam.rotmg.messaging.impl.incoming
          this.startingPos_.parseFromInput(data);
          this.angle_ = data.readFloat();
          this.damage_ = data.readShort();
+         this.offsetX = data.readFloat();
+         this.offsetY = data.readFloat();
          if(data.bytesAvailable > 0)
          {
             this.numShots_ = data.readUnsignedByte();

@@ -5,8 +5,6 @@ package kabam.rotmg.death.control
    
    public class HandleDeathSignal extends Signal
    {
-       
-      
       public function HandleDeathSignal()
       {
          super(Death);

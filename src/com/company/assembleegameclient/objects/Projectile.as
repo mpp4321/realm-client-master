@@ -27,6 +27,8 @@ import com.company.assembleegameclient.objects.particles.HitEffect;
 
 import kabam.rotmg.assets.model.AnimationHelper;
 
+import org.hamcrest.mxml.object.Null;
+
 public class Projectile extends BasicObject
    {
       public static var nextFakeBulletId_:int = 0;
@@ -47,6 +49,8 @@ public class Projectile extends BasicObject
       public var sound_:String;
       public var startX_:Number;
       public var startY_:Number;
+      public var offsetX_: Number;
+      public var offsetY_: Number;
       public var startTime_:int;
       public var lastUpdate_:int = 0;
       public var angle_:Number = 0;
@@ -70,13 +74,21 @@ public class Projectile extends BasicObject
          super();
       }
 
+      public static function getPropertiesOf(weaponType, bulletType): ProjectileProperties {
+         var props = ObjectLibrary.propsLibrary_[weaponType];
+         var keys = DictionaryUtil.getKeys(props.projectiles_);
+         var projLength = keys.length;
+         var modIndex = findNextBulletId(bulletType, projLength) + keys[0];
+         return props.projectiles_[modIndex];
+      }
+
       public function mod(x, m) {
           var r = x % m;
           return x < 0 ? r + m : r;
       }
 
       //Make sure same as server
-      private function findNextBulletId(id: int, m : int) {
+      private static function findNextBulletId(id: int, m : int) {
          var r = id % m;
          var slot = r < 0 ? r + m : r;
          return slot;
@@ -88,7 +100,17 @@ public class Projectile extends BasicObject
          }
       }
 
-      public function reset_with_props(proj_props: ProjectileProperties, props: ObjectProperties, bulletType: int, ownerId:int, bulletId:int, angle:Number, startTime:int, notItem: Boolean = false) {
+      public function reset_with_props(
+              proj_props: ProjectileProperties,
+              props: ObjectProperties,
+              bulletType: int,
+              ownerId:int,
+              bulletId:int,
+              angle:Number,
+              startTime:int,
+              offsetX: Number,
+              offsetY: Number,
+              notItem: Boolean = false) {
          var size:Number = NaN;
          clear();
          this.bulletType_ = bulletType;
@@ -96,6 +118,8 @@ public class Projectile extends BasicObject
          this.ownerId_ = ownerId;
          this.angle_ = Trig.boundToPI(angle);
          this.startTime_ = startTime;
+         this.offsetX_ = offsetX;
+         this.offsetY_ = offsetY;
          objectId_ = getNextFakeObjectId();
          z_ = 0.5;
 
@@ -135,7 +159,16 @@ public class Projectile extends BasicObject
 
       }
 
-      public function reset(containerType:int, bulletType:int, ownerId:int, bulletId:int, angle:Number, startTime:int, notItem: Boolean = false) : void
+      public function reset(
+              containerType:int,
+              bulletType:int,
+              ownerId:int,
+              bulletId:int,
+              angle:Number,
+              startTime:int,
+              offsetX: Number,
+              offsetY: Number,
+              notItem: Boolean = false) : void
       {
          var size:Number = NaN;
          clear();
@@ -147,6 +180,8 @@ public class Projectile extends BasicObject
          this.didCrit_ = false;
          this.angle_ = Trig.boundToPI(angle);
          this.startTime_ = startTime;
+         this.offsetY_ = offsetY;
+         this.offsetX_ = offsetX;
          objectId_ = getNextFakeObjectId();
          z_ = 0.5;
          this.containerProps_ = ObjectLibrary.propsLibrary_[this.containerType_];
@@ -327,8 +362,8 @@ public class Projectile extends BasicObject
          var cos:Number = NaN;
          var halfway:Number = NaN;
          var deflection:Number = NaN;
-         p.x = this.startX_;
-         p.y = this.startY_;
+         p.x = this.startX_ + this.offsetX_;
+         p.y = this.startY_ + this.offsetY_;
 
          var elapsedT = elapsed / 1000.0;
          var dist;
@@ -352,6 +387,16 @@ public class Projectile extends BasicObject
             dist /= 10.0;
          } else {
             dist = elapsed * speed / 10000.0;
+         }
+
+         if(projProps_.rotate) {
+            t = this.projProps_.radialSpeed * elapsed / this.projProps_.lifetime_ * 2 * Math.PI;
+            if(dist > projProps_.maxRadius) {
+               dist = projProps_.maxRadius;
+            }
+            p.x = p.x + (dist * Math.cos(t + this.angle_));
+            p.y = p.y + (dist * Math.sin(t + this.angle_));
+            return;
          }
 
          /*var distBeforeAccel = Math.min(elapsed, projProps_.accelerateDelay_) * (projProps_.speed_ / 10000);
@@ -435,7 +480,7 @@ public class Projectile extends BasicObject
                var angle = 360.0 / count * i * (Math.PI / 180.0);
                var proj = FreeList.newObject(Projectile) as Projectile;
 
-               proj.reset_with_props(props, object.props_, Math.abs(startId - i), ownerId_, startId - i,angle,time);
+               proj.reset_with_props(props, object.props_, Math.abs(startId - i), ownerId_, startId - i,angle, offsetX_, offsetY_,time);
 
                var minDamage = int(props.minDamage_) + int(props.minDamage_);
                var maxDamage = int(props.maxDamage_) + int(props.maxDamage_);
