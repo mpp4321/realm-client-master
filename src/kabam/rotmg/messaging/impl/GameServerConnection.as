@@ -848,7 +848,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          {
             var proj:Projectile = FreeList.newObject(Projectile) as Projectile;
             var bulletId:int = serverPlayerShoot.ownerId_ == this.playerId_ ? serverPlayerShoot.bulletId_ + i : 0;
-            proj.reset(serverPlayerShoot.containerType_, 0, serverPlayerShoot.ownerId_, bulletId, serverPlayerShoot.angle_ + (serverPlayerShoot.angleInc_ * i), this.gs_.lastUpdate_);
+            proj.reset(serverPlayerShoot.containerType_, 0, serverPlayerShoot.ownerId_, bulletId, serverPlayerShoot.angle_ + (serverPlayerShoot.angleInc_ * i), this.gs_.lastUpdate_, 0, 0);
             proj.setDamage(serverPlayerShoot.damageList_[i]);
             this.gs_.map.addObj(proj, serverPlayerShoot.startingPos_.x_, serverPlayerShoot.startingPos_.y_);
          }
@@ -872,7 +872,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          for (i = 0; i < numShots; i++)
          {
             var proj:Projectile = FreeList.newObject(Projectile) as Projectile;
-            proj.reset(allyShoot.containerType_,0,allyShoot.ownerId_, startId + i, angle,this.gs_.lastUpdate_);
+            proj.reset(allyShoot.containerType_,0,allyShoot.ownerId_, startId + i, angle,this.gs_.lastUpdate_, 0, 0);
             this.gs_.map.addObj(proj,owner.x_,owner.y_);
             angle = angle + arcGap;
          }
@@ -889,7 +889,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             angle = enemyShoot.angle_ + enemyShoot.angleInc_ * i;
-            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i, angle,this.gs_.lastUpdate_, true);
+            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i, angle,this.gs_.lastUpdate_, enemyShoot.offsetX, enemyShoot.offsetY, true);
             proj.setDamage(enemyShoot.damage_);
 
             if(proj.projProps_.doStretchShot) {
@@ -899,7 +899,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   var newSpeed = proj.projProps_.speed_ * ratio;
                   var newProjectile = FreeList.newObject(Projectile) as Projectile;
 
-                  newProjectile.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i + z - 1, angle,this.gs_.lastUpdate_, true);
+                  newProjectile.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_, enemyShoot.bulletId_ + i + z - 1, angle,this.gs_.lastUpdate_, enemyShoot.offsetX, enemyShoot.offsetY, true);
                   newProjectile.setDamage(enemyShoot.damage_);
                   newProjectile.speedOverride = newSpeed;
                   newProjectile.angle_ = proj.angle_;
@@ -1243,6 +1243,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   continue;
                case StatData.CREDITS_STAT:
                   player.setCredits(value);
+                  gs_.model.setCredits(value);
                   continue;
                case StatData.MERCHANDISE_PRICE_STAT:
                   (go as SellableObject).setPrice(value);
@@ -1254,7 +1255,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
                   player.accountId_ = value;
                   continue;
                case StatData.FAME_STAT:
-                  player.fame_ = value;
+                  gs_.model.setFame(value);
                   continue;
                case StatData.MERCHANDISE_CURRENCY_STAT:
                   (go as SellableObject).setCurrency(value);
