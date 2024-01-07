@@ -9,7 +9,8 @@ package com.company.assembleegameclient.game
    import com.company.assembleegameclient.parameters.Parameters;
    import com.company.assembleegameclient.ui.GuildText;
    import com.company.assembleegameclient.ui.RankText;
-   import com.company.assembleegameclient.ui.TextBox;
+import com.company.assembleegameclient.ui.RuneUi;
+import com.company.assembleegameclient.ui.TextBox;
    import com.company.assembleegameclient.util.TextureRedrawer;
    import com.company.util.CachingColorTransformer;
    import com.company.util.MoreColorUtil;
@@ -51,6 +52,7 @@ import kabam.rotmg.ui.UIUtils;
       public var textBox_:TextBox;
       public var isNexus_:Boolean = false;
       public var hudView:HUDView;
+      public var runeMenu: RuneUi;
       public var rankText_:RankText;
       public var guildText_:GuildText;
       public var creditDisplay_:CreditDisplay;

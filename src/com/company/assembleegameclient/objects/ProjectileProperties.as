@@ -108,7 +108,7 @@ package com.company.assembleegameclient.objects
          this.magnitude_ = Boolean(projectileXML.hasOwnProperty("Magnitude"))?Number(Number(projectileXML.Magnitude)):Number(3);
          this.accelerate_ = Number(projectileXML.hasOwnProperty("Accelerate") ? Number(projectileXML.Accelerate) : 0.0);
          this.accelerateDelay_ = Number(projectileXML.hasOwnProperty("AccelerateDelay") ? Number(projectileXML.AccelerateDelay) : 0.0);
-         this.speedClamp_ = Number(projectileXML.hasOwnProperty("SpeedClamp") ? Number(projectileXML.SpeedClamp) : 0.0);
+         this.speedClamp_ = Number(projectileXML.hasOwnProperty("SpeedClamp") ? Number(projectileXML.SpeedClamp) : -1.0);
          this.phaseLock_ = int(projectileXML.hasOwnProperty("PhaseLock") ? int(projectileXML.PhaseLock) : -1);
 
          //Burst

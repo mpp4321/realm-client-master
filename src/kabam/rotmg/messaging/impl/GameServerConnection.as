@@ -109,7 +109,8 @@ import kabam.rotmg.messaging.impl.incoming.LootNotif;
 import kabam.rotmg.messaging.impl.incoming.MapInfo;
    import kabam.rotmg.messaging.impl.incoming.NewTick;
    import kabam.rotmg.messaging.impl.incoming.Notification;
-   import kabam.rotmg.messaging.impl.incoming.PlaySound;
+import kabam.rotmg.messaging.impl.incoming.OpenRunesMenu;
+import kabam.rotmg.messaging.impl.incoming.PlaySound;
    import kabam.rotmg.messaging.impl.incoming.QuestObjId;
    import kabam.rotmg.messaging.impl.incoming.Reconnect;
 import kabam.rotmg.messaging.impl.incoming.ServerPlayerShoot;
@@ -149,6 +150,7 @@ import kabam.rotmg.messaging.impl.outgoing.PlayerExplode;
 import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
    import kabam.rotmg.messaging.impl.outgoing.PlayerShoot;
    import kabam.rotmg.messaging.impl.outgoing.PlayerText;
+import kabam.rotmg.messaging.impl.outgoing.RemoveRune;
 import kabam.rotmg.messaging.impl.outgoing.TradeRequest;
 import kabam.rotmg.messaging.impl.outgoing.Reskin;
    import kabam.rotmg.messaging.impl.outgoing.ShootAck;
@@ -233,6 +235,8 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public static const LOOTNOTIF: int = 61;
       public static const BULLETEXPLODE: int = 62;
       public static const CRYSTALCONV: int = 63;
+      public static const OPENRUNEUI: int = 64;
+      public static const REMOVERUNE: int = 65;
 
       public static var instance:GameServerConnection;
 
@@ -355,6 +359,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(ACCEPTTRADE).toMessage(AcceptTrade);
          // No the player is not exploding lol
          messages.map(BULLETEXPLODE).toMessage(PlayerExplode);
+         messages.map(REMOVERUNE).toMessage(RemoveRune);
          // Yes the player is exploding lol
          messages.map(CRYSTALCONV).toMessage(CrystalConv);
          messages.map(LOOTNOTIF).toMessage(LootNotif).toMethod(this.onLootNotif);
@@ -390,6 +395,7 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          messages.map(TRADEDONE).toMessage(TradeDone).toMethod(this.onTradeDone);
          messages.map(TRADEACCEPTED).toMessage(TradeAccepted).toMethod(this.onTradeAccepted);
          messages.map(SWITCHMUSIC).toMessage(SwitchMusic).toMethod(this.onSwitchMusic);
+         messages.map(OPENRUNEUI).toMessage(OpenRunesMenu).toMethod(this.onOpenRunesMenu);
       }
       
       private function unmapMessages() : void
@@ -1758,6 +1764,21 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
          this.player.map_.nextProjectileId_ = 0;
       }
 
+      private function onOpenRunesMenu(_packet: OpenRunesMenu):void {
+         var ru = _packet.runeUi;
+         ru.initWithGs(this.gs_);
+
+         this.gs_.runeMenu = ru;
+
+         ru.x = this.gs_.hudView.width / 2;
+         ru.y = this.gs_.hudView.height / 2;
+
+         ru.x += ru.width / 2
+         ru.y -= ru.height / 2;
+
+         this.gs_.addChild(ru)
+      }
+
       private function onLootNotif(_packet: LootNotif):void {
          switch(_packet.type)
          {
@@ -1776,6 +1797,13 @@ import kabam.rotmg.ui.view.NotEnoughGoldDialog;
       public function attemptCrystalConversion() : void
       {
          var msg : CrystalConv = this.messages.require(CRYSTALCONV) as CrystalConv;
+         this.serverConnection.sendMessage(msg);
+      }
+
+      public function removeRune(rune: String) : void
+      {
+         var msg : RemoveRune = this.messages.require(REMOVERUNE) as RemoveRune;
+         msg.rune = rune;
          this.serverConnection.sendMessage(msg);
       }
    }

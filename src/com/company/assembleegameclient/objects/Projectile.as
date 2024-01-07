@@ -300,7 +300,7 @@ public class Projectile extends BasicObject
             //speed *= ( projProps_.accelerate_ * Math.min(0, Number(elapsed) - projProps_.accelerateDelay_) / this.projProps_.lifetime_);
          }
 
-         if(projProps_.speedClamp_ > 0) {
+         if(projProps_.speedClamp_ >= 0) {
             if(projProps_.speed_ > projProps_.speedClamp_) {
                if(speed < projProps_.speedClamp_) {
                   speed = projProps_.speedClamp_;

@@ -419,7 +419,8 @@ public class EditingScreen extends Sprite {
         byteArray.uncompress();
         for (var yi:int = bounds.y; yi < bounds.bottom; yi++) {
             for (xi = bounds.x; xi < bounds.right; xi++) {
-                entry = dict[byteArray.readShort()];
+                var readShort = byteArray.readShort();
+                entry = dict[readShort];
                 if (entry.hasOwnProperty("ground")) {
                     type = GroundLibrary.idToType_[entry["ground"]];
                     this.meMap_.modifyTile(xi, yi, Layer.GROUND, type);
